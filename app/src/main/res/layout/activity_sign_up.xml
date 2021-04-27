@@ -70,7 +70,7 @@
             app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
 
         <Button
-            android:id="@+id/btnLogIn"
+            android:id="@+id/btnsignup"
             android:layout_width="200sp"
             android:layout_height="50sp"
             android:layout_marginTop="88dp"
@@ -94,7 +94,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.178"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
+            app:layout_constraintTop_toBottomOf="@+id/btnsignup" />
 
         <TextView
             android:id="@+id/textView3"
@@ -107,7 +107,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/TVSignIn"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogIn" />
+            app:layout_constraintTop_toBottomOf="@+id/btnsignup" />
 
         <EditText
             android:id="@+id/editTextTextPassword2"
@@ -133,7 +133,7 @@
             android:layout_alignRight="@+id/textView3"
             android:orientation="horizontal"
             android:weightSum="1"
-            app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
+            app:layout_constraintBottom_toTopOf="@+id/btnsignup"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.807"
             app:layout_constraintStart_toStartOf="parent"
