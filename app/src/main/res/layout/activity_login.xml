@@ -23,12 +23,12 @@
         tools:ignore="RtlCompat" />
 
     <EditText
-        android:id="@+id/loginEmail"
+        android:id="@+id/email"
         android:layout_width="350sp"
         android:layout_height="50sp"
         android:layout_margin="15dp"
         android:background="@drawable/inputtextfield"
-        android:hint="\t\tMobile number"
+        android:hint="\t\tEmail or Mobile number"
         android:inputType="phone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,10 +48,10 @@
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/email" />
 
     <Button
-        android:id="@+id/btnsignup"
+        android:id="@+id/btnlogin"
         android:layout_width="200sp"
         android:layout_height="50sp"
         android:layout_marginStart="104dp"
@@ -76,11 +76,11 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnsignup"
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin"
         app:layout_constraintVertical_bias="0.032" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/singup"
         android:layout_width="76dp"
         android:layout_height="36dp"
         android:layout_marginTop="28dp"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/TVSignIn"
-        app:layout_constraintTop_toBottomOf="@+id/btnsignup" />
+        app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
     <TextView
         android:id="@+id/textView"
