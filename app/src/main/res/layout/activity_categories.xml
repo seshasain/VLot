@@ -7,7 +7,7 @@
     tools:context=".Categories">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/btnsignup"
         android:layout_width="74dp"
         android:layout_height="26dp"
         android:text="Categories"

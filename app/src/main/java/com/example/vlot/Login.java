@@ -1,15 +1,13 @@
+package com.example.vlot;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.example.vlot.Categories;
-import com.example.vlot.MainActivity;
-import com.example.vlot.R;
 import com.google.firebase.auth.FirebaseAuth;
-import android.content.Intent;
-import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,8 +16,6 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class Login extends AppCompatActivity {
@@ -35,28 +31,28 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        loginEmailId = findViewById(R.id.email);
+        loginEmailId = findViewById(R.id.loginEmail);
         logInpasswd = findViewById(R.id.loginpaswd);
         btnLogIn = findViewById(R.id.login);
-        signup = findViewById(R.id.TVSignIn);
+        signup = findViewById(R.id.btnsignup);
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Toast.makeText(signin.this, "User logged in ", Toast.LENGTH_SHORT).show();
-                    Intent I = new Intent(signin.this, Categories.class);
+                    Toast.makeText(Login.this, "User logged in ", Toast.LENGTH_SHORT).show();
+                    Intent I = new Intent(Login.this, Categories.class);
                     startActivity(I);
                     finish();
                 } else {
-                    Toast.makeText(signin.this, "Login to continue", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Login to continue", Toast.LENGTH_SHORT).show();
                 }
             }
         };
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent I = new Intent(signin.this, MainActivity.class);
+                Intent I = new Intent(Login.this, MainActivity.class);
                 startActivity(I);
                 finish();
             }
@@ -73,20 +69,20 @@ public class Login extends AppCompatActivity {
                     logInpasswd.setError("Enter Password!");
                     logInpasswd.requestFocus();
                 } else if (userEmail.isEmpty() && userPaswd.isEmpty()) {
-                    Toast.makeText(signin.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
                 } else if (!(userEmail.isEmpty() && userPaswd.isEmpty())) {
-                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(signin.this, new OnCompleteListener() {
+                    firebaseAuth.signInWithEmailAndPassword(userEmail, userPaswd).addOnCompleteListener(Login.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
                             if (!task.isSuccessful()) {
-                                Toast.makeText(signin.this, "Not sucessfull", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(Login.this, "Not sucessfull", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(signin.this, Categories.class));
+                                startActivity(new Intent(Login.this, Categories.class));
                             }
                         }
                     });
                 } else {
-                    Toast.makeText(signin.this, "Error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Login.this, "Error", Toast.LENGTH_SHORT).show();
                 }
             }
         });
