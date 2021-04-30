@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/nav_profileSettings"
+        android:id="@+id/nav_profilesettings"
         android:label="Profile Settings"
         tools:layout="@layout/fragment_gallery" />
 

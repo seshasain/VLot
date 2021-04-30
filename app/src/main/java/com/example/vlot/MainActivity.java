@@ -17,14 +17,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class MainActivity extends AppCompatActivity {
-    public EditText emailId, passwd;
+    public EditText emailId,passwd;
     Button btnSignUp;
     TextView signIn;
     FirebaseAuth firebaseAuth;
     public void onStart() {
         super.onStart();
         if (this.firebaseAuth.getCurrentUser()!= null) {
-            startActivity(new Intent(MainActivity.this, Categories.class));
+            startActivity(new Intent(MainActivity.this, Select_Category.class));
             finish();
         }
     }
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
         emailId = findViewById(R.id.email);
         passwd = findViewById(R.id.loginpaswd);
-        btnSignUp = findViewById(R.id.btnlogin);
-        signIn = findViewById(R.id.singup);
+        btnSignUp = findViewById(R.id.btnsignup);
+        signIn = findViewById(R.id.suplogin);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent I = new Intent(MainActivity.this, Categories.class);
+                                Intent I = new Intent(MainActivity.this, Select_Category.class);
                                 startActivity(I);
                                 finish();
                             }
