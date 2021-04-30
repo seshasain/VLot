@@ -24,7 +24,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlCompat"/>
+            tools:ignore="RtlCompat" />
 
         <EditText
             android:id="@+id/name"
@@ -40,40 +40,34 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/number"
             android:layout_width="350sp"
             android:layout_height="50sp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/inputtextfield"
             android:hint="\t\tMobile number"
             android:inputType="phone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <EditText
             android:id="@+id/loginpaswd"
             android:layout_width="350sp"
             android:layout_height="50sp"
-            android:layout_margin="15dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/inputtextfield"
             android:hint="\t\tPassword"
             android:inputType="textPassword"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/email" />
+            app:layout_constraintTop_toBottomOf="@+id/number" />
 
         <Button
             android:id="@+id/btnlogin"
             android:layout_width="200sp"
             android:layout_height="50sp"
-            android:layout_marginTop="88dp"
+            android:layout_marginTop="96dp"
             android:background="@drawable/button"
             android:text="Sign Up"
             android:textColor="@color/white"
@@ -87,7 +81,7 @@
             android:id="@+id/TVSignIn"
             android:layout_width="237dp"
             android:layout_height="33dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="52dp"
             android:text="Already have an account?"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -95,33 +89,6 @@
             app:layout_constraintHorizontal_bias="0.178"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
-
-        <TextView
-            android:id="@+id/singup"
-            android:layout_width="76dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="40dp"
-            android:text="Login"
-            android:textColor="@color/blue"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/TVSignIn"
-            app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
-
-        <EditText
-            android:id="@+id/loginpsw1"
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/inputtextfield"
-            android:ems="10"
-            android:hint="\t\tConfirm password"
-            android:inputType="textPassword"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.491"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/loginpaswd" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
@@ -138,16 +105,16 @@
             app:layout_constraintHorizontal_bias="0.807"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/loginpsw1"
-            app:layout_constraintVertical_bias="0.415">
+            app:layout_constraintVertical_bias="0.508">
 
             <RadioButton
                 android:id="@+id/radioButton"
                 android:layout_width="127dp"
                 android:layout_height="wrap_content"
+                android:buttonTint="@color/blue"
                 android:checked="false"
                 android:scaleX=".8"
                 android:scaleY=".8"
-                android:buttonTint="@color/blue"
                 android:text="Vendor"
                 android:textSize="25dp" />
 
@@ -165,11 +132,38 @@
                 android:textSize="25dp" />
         </RadioGroup>
 
+        <TextView
+            android:id="@+id/singup"
+            android:layout_width="76dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="52dp"
+            android:text="Login"
+            android:textColor="@color/blue"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/TVSignIn"
+            app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
+
+        <EditText
+            android:id="@+id/loginpsw1"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/inputtextfield"
+            android:ems="10"
+            android:hint="\t\tConfirm password"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/loginpaswd" />
+
         <EditText
             android:id="@+id/email"
             android:layout_width="350dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/inputtextfield"
             android:ems="10"
             android:hint="\t\tEmail"

@@ -23,10 +23,11 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     public void onStart() {
         super.onStart();
-        if (this.firebaseAuth.getCurrentUser()!= null) {
+        /*if (this.firebaseAuth.getCurrentUser()!= null) {
             startActivity(new Intent(MainActivity.this, Categories.class));
             finish();
-        }
+        }*/
+        Toast.makeText(MainActivity.this, "Singup Sucesscull transfering to categories", Toast.LENGTH_SHORT).show();
     }
     //s
     @Override
@@ -61,9 +62,10 @@ public class MainActivity extends AppCompatActivity {
                                         "SignUp unsuccessful: " + task.getException().getMessage(),
                                         Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent I = new Intent(MainActivity.this, Categories.class);
+                                /*Intent I = new Intent(MainActivity.this, Categories.class);
                                 startActivity(I);
-                                finish();
+                                finish();*/
+                                Toast.makeText(MainActivity.this, "Singup Sucesscull transfering to categories", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
