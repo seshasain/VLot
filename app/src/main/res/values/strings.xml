@@ -1,3 +1,21 @@
 <resources>
     <string name="app_name">VLot</string>
+    <string name="title_activity_select__category">Select_Category</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="hello_user">Hello User</string>
+    <string name="t_tpassword">\t\tPassword</string>
+    <string name="login">Login</string>
+    <string name="don_t_have_an_account">Don\'t have an account?</string>
+    <string name="t_temail">\t\tEmail</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="forget_password">Forget Password?</string>
 </resources>
