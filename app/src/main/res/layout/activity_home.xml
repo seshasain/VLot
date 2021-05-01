@@ -25,18 +25,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="#F7FFFFFF"
-                app:subtitleTextColor="#0A0A0A"
+                android:background="@color/blue"
+                app:subtitleTextColor="@color/white"
                 app:titleTextColor="#111111" />
-
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Hello world"/>
-            <!--    Your code here -->
-
-
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView

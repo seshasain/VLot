@@ -23,14 +23,14 @@
             android:icon="@drawable/ic_baseline_policy_24"
             android:title="Privacy Policy">
         </item>
+        <item android:id="@+id/nav_about"
+            android:icon="@drawable/ic_baseline_info_24"
+            android:title="About Us">
+        </item>
         <item
             android:id="@+id/logout"
             android:icon="@drawable/ic_baseline_power_settings_new_24"
             android:title="Logout">
-        </item>
-        <item android:id="@+id/nav_about"
-            android:icon="@drawable/ic_baseline_info_24"
-            android:title="About Us">
         </item>
     </group>
 
