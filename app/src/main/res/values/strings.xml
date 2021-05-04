@@ -18,4 +18,5 @@
     <string name="t_temail">\t\tEmail</string>
     <string name="sign_up">Sign Up</string>
     <string name="forget_password">Forget Password?</string>
+    <string name="title_activity_track">Map</string>
 </resources>
