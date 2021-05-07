@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".Vegetables">
+
+
+        <TextView
+            android:id="@+id/headingtv"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:text="Add your items:"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/appleadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Add"
+            app:layout_constraintEnd_toStartOf="@+id/appleremove"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appletv" />
+
+        <Button
+            android:id="@+id/appleremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/appletv"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/appletv"
+            android:layout_width="89dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="44dp"
+            android:text="Apple"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv" />
+
+        <ImageView
+            android:id="@+id/appleimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toStartOf="@+id/appleadd"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv"
+            app:srcCompat="@drawable/apples"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/grapesimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/appleimage"
+            app:srcCompat="@drawable/grapes" />
+
+        <TextView
+            android:id="@+id/grapestv"
+            android:layout_width="89dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="168dp"
+            android:layout_marginRight="168dp"
+            android:text="Grapes"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.714"
+            app:layout_constraintStart_toEndOf="@+id/grapesimage"
+            app:layout_constraintTop_toBottomOf="@+id/appleadd" />
+
+        <Button
+            android:id="@+id/grapesadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/grapesremove"
+            app:layout_constraintHorizontal_bias="0.346"
+            app:layout_constraintStart_toEndOf="@+id/potatoimage"
+            app:layout_constraintTop_toBottomOf="@+id/grapestv" />
+
+        <Button
+            android:id="@+id/grapesremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/grapesimage"
+            app:layout_constraintTop_toBottomOf="@+id/appleremove" />
+
+        <ImageView
+            android:id="@+id/guavaimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.112"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/grapesimage"
+            app:srcCompat="@drawable/guva" />
+
+        <TextView
+            android:id="@+id/guavatv"
+            android:layout_width="112dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="148dp"
+            android:layout_marginRight="148dp"
+            android:text="Guava"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.793"
+            app:layout_constraintStart_toEndOf="@+id/guavaimage"
+            app:layout_constraintTop_toBottomOf="@+id/grapesadd" />
+
+        <Button
+            android:id="@+id/guavaadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/guavaremove"
+            app:layout_constraintHorizontal_bias="0.272"
+            app:layout_constraintStart_toEndOf="@+id/guavaimage"
+            app:layout_constraintTop_toBottomOf="@+id/guavatv" />
+
+        <Button
+            android:id="@+id/guavaremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toEndOf="@+id/guavatv"
+            app:layout_constraintTop_toBottomOf="@+id/grapesremove" />
+
+        <ImageView
+            android:id="@+id/orangeimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guavaimage"
+            app:srcCompat="@drawable/oranges" />
+
+        <TextView
+            android:id="@+id/orangetv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginRight="172dp"
+            android:text="Orange"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/orangeimage"
+            app:layout_constraintTop_toBottomOf="@+id/guavaadd" />
+
+        <Button
+            android:id="@+id/orangeadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/orangeremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/orangeimage"
+            app:layout_constraintTop_toBottomOf="@+id/orangetv" />
+
+        <Button
+            android:id="@+id/orangeremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="64dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/guavaremove" />
+
+        <ImageView
+            android:id="@+id/papayaimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orangeimage"
+            app:srcCompat="@drawable/papaya" />
+
+        <TextView
+            android:id="@+id/papayatv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginRight="172dp"
+            android:text="Papaya"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/papayaimage"
+            app:layout_constraintTop_toBottomOf="@+id/orangeadd" />
+
+        <Button
+            android:id="@+id/papayaadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/papayaremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/papayaimage"
+            app:layout_constraintTop_toBottomOf="@+id/papayatv" />
+
+        <Button
+            android:id="@+id/papayaremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.823"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/orangeremove" />
+
+        <ImageView
+            android:id="@+id/pineappleimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/papayaimage"
+            app:srcCompat="@drawable/pineapple" />
+
+        <TextView
+            android:id="@+id/pineappletv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Pine apple"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toEndOf="@+id/pineappleimage"
+            app:layout_constraintTop_toBottomOf="@+id/papayaadd" />
+
+        <Button
+            android:id="@+id/pineappleadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/pineappleremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/pineappleimage"
+            app:layout_constraintTop_toBottomOf="@+id/pineappletv" />
+
+        <Button
+            android:id="@+id/pineappleremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/papayaremove" />
+
+        <ImageView
+            android:id="@+id/pomogranateimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pineappleimage"
+            app:srcCompat="@drawable/promogranate" />
+
+        <TextView
+            android:id="@+id/pomogranatetv"
+            android:layout_width="116dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:text="Pomogranate"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toEndOf="@+id/pomogranateimage"
+            app:layout_constraintTop_toBottomOf="@+id/pineappleadd" />
+
+        <Button
+            android:id="@+id/pomogranateremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.823"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pineappleremove" />
+
+        <Button
+            android:id="@+id/pomogranateadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/pomogranateremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/pomogranateimage"
+            app:layout_constraintTop_toBottomOf="@+id/pomogranatetv" />
+
+        <ImageView
+            android:id="@+id/watermelonimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pomogranateimage"
+            app:srcCompat="@drawable/watermelon" />
+
+        <TextView
+            android:id="@+id/watermelontv"
+            android:layout_width="120dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:text="Watermelon"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toEndOf="@+id/watermelonimage"
+            app:layout_constraintTop_toBottomOf="@+id/pomogranateadd" />
+
+        <Button
+            android:id="@+id/watermelonadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/watermelonremove"
+            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintStart_toEndOf="@+id/watermelonimage"
+            app:layout_constraintTop_toBottomOf="@+id/watermelontv" />
+
+        <Button
+            android:id="@+id/watermelonremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="64dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.812"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pomogranateremove" />
+
+        <ImageView
+            android:id="@+id/sweetcornimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watermelonimage"
+            app:srcCompat="@drawable/sweetcorn" />
+
+        <TextView
+            android:id="@+id/sweetcorntv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Sweetcorn"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toEndOf="@+id/sweetcornimage"
+            app:layout_constraintTop_toBottomOf="@+id/watermelonadd" />
+
+        <Button
+            android:id="@+id/sweetcornadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/sweetcornremove"
+            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintStart_toEndOf="@+id/sweetcornimage"
+            app:layout_constraintTop_toBottomOf="@+id/sweetcorntv" />
+
+        <Button
+            android:id="@+id/sweetcornremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/watermelonremove" />
+
+        <ImageView
+            android:id="@+id/bananaimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sweetcornimage"
+            app:srcCompat="@drawable/bananas" />
+
+        <TextView
+            android:id="@+id/bananatv"
+            android:layout_width="120dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="184dp"
+            android:layout_marginRight="184dp"
+            android:text="Banana"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bananaimage"
+            app:layout_constraintTop_toBottomOf="@+id/sweetcornadd" />
+
+        <Button
+            android:id="@+id/bananaadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/bananaremove"
+            app:layout_constraintHorizontal_bias="0.019"
+            app:layout_constraintStart_toEndOf="@+id/bananaimage"
+            app:layout_constraintTop_toBottomOf="@+id/bananatv" />
+
+        <Button
+            android:id="@+id/bananaremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="72dp"
+            android:layout_marginRight="72dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sweetcornremove" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

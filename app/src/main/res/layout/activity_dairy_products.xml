@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DairyProducts">
+
+    <TextView
+        android:id="@+id/headingtv"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="24dp"
+        android:text="Add your items:"
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.187"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/milkimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headingtv"
+        app:srcCompat="@drawable/milk" />
+
+    <TextView
+        android:id="@+id/milktv"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="44dp"
+        android:text="Milk"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toEndOf="@+id/milkimage"
+        app:layout_constraintTop_toBottomOf="@+id/headingtv" />
+
+    <Button
+        android:id="@+id/miladd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/milkremove"
+        app:layout_constraintHorizontal_bias="0.932"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/milktv" />
+
+    <Button
+        android:id="@+id/milkremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="144dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/icecreamimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/milkimage"
+        app:srcCompat="@drawable/icecream1" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Icecream"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.116"
+        app:layout_constraintStart_toEndOf="@+id/icecreamimage"
+        app:layout_constraintTop_toBottomOf="@+id/miladd" />
+
+    <Button
+        android:id="@+id/icecreamadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <Button
+        android:id="@+id/icecreamremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/milkremove" />
+
+    <ImageView
+        android:id="@+id/pannerimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icecreamimage"
+        app:srcCompat="@drawable/paneer" />
+
+    <TextView
+        android:id="@+id/pannertv"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Panner"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toEndOf="@+id/pannerimage"
+        app:layout_constraintTop_toBottomOf="@+id/icecreamadd" />
+
+    <Button
+        android:id="@+id/panneradd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pannertv" />
+
+    <Button
+        android:id="@+id/pannerremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/icecreamremove" />
+
+    <ImageView
+        android:id="@+id/butterimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pannerimage"
+        app:srcCompat="@drawable/butter" />
+
+    <TextView
+        android:id="@+id/buttertv"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="28dp"
+        android:text="Butter"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toEndOf="@+id/butterimage"
+        app:layout_constraintTop_toBottomOf="@+id/panneradd" />
+
+    <Button
+        android:id="@+id/butteradd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttertv" />
+
+    <Button
+        android:id="@+id/butterremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pannerremove" />
+
+    <ImageView
+        android:id="@+id/curdimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butterimage"
+        app:srcCompat="@drawable/curd" />
+
+    <TextView
+        android:id="@+id/curdtv"
+        android:layout_width="89dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Curd"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintStart_toEndOf="@+id/curdimage"
+        app:layout_constraintTop_toBottomOf="@+id/butteradd" />
+
+    <Button
+        android:id="@+id/curdadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/curdtv" />
+
+    <Button
+        android:id="@+id/curdremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="52dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.858"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/butterremove" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

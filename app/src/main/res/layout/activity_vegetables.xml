@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vegetables">
+
+
+    <TextView
+            android:id="@+id/headingtv"
+            android:layout_width="240dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="24dp"
+            android:text="Add your items:"
+            android:textColor="@color/blue"
+            android:textSize="25sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.187"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tomatoadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="Add"
+            app:layout_constraintEnd_toStartOf="@+id/tomatoremove"
+            app:layout_constraintHorizontal_bias="0.98"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tomatotv" />
+
+        <Button
+            android:id="@+id/tomatoremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tomatotv"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/tomatotv"
+            android:layout_width="89dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="44dp"
+            android:text="Tomato"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.462"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv" />
+
+        <ImageView
+            android:id="@+id/tomatoimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="36dp"
+            app:layout_constraintEnd_toStartOf="@+id/tomatoadd"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/headingtv"
+            app:srcCompat="@drawable/tomato"
+            tools:ignore="MissingConstraints" />
+
+        <ImageView
+            android:id="@+id/potatoimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tomatoimage"
+            app:srcCompat="@drawable/potatoes" />
+
+        <TextView
+            android:id="@+id/potatotv"
+            android:layout_width="89dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="168dp"
+            android:layout_marginRight="168dp"
+            android:text="Potato"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.714"
+            app:layout_constraintStart_toEndOf="@+id/potatoimage"
+            app:layout_constraintTop_toBottomOf="@+id/tomatoadd" />
+
+        <Button
+            android:id="@+id/potatoadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/potatoremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/potatoimage"
+            app:layout_constraintTop_toBottomOf="@+id/potatotv" />
+
+        <Button
+            android:id="@+id/potatoremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginLeft="23dp"
+            android:layout_marginTop="68dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/potatoimage"
+            app:layout_constraintTop_toBottomOf="@+id/tomatoremove" />
+
+        <ImageView
+            android:id="@+id/bottlegourdimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/potatoimage"
+            app:srcCompat="@drawable/bottlegourd" />
+
+        <TextView
+            android:id="@+id/bottlegourdtv"
+            android:layout_width="112dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="148dp"
+            android:layout_marginRight="148dp"
+            android:text="Bottlegourd"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.666"
+            app:layout_constraintStart_toEndOf="@+id/bottlegourdimage"
+            app:layout_constraintTop_toBottomOf="@+id/potatoadd" />
+
+        <Button
+            android:id="@+id/bottlegourdadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="29dp"
+            android:layout_marginRight="29dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/bottlegourdremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/bottlegourdimage"
+            app:layout_constraintTop_toBottomOf="@+id/bottlegourdtv" />
+
+        <Button
+            android:id="@+id/bottlegourdremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.066"
+            app:layout_constraintStart_toEndOf="@+id/bottlegourdtv"
+            app:layout_constraintTop_toBottomOf="@+id/potatoremove" />
+
+        <ImageView
+            android:id="@+id/cucumberimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottlegourdimage"
+            app:srcCompat="@drawable/cucumber" />
+
+        <TextView
+            android:id="@+id/cucumbertv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginRight="172dp"
+            android:text="Cucumber"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/cucumberimage"
+            app:layout_constraintTop_toBottomOf="@+id/bottlegourdadd" />
+
+        <Button
+            android:id="@+id/cucumberadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/cucumberremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/cucumberimage"
+            app:layout_constraintTop_toBottomOf="@+id/cucumbertv" />
+
+        <Button
+            android:id="@+id/cucumberremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="64dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottlegourdremove" />
+
+        <ImageView
+            android:id="@+id/capsicumimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cucumberimage"
+            app:srcCompat="@drawable/capsicum" />
+
+        <TextView
+            android:id="@+id/capsicumtv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="172dp"
+            android:layout_marginRight="172dp"
+            android:text="Capsicum"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/capsicumimage"
+            app:layout_constraintTop_toBottomOf="@+id/cucumberadd" />
+
+        <Button
+            android:id="@+id/capsicumadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/capsicumremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/capsicumimage"
+            app:layout_constraintTop_toBottomOf="@+id/capsicumtv" />
+
+        <Button
+            android:id="@+id/capsicumremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.823"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cucumberremove" />
+
+    <ImageView
+        android:id="@+id/bittergourdimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capsicumimage"
+        app:srcCompat="@drawable/bittergourd" />
+
+    <TextView
+        android:id="@+id/bittergourdtv"
+        android:layout_width="90dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Bittergourd"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.054"
+        app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
+        app:layout_constraintTop_toBottomOf="@+id/capsicumadd" />
+
+    <Button
+        android:id="@+id/bittergourdadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/bitterguardremove"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
+        app:layout_constraintTop_toBottomOf="@+id/bittergourdtv" />
+
+    <Button
+        android:id="@+id/bitterguardremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capsicumremove" />
+
+    <ImageView
+        android:id="@+id/drumstickimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bittergourdimage"
+        app:srcCompat="@drawable/drumstick" />
+
+    <TextView
+        android:id="@+id/drumsticktv"
+        android:layout_width="90dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Drumstick"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toEndOf="@+id/drumstickimage"
+        app:layout_constraintTop_toBottomOf="@+id/bittergourdadd" />
+
+    <Button
+        android:id="@+id/drumstickremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="Remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.823"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bitterguardremove" />
+
+    <Button
+        android:id="@+id/drumstickadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/drumstickremove"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/drumstickimage"
+        app:layout_constraintTop_toBottomOf="@+id/drumsticktv" />
+
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drumstickimage"
+        app:srcCompat="@drawable/ladiesfinger" />
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="20dp"
+        android:text="Ladiesfinger"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/drumstickadd" />
+
+    <Button
+        android:id="@+id/ladiesfingeradd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/ladiesfingerremove"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toEndOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/ladiesfingerremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="64dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drumstickremove" />
+
+    <ImageView
+        android:id="@+id/gonguraimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
+        app:srcCompat="@drawable/gongura" />
+
+    <TextView
+        android:id="@+id/gonguratv"
+        android:layout_width="90dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Goungura"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.064"
+        app:layout_constraintStart_toEndOf="@+id/gonguraimage"
+        app:layout_constraintTop_toBottomOf="@+id/ladiesfingeradd" />
+
+    <Button
+        android:id="@+id/gounguraadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/gounguraremove"
+        app:layout_constraintHorizontal_bias="0.021"
+        app:layout_constraintStart_toEndOf="@+id/gonguraimage"
+        app:layout_constraintTop_toBottomOf="@+id/gonguratv" />
+
+    <Button
+        android:id="@+id/gounguraremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ladiesfingerremove" />
+
+    <ImageView
+        android:id="@+id/mintimage"
+        android:layout_width="101dp"
+        android:layout_height="87dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gonguraimage"
+        app:srcCompat="@drawable/freshmintpudina" />
+
+    <TextView
+        android:id="@+id/minttv"
+        android:layout_width="120dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="184dp"
+        android:layout_marginRight="184dp"
+        android:text="Mintpudina"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.842"
+        app:layout_constraintStart_toEndOf="@+id/mintimage"
+        app:layout_constraintTop_toBottomOf="@+id/gounguraadd" />
+
+    <Button
+        android:id="@+id/mintadd"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@android:color/holo_green_dark"
+        android:text="add"
+        app:layout_constraintEnd_toStartOf="@+id/mintremove"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/mintimage"
+        app:layout_constraintTop_toBottomOf="@+id/minttv" />
+
+    <Button
+        android:id="@+id/mintremove"
+        android:layout_width="94dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginRight="72dp"
+        android:backgroundTint="@android:color/holo_red_dark"
+        android:text="remove"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gounguraremove" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
