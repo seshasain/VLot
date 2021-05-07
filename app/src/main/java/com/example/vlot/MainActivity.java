@@ -9,21 +9,31 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends AppCompatActivity {
-    public EditText emailId, passwd;
+    public EditText emailId, passwd,cpasswd;
     Button btnSignUp;
     TextView signIn;
     FirebaseAuth firebaseAuth;
+    RadioGroup type;
+    RadioButton selectedbutton;
+    FirebaseDatabase rootNode;
+    DatabaseReference reference;
+
     public void onStart() {
         super.onStart();
-        if (this.firebaseAuth.getCurrentUser()!= null) {
+        if (this.firebaseAuth.getCurrentUser() != null) {
             startActivity(new Intent(MainActivity.this, Home.class));
             finish();
         }
@@ -37,20 +47,37 @@ public class MainActivity extends AppCompatActivity {
         passwd = findViewById(R.id.loginpaswd);
         btnSignUp = findViewById(R.id.btnlogin);
         signIn = findViewById(R.id.singup);
+        type=findViewById(R.id.radioGroup);
+        cpasswd=findViewById(R.id.loginpsw1);
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailID = emailId.getText().toString();
                 String paswd = passwd.getText().toString();
+                String cpaswd=cpasswd.getText().toString();
+                int selectedId = type.getCheckedRadioButtonId();
+                selectedbutton=findViewById(selectedId);
+                String typex="";
+                if(!(type.getCheckedRadioButtonId() == -1)) {
+                    typex = selectedbutton.getText().toString();
+                }
                 if (emailID.isEmpty()) {
                     emailId.setError("Provide your Email first!");
                     emailId.requestFocus();
                 } else if (paswd.isEmpty()) {
                     passwd.setError("Set your password");
                     passwd.requestFocus();
-                } else if (emailID.isEmpty() && paswd.isEmpty()) {
+                }
+                else if(typex.isEmpty())
+                {
+                    Toast.makeText(MainActivity.this, "Select Vendor or Customer!", Toast.LENGTH_SHORT).show();
+                }else if (emailID.isEmpty() && paswd.isEmpty() && typex.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Fields Empty!", Toast.LENGTH_SHORT).show();
-                } else if (!(emailID.isEmpty() && paswd.isEmpty())) {
+                }else if(!paswd.equals(cpaswd)) {
+                    Toast.makeText(MainActivity.this, "Passwords doesn't match!", Toast.LENGTH_SHORT).show();
+                }else if (!(emailID.isEmpty() && paswd.isEmpty())) {
+                    String finalTypex = typex;
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -61,6 +88,15 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                             else {
+
+
+                                //Database code
+                                rootNode = FirebaseDatabase.getInstance();
+                                if(finalTypex.equals("customers"))
+                                    reference = rootNode.getReference("Customers");
+                                else
+                                    reference = rootNode.getReference("Verdors");
+
                                 Intent I = new Intent(MainActivity.this, Home.class);
                                 startActivity(I);
                                 finish();
