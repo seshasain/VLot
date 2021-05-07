@@ -78,8 +78,7 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this, "Not sucessfull", Toast.LENGTH_SHORT).show();
                             } else {
                                 startActivity(new Intent(Login.this, Home.class));
-
-
+                                finish();
                             }
                         }
                     });
