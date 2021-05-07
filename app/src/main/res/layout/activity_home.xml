@@ -28,6 +28,39 @@
                 android:background="@color/blue"
                 app:subtitleTextColor="@color/white"
                 app:titleTextColor="#111111" />
+
+            <TextView
+                android:id="@+id/heading"
+                android:layout_width="365dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center_horizontal"
+                android:text="SELECT CATEGORY"
+                android:textAlignment="center"
+                android:textSize="30dp" />
+
+            <ImageButton
+                android:id="@+id/veg"
+                android:layout_width="250dp"
+                android:layout_height="142dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="13dp"
+                android:src="@drawable/vegetables" />
+            <ImageButton
+                android:id="@+id/fru"
+                android:layout_width="250dp"
+                android:layout_height="142dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/fruits" />
+            <ImageButton
+                android:id="@+id/dai"
+                android:layout_width="250dp"
+                android:layout_height="142dp"
+                android:layout_marginLeft="55dp"
+                android:layout_marginTop="25dp"
+                android:src="@drawable/dairy" />
+
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView
