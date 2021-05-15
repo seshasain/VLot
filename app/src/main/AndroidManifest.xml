@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.VLot">
         <activity android:name=".Profile"></activity>
+        <activity android:name=".Vegetables"/>
+        <activity android:name=".Fruits"/>
+        <activity android:name=".DairyProducts"/>
         <activity android:name=".Home"></activity>
         <activity android:name=".Login" />
         <activity android:name=".MainActivity">
