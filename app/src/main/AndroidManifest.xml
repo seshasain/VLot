@@ -12,6 +12,8 @@
         <activity android:name=".Profile"></activity>
         <activity android:name=".Home"></activity>
         <activity android:name=".Login" />
+        <activity android:name=".Vegetables"></activity>
+        <activity android:name=".Fruits"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
