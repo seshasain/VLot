@@ -15,9 +15,7 @@
         android:background="#F7FFFFFF"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
-
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F7FFFFFF"
@@ -32,36 +30,127 @@
                 app:titleTextColor="#111111" />
 
             <TextView
-                android:id="@+id/heading"
-                android:layout_width="365dp"
-                android:layout_height="70dp"
                 android:layout_marginTop="20dp"
-                android:gravity="center_horizontal"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
                 android:text="SELECT CATEGORY"
+                android:textSize="30sp"
                 android:textAlignment="center"
-                android:textSize="30dp" />
-
-            <ImageButton
+                android:layout_gravity="center"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"/>
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:id="@+id/veg"
-                android:layout_width="250dp"
-                android:layout_height="142dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginTop="13dp"
-                android:src="@drawable/vegetables" />
-            <ImageButton
+                android:clickable="true"
+                android:layout_marginTop="30dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#E39ff6"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="8dp"
+                app:contentPadding="4dp">
+
+                <RelativeLayout
+                    android:layout_width="343dp"
+                    android:layout_height="150dp"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/veg_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="VEGETABLES"
+                        android:textColor="#FF0000"
+                        android:textStyle="bold"
+                        android:textSize="22sp"/>
+
+                    <ImageView
+                        android:layout_width="135dp"
+                        android:layout_height="100dp"
+                        android:layout_alignLeft="@id/veg_head"
+                        android:layout_marginLeft="164dp"
+                        android:src="@drawable/vegetables" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:id="@+id/fru"
-                android:layout_width="250dp"
-                android:layout_height="142dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/fruits" />
-            <ImageButton
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:clickable="true"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="#7ef9ff"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="8dp"
+                android:layout_marginTop="30dp"
+                app:contentPadding="4dp">
+                <RelativeLayout
+                    android:layout_width="343dp"
+                    android:layout_height="150dp"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/fru_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:text="FRUITS"
+                        android:layout_marginLeft="210dp"
+                        android:textStyle="bold"
+                        android:textColor="#FF0000"
+                        android:textSize="22sp" />
+
+                    <ImageView
+                        android:id="@+id/veg1"
+                        android:layout_width="135dp"
+                        android:layout_height="100dp"
+                        android:layout_marginRight="164dp"
+                        android:src="@drawable/fruits" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
                 android:id="@+id/dai"
-                android:layout_width="250dp"
-                android:layout_height="142dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginTop="25dp"
-                android:src="@drawable/dairy" />
+                android:clickable="true"
+                android:layout_margin="30dp"
+                android:layout_gravity="center"
+                app:cardBackgroundColor="@color/blue"
+                app:cardCornerRadius="22dp"
+                app:cardElevation="8dp"
+                app:contentPadding="4dp">
+
+                <RelativeLayout
+                    android:layout_width="343dp"
+                    android:layout_height="150dp"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/dai_head"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="13dp"
+                        android:layout_marginTop="20dp"
+                        android:text="DAIRY"
+                        android:textColor="#FF0000"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/dai1"
+                        android:layout_width="135dp"
+                        android:layout_height="100dp"
+                        android:layout_alignLeft="@+id/dai_head"
+                        android:layout_marginLeft="164dp"
+                        android:src="@drawable/dairy" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
 
         </LinearLayout>
     </ScrollView>
