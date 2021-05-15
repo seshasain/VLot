@@ -18,6 +18,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -31,6 +33,7 @@ public class Home extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    ImageButton veg1,fru1,dai1;
     NavigationView navigationView;
     FirebaseAuth Auth;
     private static final int PERMISSIONS_REQUEST = 100;
@@ -38,6 +41,33 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        veg1=(ImageButton)findViewById(R.id.veg);
+        fru1=(ImageButton)findViewById(R.id.fru);
+        dai1=(ImageButton)findViewById(R.id.dai);
+        veg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(Home.this,Vegetables.class);
+                startActivity(intent2);
+                finish();
+            }
+        });
+        fru1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent3 = new Intent(Home.this,Fruits.class);
+                startActivity(intent3);
+                finish();
+            }
+        });
+        dai1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent4 = new Intent(Home.this,DairyProducts.class);
+                startActivity(intent4);
+                finish();
+            }
+        });
         setUpToolbar();
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
@@ -56,6 +86,7 @@ public class Home extends AppCompatActivity {
                     PERMISSIONS_REQUEST);
         }
 
+
         navigationView = (NavigationView) findViewById(R.id.navigation_menu);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -63,8 +94,12 @@ public class Home extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.nav_profsettings:
-                        Intent intent = new Intent(Home.this, MainActivity.class);
+                        Intent intent = new Intent(Home.this, Profile.class);
                         startActivity(intent);
+                        break;
+                    case R.id.nav_home:
+                        Intent homeint = new Intent(Home.this, Home.class);
+                        startActivity(homeint);
                         break;
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
@@ -72,7 +107,6 @@ public class Home extends AppCompatActivity {
                         startActivity(intent1);
                         finish();
                         break;
-
                     case  R.id.nav_about:
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                         sharingIntent.setType("text/plain");
@@ -81,11 +115,12 @@ public class Home extends AppCompatActivity {
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                         startActivity(Intent.createChooser(sharingIntent, "Share using"));
-                    break;
+                        break;
                 }
                 return false;
             }
         });
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[]
@@ -107,6 +142,7 @@ public class Home extends AppCompatActivity {
         }
     }
 
+
 //Start the TrackerService//
 
     private void startTrackerService() {
@@ -115,6 +151,8 @@ public class Home extends AppCompatActivity {
 //Notify the user that tracking has been enabled//
 
         Toast.makeText(this, "GPS tracking enabled", Toast.LENGTH_SHORT).show();
+
+
 
 //Close MainActivity//
     }
@@ -125,6 +163,8 @@ public class Home extends AppCompatActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
+
 
     }
 }
