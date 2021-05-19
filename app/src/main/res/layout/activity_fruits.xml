@@ -120,7 +120,7 @@
             android:text="add"
             app:layout_constraintEnd_toStartOf="@+id/grapesremove"
             app:layout_constraintHorizontal_bias="0.346"
-            app:layout_constraintStart_toEndOf="@+id/potatoimage"
+            app:layout_constraintStart_toEndOf="@+id/grapesimage"
             app:layout_constraintTop_toBottomOf="@+id/grapestv" />
 
         <Button

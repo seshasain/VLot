@@ -9,14 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VLot">
-        <activity android:name=".Profile"></activity>
-        <activity android:name=".Vegetables"/>
-        <activity android:name=".Fruits"/>
-        <activity android:name=".DairyProducts"/>
-        <activity android:name=".Home"></activity>
+        <activity android:name=".Profile" />
+        <activity android:name=".Vegetables" />
+        <activity android:name=".Fruits" />
+        <activity android:name=".DairyProducts" />
+        <activity android:name=".Home" />
         <activity android:name=".Login" />
-        <activity android:name=".Vegetables"></activity>
-        <activity android:name=".Fruits"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
