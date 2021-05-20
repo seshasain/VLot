@@ -39,9 +39,18 @@ public class Fruits extends AppCompatActivity {
         sr=(Button)findViewById(R.id.sweetcornremove);
         br=(Button)findViewById(R.id.bananaremove);
 
+        ar.setEnabled(false);
+        grr.setEnabled(false);gur.setEnabled(false);or.setEnabled(false);
+        par.setEnabled(false);pir.setEnabled(false);por.setEnabled(false);
+        wr.setEnabled(false);sr.setEnabled(false);br.setEnabled(false);
+
+
+
         aa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                aa.setEnabled(false);
+                ar.setEnabled(true);
                 if(!fruits.contains("apple"))
                     fruits.add("apple");
             }
@@ -49,6 +58,8 @@ public class Fruits extends AppCompatActivity {
         gra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gra.setEnabled(false);
+                grr.setEnabled(true);
                 if(!fruits.contains("grape"))
                     fruits.add("grape");
             }
@@ -56,6 +67,8 @@ public class Fruits extends AppCompatActivity {
         gua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                gua.setEnabled(false);
+                gur.setEnabled(true);
                 if(!fruits.contains("guava"))
                     fruits.add("guava");
             }
@@ -63,6 +76,8 @@ public class Fruits extends AppCompatActivity {
         oa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                oa.setEnabled(false);
+                or.setEnabled(true);
                 if(!fruits.contains("orange"))
                     fruits.add("orange");
             }
@@ -70,6 +85,8 @@ public class Fruits extends AppCompatActivity {
         paa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                paa.setEnabled(false);
+                par.setEnabled(true);
                 if(!fruits.contains("papaya"))
                     fruits.add("papaya");
             }
@@ -77,6 +94,8 @@ public class Fruits extends AppCompatActivity {
         pia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pia.setEnabled(false);
+                pir.setEnabled(true);
                 if(!fruits.contains("pineapple"))
                     fruits.add("pineapple");
             }
@@ -84,6 +103,8 @@ public class Fruits extends AppCompatActivity {
         poa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                poa.setEnabled(false);
+                por.setEnabled(true);
                 if(!fruits.contains("pomogranate"))
                     fruits.add("pomogranate");
             }
@@ -91,6 +112,8 @@ public class Fruits extends AppCompatActivity {
         wa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                wa.setEnabled(false);
+                wr.setEnabled(true);
                 if(!fruits.contains("watermelon"))
                     fruits.add("watermelon");
             }
@@ -98,6 +121,8 @@ public class Fruits extends AppCompatActivity {
         sa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sa.setEnabled(false);
+                sr.setEnabled(true);
                 if(!fruits.contains("sweetcorn"))
                     fruits.add("sweetcorn");
             }
@@ -105,6 +130,8 @@ public class Fruits extends AppCompatActivity {
         ba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ba.setEnabled(false);
+                br.setEnabled(true);
                 if(!fruits.contains("banana"))
                     fruits.add("banana");
             }
@@ -114,61 +141,81 @@ public class Fruits extends AppCompatActivity {
         ar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                aa.setEnabled(true);
+                ar.setEnabled(false);
                 fruits.remove("apple");
             }
         });
         grr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("grape");
+                gra.setEnabled(true);
+                grr.setEnabled(false);
+                fruits.remove("grape");
             }
         });
         gur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("guava");
+                gua.setEnabled(true);
+                gur.setEnabled(false);
+                fruits.remove("guava");
             }
         });
         or.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("orange");
+                oa.setEnabled(true);
+                or.setEnabled(false);
+                fruits.remove("orange");
             }
         });
         par.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("papaya");
+                paa.setEnabled(true);
+                par.setEnabled(false);
+                fruits.remove("papaya");
             }
         });
         pir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("pineapple");
+                pia.setEnabled(true);
+                pir.setEnabled(false);
+                fruits.remove("pineapple");
             }
         });
         por.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("pomogranate");
+                poa.setEnabled(true);
+                por.setEnabled(false);
+                fruits.remove("pomogranate");
             }
         });
         wr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("watermelon");
+                wa.setEnabled(true);
+                wr.setEnabled(false);
+                fruits.remove("watermelon");
             }
         });
         sr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("sweetcorn");
+                sa.setEnabled(true);
+                sr.setEnabled(false);
+                fruits.remove("sweetcorn");
             }
         });
         br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    fruits.remove("banana");
+                ba.setEnabled(true);
+                br.setEnabled(false);
+                fruits.remove("banana");
             }
         });
 

@@ -2,6 +2,7 @@ package com.example.vlot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,6 +21,8 @@ public class Vegetables extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vegetables);
         ta=(Button)findViewById(R.id.tomatoadd);
@@ -43,10 +46,17 @@ public class Vegetables extends AppCompatActivity {
         lr=(Button)findViewById(R.id.ladiesfingerremove);
         gr=(Button)findViewById(R.id.gounguraremove);
         mr=(Button)findViewById(R.id.mintremove);
+        tr.setEnabled(false);
+        pr.setEnabled(false);bor.setEnabled(false);cur.setEnabled(false);
+        car.setEnabled(false);bir.setEnabled(false);dr.setEnabled(false);
+        lr.setEnabled(false);gr.setEnabled(false);mr.setEnabled(false);
+
 
         ta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ta.setEnabled(false);
+                tr.setEnabled(true);
                 if (!vegies.contains("tomato"))
                 vegies.add("tomato");
             }
@@ -54,6 +64,8 @@ public class Vegetables extends AppCompatActivity {
         pa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pa.setEnabled(false);
+                pr.setEnabled(true);
                 if (!vegies.contains("potato"))
                 vegies.add("potato");
             }
@@ -61,6 +73,8 @@ public class Vegetables extends AppCompatActivity {
         boa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boa.setEnabled(false);
+                bor.setEnabled(true);
                 if (!vegies.contains("bottleguard"))
                 vegies.add("bottleguard");
             }
@@ -68,6 +82,8 @@ public class Vegetables extends AppCompatActivity {
         cua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cua.setEnabled(false);
+                cur.setEnabled(true);
                 if (!vegies.contains("cucumber"))
                 vegies.add("cucumber");
             }
@@ -75,6 +91,8 @@ public class Vegetables extends AppCompatActivity {
         caa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                caa.setEnabled(false);
+                car.setEnabled(true);
                 if (!vegies.contains("capsicum"))
                 vegies.add("capsicum");
             }
@@ -82,6 +100,8 @@ public class Vegetables extends AppCompatActivity {
         bia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bia.setEnabled(false);
+                bir.setEnabled(true);
                 if (!vegies.contains("bitterguard"))
                 vegies.add("bitterguard");
             }
@@ -89,6 +109,8 @@ public class Vegetables extends AppCompatActivity {
         da.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                da.setEnabled(false);
+                dr.setEnabled(true);
                 if (!vegies.contains("drumstick"))
                 vegies.add("drumstick");
             }
@@ -96,6 +118,8 @@ public class Vegetables extends AppCompatActivity {
         la.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                la.setEnabled(false);
+                lr.setEnabled(true);
                 if (!vegies.contains("ladiesfinger"))
                 vegies.add("ladiesfinger");
             }
@@ -103,6 +127,8 @@ public class Vegetables extends AppCompatActivity {
         ga.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ga.setEnabled(false);
+                gr.setEnabled(true);
                 if (!vegies.contains("gongura"))
                 vegies.add("gongura");
             }
@@ -110,6 +136,8 @@ public class Vegetables extends AppCompatActivity {
         ma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ma.setEnabled(false);
+                mr.setEnabled(true);
                 if (!vegies.contains("mint"))
                 vegies.add("mint");
             }
@@ -118,60 +146,80 @@ public class Vegetables extends AppCompatActivity {
         tr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ta.setEnabled(true);
+                tr.setEnabled(false);
                 vegies.remove("tomato");
             }
         });
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pa.setEnabled(true);
+                pr.setEnabled(false);
                 vegies.remove("potato");
             }
         });
         bor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boa.setEnabled(true);
+                bor.setEnabled(false);
                 vegies.remove("bottleguard");
             }
         });
         cur.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                cua.setEnabled(true);
+                cur.setEnabled(false);
                 vegies.remove("cucumber");
             }
         });
         car.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                caa.setEnabled(true);
+                car.setEnabled(false);
                 vegies.remove("capsicum");
             }
         });
         bir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                bia.setEnabled(true);
+                bir.setEnabled(false);
                 vegies.remove("bitterguard");
             }
         });
         dr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                da.setEnabled(true);
+                dr.setEnabled(false);
                 vegies.remove("drumstick");
             }
         });
         lr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                la.setEnabled(true);
+                lr.setEnabled(false);
                 vegies.remove("ladiesfinger");
             }
         });
         gr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ga.setEnabled(true);
+                gr.setEnabled(false);
                 vegies.remove("gongura");
             }
         });
         mr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ma.setEnabled(true);
+                mr.setEnabled(false);
                 vegies.remove("mint");
             }
         });

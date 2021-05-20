@@ -28,10 +28,17 @@ public class DairyProducts extends AppCompatActivity {
         br=(Button)findViewById(R.id.butterremove);
         cr=(Button)findViewById(R.id.curdremove);
         ir=(Button)findViewById(R.id.icecreamremove);
+        mr.setEnabled(false);
+        pr.setEnabled(false);
+        br.setEnabled(false);
+        cr.setEnabled(false);
+        ir.setEnabled(false);
 
         ma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ma.setEnabled(false);
+                mr.setEnabled(true);
                 if(!dairy.contains("milk"))
                     dairy.add("milk");
             }
@@ -39,6 +46,8 @@ public class DairyProducts extends AppCompatActivity {
         pa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pa.setEnabled(false);
+                pr.setEnabled(true);
                 if(!dairy.contains("paneer"))
                     dairy.add("paneer");
             }
@@ -46,6 +55,8 @@ public class DairyProducts extends AppCompatActivity {
         ba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ba.setEnabled(false);
+                br.setEnabled(true);
                 if(!dairy.contains("butter"))
                     dairy.add("butter");
             }
@@ -53,6 +64,8 @@ public class DairyProducts extends AppCompatActivity {
         ca.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ca.setEnabled(false);
+                cr.setEnabled(true);
                 if(!dairy.contains("curd"))
                     dairy.add("curd");
             }
@@ -60,6 +73,8 @@ public class DairyProducts extends AppCompatActivity {
         ia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ia.setEnabled(false);
+                ir.setEnabled(true);
                 if(!dairy.contains("icecream"))
                     dairy.add("icecream");
             }
@@ -70,31 +85,41 @@ public class DairyProducts extends AppCompatActivity {
         mr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dairy.remove("milk");
+                ma.setEnabled(true);
+                mr.setEnabled(false);
+                dairy.remove("milk");
             }
         });
         pr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dairy.remove("paneer");
+                pa.setEnabled(true);
+                pr.setEnabled(false);
+                dairy.remove("paneer");
             }
         });
         br.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dairy.remove("butter");
+                ba.setEnabled(true);
+                br.setEnabled(false);
+                dairy.remove("butter");
             }
         });
         cr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dairy.remove("curd");
+                ca.setEnabled(true);
+                cr.setEnabled(false);
+                dairy.remove("curd");
             }
         });
         ir.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    dairy.remove("icecream");
+                ia.setEnabled(true);
+                ir.setEnabled(false);
+                dairy.remove("icecream");
             }
         });
     }
