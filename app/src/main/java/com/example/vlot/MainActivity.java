@@ -21,15 +21,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.HashMap;
+
+public class
+MainActivity extends AppCompatActivity {
     public EditText emailId, passwd,cpasswd;
     Button btnSignUp;
     TextView signIn;
     FirebaseAuth firebaseAuth;
     RadioGroup type;
     RadioButton selectedbutton;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
+    EditText name;
+    EditText number;
+    private FirebaseDatabase db=FirebaseDatabase.getInstance();
+    private DatabaseReference customers=db.getReference().child("customers");
+    private DatabaseReference vendors=db.getReference().child("vendors");
 
     public void onStart() {
         super.onStart();
@@ -49,7 +55,8 @@ public class MainActivity extends AppCompatActivity {
         signIn = findViewById(R.id.singup);
         type=findViewById(R.id.radioGroup);
         cpasswd=findViewById(R.id.loginpsw1);
-
+        name=findViewById(R.id.name);
+        number=findViewById(R.id.number);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,16 +95,26 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.LENGTH_SHORT).show();
                             }
                             else {
-
-
                                 //Database code
-                                rootNode = FirebaseDatabase.getInstance();
-                                if(finalTypex.equals("customers"))
-                                    reference = rootNode.getReference("Customers");
+                                System.out.println("Type: "+finalTypex);
+                                if(finalTypex.equals("Customer")) {
+                                    HashMap<String, String> userMap = new HashMap<>();
+                                    userMap.put("name",name.getText().toString());
+                                    userMap.put("email",emailId.getText().toString());
+                                    userMap.put("password",passwd.getText().toString());
+                                    customers.child(number.getText().toString()).setValue(userMap);
+                                }
                                 else
-                                    reference = rootNode.getReference("Verdors");
+                                {
+                                    HashMap<String, String> userMap = new HashMap<>();
+                                    userMap.put("name",name.getText().toString());
+                                    userMap.put("email",emailId.getText().toString());
+                                    userMap.put("password",passwd.getText().toString());
+                                    vendors.child(number.getText().toString()).setValue(userMap);
+                                }
 
-                                Intent I = new Intent(MainActivity.this, Home.class);
+
+                                Intent I = new Intent(MainActivity.this, MainActivity.class);
                                 startActivity(I);
                                 finish();
                             }

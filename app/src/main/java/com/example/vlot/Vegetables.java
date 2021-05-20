@@ -16,9 +16,6 @@ public class Vegetables extends AppCompatActivity {
     Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
     Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
     ArrayList<String> vegies=new ArrayList<>();
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -223,6 +220,5 @@ public class Vegetables extends AppCompatActivity {
                 vegies.remove("mint");
             }
         });
-
     }
 }
