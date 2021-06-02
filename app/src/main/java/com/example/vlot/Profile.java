@@ -23,11 +23,15 @@ public class Profile extends AppCompatActivity {
 
     private TextView pname,pemail,pnumber,prole;
     public String mail;
+    static  String veg,em,rol,mno;
     private FirebaseDatabase database;
     private DatabaseReference cuserref,vuserref;
     private static final String cusers="customers";
     private static final String vusers="vendors";
     int flag=0;
+    int rtype,rt;
+    String mail1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +42,8 @@ public class Profile extends AppCompatActivity {
         mail=user.getEmail();
 
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
-        DatabaseReference cuserref = rootref.child(cusers);
-        DatabaseReference vuserref=rootref.child(vusers);
-        //Log.v("EMAILADD", userref.orderByChild("email").equalTo(mail).toString());
+        cuserref = rootref.child(cusers);
+        vuserref=rootref.child(vusers);
 
         prole = findViewById(R.id.prole);
         pname = findViewById(R.id.pname);
@@ -51,9 +54,6 @@ public class Profile extends AppCompatActivity {
         cuserref = database.getReference(cusers);
         vuserref= database.getReference(vusers);
 
-        //Toast.makeText(Profile.this, mail, Toast.LENGTH_LONG).show();
-
-
         cuserref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -61,7 +61,6 @@ public class Profile extends AppCompatActivity {
                 {
                     if (mail.equals(ds.child("email").getValue()))
                     {
-                        //Toast.makeText(Profile.this, "hai", Toast.LENGTH_LONG).show();
                         pname.setText(ds.child("name").getValue(String.class));
                         pemail.setText(ds.child("email").getValue(String.class));
                         pnumber.setText(ds.child("mobileno").getValue(String.class));
@@ -83,8 +82,8 @@ public class Profile extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        if (mail.equals(ds.child("email").getValue())) {
-                            //Toast.makeText(Profile.this, "hai", Toast.LENGTH_LONG).show();
+                        if (mail.equals(ds.child("email").getValue()))
+                        {
                             pname.setText(ds.child("name").getValue(String.class));
                             pemail.setText(ds.child("email").getValue(String.class));
                             pnumber.setText(ds.child("mobileno").getValue(String.class));
@@ -102,7 +101,136 @@ public class Profile extends AppCompatActivity {
                 }
             });
         }
+        Toast.makeText(Profile.this,Currentuserdetails("email") , Toast.LENGTH_LONG).show();
+        Toast.makeText(Profile.this,Currentuserdetails("vegetables") , Toast.LENGTH_LONG).show();
+        Toast.makeText(Profile.this,Currentuserdetails("role") , Toast.LENGTH_LONG).show();
+        Toast.makeText(Profile.this,Currentuserdetails("mobilenum") , Toast.LENGTH_LONG).show();
+
+    }
 
 
+    void getValue()
+    {
+        if(rt==1)
+        {
+            Toast.makeText(Profile.this, veg, Toast.LENGTH_LONG).show();
+            System.out.println(veg);
+        }
+        if(rt==2)
+        {
+            Toast.makeText(Profile.this, em, Toast.LENGTH_LONG).show();
+        }
+        if(rt==3)
+        {
+            Toast.makeText(Profile.this, rol, Toast.LENGTH_LONG).show();
+        }
+        if(rt==4)
+        {
+            Toast.makeText(Profile.this, mno, Toast.LENGTH_LONG).show();
+        }
+    }
+    public synchronized String Currentuserdetails(String req)
+    {
+        DatabaseReference cuserref, vuserref;
+        String cusers = "customers";
+        String vusers = "vendors";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail1 = user.getEmail();
+
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref = rootref.child(vusers);
+
+        cuserref.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (mail1.equals(ds.child("email").getValue())) {
+                        if (req.equals("vegetables")) {
+                            veg = ds.child("vegetables").getValue(String.class);
+                            rt = 1;
+                            getValue();
+                            rtype = 1;
+                            break;
+                        }
+
+                        if (req.equals("email")) {
+                            em = ds.child("email").getValue(String.class);
+                            rt = 2;
+                            getValue();
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("role")) {
+                            rol = ds.child("role").getValue(String.class);
+                            rt = 3;
+                            getValue();
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("mobilenum")) {
+                            mno = ds.child("mobileno").getValue(String.class);
+                            rt = 4;
+                            getValue();
+                            rtype = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Profile.this, "something went wrong with the database..", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        if (rtype == 0) {
+            vuserref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (mail.equals(ds.child("email").getValue())) {
+                            if (req.equals("vegetables")) {
+                                veg = ds.child("vegetables").getValue(String.class);
+                                rt = 1;
+                                getValue();
+                                rtype = 1;
+                                break;
+                            }
+
+                            if (req.equals("email")) {
+                                em = ds.child("email").getValue(String.class);
+                                rt = 2;
+                                getValue();
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("role")) {
+                                rol = ds.child("role").getValue(String.class);
+                                rt = 3;
+                                getValue();
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("mobilenum")) {
+                                mno = ds.child("mobileno").getValue(String.class);
+                                rt = 4;
+                                getValue();
+                                rtype = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Profile.this, "something went wrong with the database..", Toast.LENGTH_LONG).show();
+                }
+            });
+        }
+
+          return em;
     }
 }
