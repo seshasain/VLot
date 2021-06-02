@@ -2,6 +2,7 @@ package com.example.vlot;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.View;
 import android.widget.Button;
@@ -9,12 +10,21 @@ import android.widget.TextView;
 
 import android.os.Bundle;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Vegetables extends AppCompatActivity {
 
     Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
     Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
+    Button ok,cancel;
+    private FirebaseDatabase db=FirebaseDatabase.getInstance();
+    private DatabaseReference customers=db.getReference().child("customers");
+    private DatabaseReference vendors=db.getReference().child("vendors");
     ArrayList<String> vegies=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +53,8 @@ public class Vegetables extends AppCompatActivity {
         lr=(Button)findViewById(R.id.ladiesfingerremove);
         gr=(Button)findViewById(R.id.gounguraremove);
         mr=(Button)findViewById(R.id.mintremove);
+        ok=(Button)findViewById(R.id.ok_button);
+        cancel=(Button)findViewById(R.id.cancel);
         tr.setEnabled(false);
         pr.setEnabled(false);bor.setEnabled(false);cur.setEnabled(false);
         car.setEnabled(false);bir.setEnabled(false);dr.setEnabled(false);
@@ -218,6 +230,21 @@ public class Vegetables extends AppCompatActivity {
                 ma.setEnabled(true);
                 mr.setEnabled(false);
                 vegies.remove("mint");
+            }
+        });
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp="";
+                for (String i:vegies)
+                {
+                    temp+=i+",";
+                }
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("Vegetables",temp);
+
+
+                customers.child("8309734591").updateChildren(userMap);
             }
         });
     }

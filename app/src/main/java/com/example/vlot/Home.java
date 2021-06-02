@@ -49,7 +49,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent2 = new Intent(Home.this,Vegetables.class);
                 startActivity(intent2);
-                finish();
             }
         });
         fru1.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +56,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent3 = new Intent(Home.this,Fruits.class);
                 startActivity(intent3);
-                finish();
             }
         });
         dai1.setOnClickListener(new View.OnClickListener() {
@@ -65,7 +63,6 @@ public class Home extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent4 = new Intent(Home.this,DairyProducts.class);
                 startActivity(intent4);
-                finish();
             }
         });
         setUpToolbar();
