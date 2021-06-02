@@ -23,12 +23,12 @@ public class Profile extends AppCompatActivity {
 
     private TextView pname,pemail,pnumber,prole;
     public String mail;
-    static  String veg,em,rol,mno;
     private FirebaseDatabase database;
     private DatabaseReference cuserref,vuserref;
     private static final String cusers="customers";
     private static final String vusers="vendors";
     int flag=0;
+    static  String veg,em,rol,mno;
     int rtype,rt;
     String mail1;
 
@@ -231,6 +231,6 @@ public class Profile extends AppCompatActivity {
             });
         }
 
-          return em;
+          return "final";
     }
 }
