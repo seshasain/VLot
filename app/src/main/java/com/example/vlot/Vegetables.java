@@ -241,7 +241,7 @@ public class Vegetables extends AppCompatActivity {
                     temp+=i+",";
                 }
                 Map<String, Object> userMap = new HashMap<>();
-                userMap.put("Vegetables",temp);
+                userMap.put("vegetables",temp);
 
                 customers.child("8309734591").updateChildren(userMap);
             }

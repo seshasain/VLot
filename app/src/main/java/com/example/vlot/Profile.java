@@ -67,7 +67,6 @@ public class Profile extends AppCompatActivity {
                         pnumber.setText(ds.child("mobileno").getValue(String.class));
                       prole.setText(ds.child("role").getValue(String.class));
                       flag=1;
-
                     }
 
                 }
