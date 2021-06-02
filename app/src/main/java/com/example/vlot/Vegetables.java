@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.location.LocationListener;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -232,6 +235,11 @@ public class Vegetables extends AppCompatActivity {
                 vegies.remove("mint");
             }
         });
+
+
+
+
+
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -242,8 +250,10 @@ public class Vegetables extends AppCompatActivity {
                 }
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("vegetables",temp);
-
-                customers.child("9491644788").updateChildren(userMap);
+                //userMap.put("location",)
+                customers.child("8309734591").updateChildren(userMap);
+                customers.child("8309734591").updateChildren(userMap);
+                startService(new Intent(Vegetables.this,MyService.class));
             }
         });
     }
