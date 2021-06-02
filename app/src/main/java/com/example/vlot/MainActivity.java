@@ -85,6 +85,7 @@ MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Passwords doesn't match!", Toast.LENGTH_SHORT).show();
                 }else if (!(emailID.isEmpty() && paswd.isEmpty())) {
                     String finalTypex = typex;
+                    String finalTypex1 = typex;
                     firebaseAuth.createUserWithEmailAndPassword(emailID, paswd).addOnCompleteListener(MainActivity.this, new OnCompleteListener() {
                         @Override
                         public void onComplete(@NonNull Task task) {
@@ -102,6 +103,8 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("name",name.getText().toString());
                                     userMap.put("email",emailId.getText().toString());
                                     userMap.put("password",passwd.getText().toString());
+                                    userMap.put("mobileno",number.getText().toString());
+                                    userMap.put("role", finalTypex1);
                                     customers.child(number.getText().toString()).setValue(userMap);
                                 }
                                 else
@@ -110,6 +113,8 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("name",name.getText().toString());
                                     userMap.put("email",emailId.getText().toString());
                                     userMap.put("password",passwd.getText().toString());
+                                    userMap.put("mobileno",number.getText().toString());
+                                    userMap.put("role", finalTypex1);
                                     vendors.child(number.getText().toString()).setValue(userMap);
                                 }
                                 Intent I = new Intent(MainActivity.this, MainActivity.class);

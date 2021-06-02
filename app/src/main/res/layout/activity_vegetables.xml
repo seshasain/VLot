@@ -5,13 +5,14 @@
     android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Vegetables">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Vegetables">
 
 
-    <TextView
+        <TextView
             android:id="@+id/headingtv"
             android:layout_width="240dp"
             android:layout_height="40dp"
@@ -297,257 +298,255 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cucumberremove" />
 
-    <ImageView
-        android:id="@+id/bittergourdimage"
-        android:layout_width="101dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capsicumimage"
-        app:srcCompat="@drawable/bittergourd" />
+        <ImageView
+            android:id="@+id/bittergourdimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capsicumimage"
+            app:srcCompat="@drawable/bittergourd" />
 
-    <TextView
-        android:id="@+id/bittergourdtv"
-        android:layout_width="90dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Bittergourd"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.054"
-        app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
-        app:layout_constraintTop_toBottomOf="@+id/capsicumadd" />
+        <TextView
+            android:id="@+id/bittergourdtv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Bittergourd"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.054"
+            app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
+            app:layout_constraintTop_toBottomOf="@+id/capsicumadd" />
 
-    <Button
-        android:id="@+id/bittergourdadd"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="add"
-        app:layout_constraintEnd_toStartOf="@+id/bitterguardremove"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
-        app:layout_constraintTop_toBottomOf="@+id/bittergourdtv" />
+        <Button
+            android:id="@+id/bittergourdadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/bitterguardremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
+            app:layout_constraintTop_toBottomOf="@+id/bittergourdtv" />
 
-    <Button
-        android:id="@+id/bitterguardremove"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="remove"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.82"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capsicumremove" />
+        <Button
+            android:id="@+id/bitterguardremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.82"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capsicumremove" />
 
-    <ImageView
-        android:id="@+id/drumstickimage"
-        android:layout_width="101dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bittergourdimage"
-        app:srcCompat="@drawable/drumstick" />
+        <ImageView
+            android:id="@+id/drumstickimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bittergourdimage"
+            app:srcCompat="@drawable/drumstick" />
 
-    <TextView
-        android:id="@+id/drumsticktv"
-        android:layout_width="90dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Drumstick"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
-        app:layout_constraintStart_toEndOf="@+id/drumstickimage"
-        app:layout_constraintTop_toBottomOf="@+id/bittergourdadd" />
+        <TextView
+            android:id="@+id/drumsticktv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Drumstick"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.072"
+            app:layout_constraintStart_toEndOf="@+id/drumstickimage"
+            app:layout_constraintTop_toBottomOf="@+id/bittergourdadd" />
 
-    <Button
-        android:id="@+id/drumstickremove"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="Remove"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.823"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bitterguardremove" />
+        <Button
+            android:id="@+id/drumstickremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.823"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bitterguardremove" />
 
-    <Button
-        android:id="@+id/drumstickadd"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="add"
-        app:layout_constraintEnd_toStartOf="@+id/drumstickremove"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/drumstickimage"
-        app:layout_constraintTop_toBottomOf="@+id/drumsticktv" />
+        <Button
+            android:id="@+id/drumstickadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/drumstickremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/drumstickimage"
+            app:layout_constraintTop_toBottomOf="@+id/drumsticktv" />
 
-    <ImageView
-        android:id="@+id/imageView10"
-        android:layout_width="101dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drumstickimage"
-        app:srcCompat="@drawable/ladiesfinger" />
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.114"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drumstickimage"
+            app:srcCompat="@drawable/ladiesfinger" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="20dp"
-        android:text="Ladiesfinger"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/drumstickadd" />
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="120dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:text="Ladiesfinger"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.084"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/drumstickadd" />
 
-    <Button
-        android:id="@+id/ladiesfingeradd"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="add"
-        app:layout_constraintEnd_toStartOf="@+id/ladiesfingerremove"
-        app:layout_constraintHorizontal_bias="0.085"
-        app:layout_constraintStart_toEndOf="@+id/imageView10"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        <Button
+            android:id="@+id/ladiesfingeradd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/ladiesfingerremove"
+            app:layout_constraintHorizontal_bias="0.085"
+            app:layout_constraintStart_toEndOf="@+id/imageView10"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    <Button
-        android:id="@+id/ladiesfingerremove"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="64dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="remove"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.812"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drumstickremove" />
+        <Button
+            android:id="@+id/ladiesfingerremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="64dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.812"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drumstickremove" />
 
-    <ImageView
-        android:id="@+id/gonguraimage"
-        android:layout_width="101dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10"
-        app:srcCompat="@drawable/gongura" />
+        <ImageView
+            android:id="@+id/gonguraimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView10"
+            app:srcCompat="@drawable/gongura" />
 
-    <TextView
-        android:id="@+id/gonguratv"
-        android:layout_width="90dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:text="Goungura"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
-        app:layout_constraintStart_toEndOf="@+id/gonguraimage"
-        app:layout_constraintTop_toBottomOf="@+id/ladiesfingeradd" />
+        <TextView
+            android:id="@+id/gonguratv"
+            android:layout_width="90dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="32dp"
+            android:text="Goungura"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.064"
+            app:layout_constraintStart_toEndOf="@+id/gonguraimage"
+            app:layout_constraintTop_toBottomOf="@+id/ladiesfingeradd" />
 
-    <Button
-        android:id="@+id/gounguraadd"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="add"
-        app:layout_constraintEnd_toStartOf="@+id/gounguraremove"
-        app:layout_constraintHorizontal_bias="0.021"
-        app:layout_constraintStart_toEndOf="@+id/gonguraimage"
-        app:layout_constraintTop_toBottomOf="@+id/gonguratv" />
+        <Button
+            android:id="@+id/gounguraadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/gounguraremove"
+            app:layout_constraintHorizontal_bias="0.021"
+            app:layout_constraintStart_toEndOf="@+id/gonguraimage"
+            app:layout_constraintTop_toBottomOf="@+id/gonguratv" />
 
-    <Button
-        android:id="@+id/gounguraremove"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="68dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="remove"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.809"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ladiesfingerremove" />
+        <Button
+            android:id="@+id/gounguraremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.809"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ladiesfingerremove" />
 
-    <ImageView
-        android:id="@+id/mintimage"
-        android:layout_width="101dp"
-        android:layout_height="87dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gonguraimage"
-        app:srcCompat="@drawable/freshmintpudina" />
+        <ImageView
+            android:id="@+id/mintimage"
+            android:layout_width="101dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.115"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gonguraimage"
+            app:srcCompat="@drawable/freshmintpudina" />
 
-    <TextView
-        android:id="@+id/minttv"
-        android:layout_width="120dp"
-        android:layout_height="24dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="184dp"
-        android:layout_marginRight="184dp"
-        android:text="Mintpudina"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.842"
-        app:layout_constraintStart_toEndOf="@+id/mintimage"
-        app:layout_constraintTop_toBottomOf="@+id/gounguraadd" />
+        <TextView
+            android:id="@+id/minttv"
+            android:layout_width="120dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="20dp"
+            android:text="Mintpudina"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.485"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gounguraadd" />
 
-    <Button
-        android:id="@+id/mintadd"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="@android:color/holo_green_dark"
-        android:text="add"
-        app:layout_constraintEnd_toStartOf="@+id/mintremove"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/mintimage"
-        app:layout_constraintTop_toBottomOf="@+id/minttv" />
+        <Button
+            android:id="@+id/mintadd"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@android:color/holo_green_dark"
+            android:text="add"
+            app:layout_constraintEnd_toStartOf="@+id/mintremove"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/mintimage"
+            app:layout_constraintTop_toBottomOf="@+id/minttv" />
 
-    <Button
-        android:id="@+id/mintremove"
-        android:layout_width="94dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="72dp"
-        android:layout_marginRight="72dp"
-        android:backgroundTint="@android:color/holo_red_dark"
-        android:text="remove"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gounguraremove" />
+        <Button
+            android:id="@+id/mintremove"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="68dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.802"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gounguraremove" />
     <Button
         android:layout_width="94dp"
         android:layout_height="40dp"
@@ -574,5 +573,5 @@
         app:layout_constraintTop_toBottomOf="@id/mintremove"/>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

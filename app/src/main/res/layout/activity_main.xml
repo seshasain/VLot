@@ -48,7 +48,7 @@
             android:background="@drawable/inputtextfield"
             android:gravity="center"
             android:hint="\t\tMobile number"
-            android:inputType="phone"
+            android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/email" />

@@ -18,7 +18,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/profile_name"
+            android:id="@+id/prole"
             android:layout_width="139dp"
             android:layout_height="25dp"
             android:layout_marginStart="136dp"
@@ -58,13 +58,13 @@
         android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.473"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/pname"
             android:layout_width="106dp"
             android:layout_height="25dp"
             android:layout_marginStart="126dp"
@@ -85,48 +85,48 @@
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginTop="116dp"
-            app:layout_constraintEnd_toStartOf="@+id/textView6"
+            app:layout_constraintEnd_toStartOf="@+id/pemail"
             app:layout_constraintHorizontal_bias="0.318"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/email" />
 
         <TextView
-            android:id="@+id/textView6"
-            android:layout_width="143dp"
-            android:layout_height="35dp"
+            android:id="@+id/pemail"
+            android:layout_width="206dp"
+            android:layout_height="34dp"
             android:layout_marginTop="96dp"
             android:text="E-mail"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.414"
+            app:layout_constraintHorizontal_bias="0.651"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/pname" />
 
         <ImageView
             android:id="@+id/mobilenoimage"
             android:layout_width="60dp"
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toStartOf="@+id/textView7"
+            app:layout_constraintEnd_toStartOf="@+id/pnumber"
             app:layout_constraintHorizontal_bias="0.32"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emailimage"
             app:srcCompat="@drawable/mobileno" />
 
         <TextView
-            android:id="@+id/textView7"
-            android:layout_width="143dp"
-            android:layout_height="35dp"
+            android:id="@+id/pnumber"
+            android:layout_width="206dp"
+            android:layout_height="34dp"
             android:layout_marginTop="36dp"
             android:text="Mobile No"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.413"
+            app:layout_constraintHorizontal_bias="0.659"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" />
+            app:layout_constraintTop_toBottomOf="@+id/pemail" />
 
         <ImageView
             android:id="@+id/editimage"
@@ -147,7 +147,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.387"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            app:layout_constraintTop_toBottomOf="@+id/pnumber" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

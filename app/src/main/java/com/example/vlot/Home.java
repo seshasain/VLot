@@ -20,6 +20,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -36,6 +37,7 @@ public class Home extends AppCompatActivity {
     ImageButton veg1,fru1,dai1;
     NavigationView navigationView;
     FirebaseAuth Auth;
+    String name;
     private static final int PERMISSIONS_REQUEST = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
