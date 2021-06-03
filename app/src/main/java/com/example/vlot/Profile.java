@@ -101,10 +101,6 @@ public class Profile extends AppCompatActivity {
                 }
             });
         }
-        Toast.makeText(Profile.this,Currentuserdetails("email") , Toast.LENGTH_LONG).show();
-        Toast.makeText(Profile.this,Currentuserdetails("vegetables") , Toast.LENGTH_LONG).show();
-        Toast.makeText(Profile.this,Currentuserdetails("role") , Toast.LENGTH_LONG).show();
-        Toast.makeText(Profile.this,Currentuserdetails("mobilenum") , Toast.LENGTH_LONG).show();
 
     }
 

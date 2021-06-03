@@ -1,5 +1,6 @@
 package com.example.vlot;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -13,8 +14,13 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,6 +31,11 @@ public class Vegetables extends AppCompatActivity {
     Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
     Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
     Button ok,cancel;
+
+    public static  String veg,em,rol,mno;
+    public int rtype,rt;
+    public String mail1;
+
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -239,6 +250,8 @@ public class Vegetables extends AppCompatActivity {
 
 
 
+        Currentuserdetails("role");
+        Currentuserdetails("mobilenum");
 
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -251,10 +264,111 @@ public class Vegetables extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("vegetables",temp);
                 //userMap.put("location",)
-                customers.child("8309734591").updateChildren(userMap);
-                customers.child("8309734591").updateChildren(userMap);
+                if(rol.equals("Customer")) {
+                    customers.child(mno).updateChildren(userMap);
+                }
+                else {
+                    vendors.child(mno).updateChildren(userMap);
+                }
                 startService(new Intent(Vegetables.this,MyService.class));
             }
         });
+    }
+
+    public synchronized String Currentuserdetails(String req)
+    {
+        DatabaseReference cuserref, vuserref;
+        String cusers = "customers";
+        String vusers = "vendors";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail1 = user.getEmail();
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref = rootref.child(vusers);
+
+        cuserref.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    System.out.println("hai"+mail1);
+                    if (mail1.equals(ds.child("email").getValue(String.class))) {
+                        System.out.println(mail1);
+                        if (req.equals("vegetables")) {
+                            veg = ds.child("vegetables").getValue(String.class);
+                            rt = 1;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("email")) {
+                            em = ds.child("email").getValue(String.class);
+                            rt = 2;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("role")) {
+                            rol = ds.child("role").getValue(String.class);
+                            System.out.println(rol);
+                            rt = 3;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("mobilenum")) {
+                            mno = ds.child("mobileno").getValue(String.class);
+                            System.out.println(mno);
+                            rt = 4;
+                            rtype = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public synchronized void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        if (rtype == 0) {
+            vuserref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (mail1.equals(ds.child("email").getValue())) {
+                            if (req.equals("vegetables")) {
+                                veg = ds.child("vegetables").getValue(String.class);
+                                rt = 1;
+                                rtype = 1;
+                                break;
+                            }
+
+                            if (req.equals("email")) {
+                                em = ds.child("email").getValue(String.class);
+                                rt = 2;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("role")) {
+                                rol = ds.child("role").getValue(String.class);
+                                rt = 3;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("mobilenum")) {
+                                mno = ds.child("mobileno").getValue(String.class);
+                                rt = 4;
+                                rtype = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+
+        return "final";
     }
 }

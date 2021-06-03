@@ -1,10 +1,20 @@
 package com.example.vlot;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -12,6 +22,13 @@ public class Fruits extends AppCompatActivity {
     Button aa,gra,gua,oa,paa,pia,poa,wa,sa,ba;
     Button ar,grr,gur,or,par,pir,por,wr,sr,br;
     ArrayList<String> fruits = new ArrayList<>();
+
+    private FirebaseDatabase database;
+    private DatabaseReference cuserref,vuserref;
+    private static final String cusers="customers";
+    private static final String vusers="vendors";
+    String mail1;
+    public static String cveg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +235,45 @@ public class Fruits extends AppCompatActivity {
                 fruits.remove("banana");
             }
         });
+        System.out.println(checkVendors());
+    }
 
+    public String checkVendors()
+    {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail1=user.getEmail();
+
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref=rootref.child(vusers);
+
+        database = FirebaseDatabase.getInstance();
+        cuserref = database.getReference(cusers);
+        vuserref= database.getReference(vusers);
+
+        vuserref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren())
+                {
+                    if (mail1.equals(ds.child("email").getValue()))
+                    {
+                        cveg=ds.child("vegetables").getValue(String.class);
+                        Toast.makeText(Fruits.this,cveg ,Toast.LENGTH_LONG).show();
+                        System.out.println("hi"+cveg);
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        return cveg;
     }
 }
