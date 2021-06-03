@@ -32,6 +32,7 @@ public class MyService extends Service{
     public static  String veg,em,rol,mno;
     public int rtype,rt;
     public String mail1;
+    String latitude,longitude;
 
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
@@ -44,8 +45,8 @@ public class MyService extends Service{
                 gps = new GPSTracker(MyService.this);
                 if (gps.getIsGPSTrackingEnabled())
                 {
-                    String latitude = String.valueOf(gps.latitude);
-                    String longitude = String.valueOf(gps.longitude);
+                    latitude = String.valueOf(gps.latitude);
+                    longitude = String.valueOf(gps.longitude);
                     System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
                     Map<String, Object> userMap = new HashMap<>();
                     userMap.put("latitude",latitude);
@@ -59,6 +60,42 @@ public class MyService extends Service{
                         } else {
                             vendors.child(mno).updateChildren(userMap);
                         }
+                    }
+                    Currentuserdetails("role");
+                    System.out.print("check"+rol);
+
+                    if(rol!=null && rol.equals("Customer"))
+                    {
+
+                        FirebaseDatabase database;
+                        DatabaseReference cuserref,vuserref;
+                         final String cusers="customers";
+                         final String vusers="vendors";
+                        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+                        cuserref = rootref.child(cusers);
+                        vuserref=rootref.child(vusers);
+
+                        database = FirebaseDatabase.getInstance();
+                        cuserref = database.getReference(cusers);
+                        vuserref= database.getReference(vusers);
+
+                        vuserref.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot ds: dataSnapshot.getChildren())
+                                {
+                                    String cveg=ds.child("vegetables").getValue(String.class);
+                                    System.out.println(cveg);
+
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
                     }
 
                 }

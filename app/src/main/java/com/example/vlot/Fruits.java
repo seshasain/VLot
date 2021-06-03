@@ -235,7 +235,8 @@ public class Fruits extends AppCompatActivity {
                 fruits.remove("banana");
             }
         });
-        System.out.println(checkVendors());
+        //System.out.println(checkVendors());
+    checkVendors();
     }
 
     public String checkVendors()
@@ -256,12 +257,8 @@ public class Fruits extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds: dataSnapshot.getChildren())
                 {
-                    if (mail1.equals(ds.child("email").getValue()))
-                    {
-                        cveg=ds.child("vegetables").getValue(String.class);
-                        Toast.makeText(Fruits.this,cveg ,Toast.LENGTH_LONG).show();
-                        System.out.println("hi"+cveg);
-                    }
+                    cveg=ds.child("vegetables").getValue(String.class);
+                    System.out.println(cveg);
 
                 }
             }
