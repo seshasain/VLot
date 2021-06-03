@@ -39,21 +39,21 @@ public class MyService extends Service{
     private DatabaseReference vendors=db.getReference().child("vendors");
     public MyService() {
         handler = new Handler();
-        test = new Runnable() {
+        test = new Runnable(){
             @Override
             synchronized public void run() {
                 gps = new GPSTracker(MyService.this);
-                if(gps.canGetLocation()) {
-
-                    double latitude = gps.getLatitude();
-                    double longitude = gps.getLongitude();
+                if (gps.getIsGPSTrackingEnabled())
+                {
+                    String latitude = String.valueOf(gps.latitude);
+                    String longitude = String.valueOf(gps.longitude);
                     System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
                     Map<String, Object> userMap = new HashMap<>();
                     userMap.put("latitude",latitude);
                     userMap.put("longitude",longitude);
                     synchronized (this){Currentuserdetails("role");}
                     synchronized (this){Currentuserdetails("mobilenum");}
-                    if(rol!=null && mno!=null && latitude!=0 && longitude!=0)  {
+                    if(rol!=null && mno!=null)  {
                         if (rol.equals("Customer"))
                         {
                             customers.child(mno).updateChildren(userMap);
@@ -61,7 +61,13 @@ public class MyService extends Service{
                             vendors.child(mno).updateChildren(userMap);
                         }
                     }
-                } else {
+
+                }
+                else
+                {
+                    // can't get location
+                    // GPS or Network is not enabled
+                    // Ask user to enable GPS/network in settings
                     gps.showSettingsAlert();
                 }
                 handler.postDelayed(test, 5000);
@@ -116,7 +122,7 @@ public class MyService extends Service{
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError error) {
+            public synchronized void onCancelled(@NonNull DatabaseError error) {
             }
         });
 
@@ -170,7 +176,7 @@ public class MyService extends Service{
         // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    public synchronized int onStartCommand(Intent intent, int flags, int startId) {
         final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 1001;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String id = "_channel_01";
