@@ -41,7 +41,7 @@ public class MyService extends Service{
         handler = new Handler();
         test = new Runnable() {
             @Override
-            public void run() {
+            synchronized public void run() {
                 gps = new GPSTracker(MyService.this);
                 if(gps.canGetLocation()) {
 
@@ -53,7 +53,7 @@ public class MyService extends Service{
                     userMap.put("longitude",longitude);
                     synchronized (this){Currentuserdetails("role");}
                     synchronized (this){Currentuserdetails("mobilenum");}
-                    if(rol!=null && mno!=null) {
+                    if(rol!=null && mno!=null && latitude!=0 && longitude!=0)  {
                         if (rol.equals("Customer"))
                         {
                             customers.child(mno).updateChildren(userMap);
