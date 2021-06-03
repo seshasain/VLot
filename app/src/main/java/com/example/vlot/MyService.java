@@ -43,8 +43,6 @@ public class MyService extends Service{
             @Override
             public void run() {
                 gps = new GPSTracker(MyService.this);
-
-                // Check if GPS enabled
                 if(gps.canGetLocation()) {
 
                     double latitude = gps.getLatitude();
