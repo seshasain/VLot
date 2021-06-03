@@ -143,7 +143,7 @@ public class Profile extends AppCompatActivity {
 
         cuserref.addValueEventListener(new ValueEventListener(){
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            public synchronized void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (mail1.equals(ds.child("email").getValue())) {
                         if (req.equals("vegetables")) {
@@ -188,7 +188,7 @@ public class Profile extends AppCompatActivity {
         if (rtype == 0) {
             vuserref.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                public synchronized void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if (mail.equals(ds.child("email").getValue())) {
                             if (req.equals("vegetables")) {

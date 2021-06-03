@@ -12,9 +12,16 @@ import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.google.android.gms.location.LocationListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -22,7 +29,11 @@ import java.util.Map;
 public class MyService extends Service{
     Handler handler;
     Runnable test;
-    GPSTracker gps;
+    public GPSTracker gps;
+    public static  String veg,em,rol,mno;
+    public int rtype,rt;
+    public String mail1;
+
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -42,21 +53,117 @@ public class MyService extends Service{
                     Map<String, Object> userMap = new HashMap<>();
                     userMap.put("latitude",latitude);
                     userMap.put("longitude",longitude);
-                    if("customer"=="customer")
-                    {
-                        customers.child("8309734591").updateChildren(userMap);
-                    }
-                    else{
-                        customers.child("8309734591").updateChildren(userMap);
+                    synchronized (this){Currentuserdetails("role");}
+                    synchronized (this){Currentuserdetails("mobilenum");}
+                    if(rol!=null && mno!=null) {
+                        if (rol.equals("Customer"))
+                        {
+                            customers.child(mno).updateChildren(userMap);
+                        } else {
+                            vendors.child(mno).updateChildren(userMap);
+                        }
                     }
                 } else {
                     gps.showSettingsAlert();
                 }
-                System.out.println("Fsociety");
-                handler.postDelayed(test, 5000); //100 ms you should do it 4000
+                handler.postDelayed(test, 100);
             }
+
         };
         handler.postDelayed(test, 0);
+    }
+    public synchronized String Currentuserdetails(String req)
+    {
+        DatabaseReference cuserref, vuserref;
+        String cusers = "customers";
+        String vusers = "vendors";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail1 = user.getEmail();
+
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref = rootref.child(vusers);
+
+        cuserref.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (mail1.equals(ds.child("email").getValue())) {
+                        if (req.equals("vegetables")) {
+                            veg = ds.child("vegetables").getValue(String.class);
+                            rt = 1;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("email")) {
+                            em = ds.child("email").getValue(String.class);
+                            rt = 2;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("role")) {
+                            rol = ds.child("role").getValue(String.class);
+                            rt = 3;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("mobilenum")) {
+                            mno = ds.child("mobileno").getValue(String.class);
+                            rt = 4;
+                            rtype = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+
+        if (rtype == 0) {
+            vuserref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (mail1.equals(ds.child("email").getValue())) {
+                            if (req.equals("vegetables")) {
+                                veg = ds.child("vegetables").getValue(String.class);
+                                rt = 1;
+                                rtype = 1;
+                                break;
+                            }
+
+                            if (req.equals("email")) {
+                                em = ds.child("email").getValue(String.class);
+                                rt = 2;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("role")) {
+                                rol = ds.child("role").getValue(String.class);
+                                rt = 3;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("mobilenum")) {
+                                mno = ds.child("mobileno").getValue(String.class);
+                                rt = 4;
+                                rtype = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+
+        return "final";
     }
 
 
