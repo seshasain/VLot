@@ -64,7 +64,7 @@ public class MyService extends Service{
                 } else {
                     gps.showSettingsAlert();
                 }
-                handler.postDelayed(test, 100);
+                handler.postDelayed(test, 5000);
             }
 
         };
