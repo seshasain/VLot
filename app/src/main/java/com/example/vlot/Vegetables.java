@@ -44,8 +44,6 @@ public class Vegetables extends AppCompatActivity {
     ArrayList<String> vegies=new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vegetables);
         ta=(Button)findViewById(R.id.tomatoadd);
