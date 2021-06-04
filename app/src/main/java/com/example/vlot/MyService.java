@@ -22,8 +22,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MyService extends Service{
     Handler handler;
@@ -33,6 +36,8 @@ public class MyService extends Service{
     public int rtype,rt;
     public String mail1;
     String latitude,longitude;
+    String customerproductarray[];
+    Set<String>  vendorproductmails= new HashSet<String>();
 
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
@@ -62,8 +67,7 @@ public class MyService extends Service{
                         }
                     }
                     Currentuserdetails("role");
-                    System.out.print("check"+rol);
-
+                    Currentuserdetails("vegetables");
                     if(rol!=null && rol.equals("Customer"))
                     {
 
@@ -84,8 +88,25 @@ public class MyService extends Service{
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds: dataSnapshot.getChildren())
                                 {
+//                                    if(customerproductarray.length==0 && veg!=null) {
+                                        customerproductarray = veg.split(",");
+//                                    }
                                     String cveg=ds.child("vegetables").getValue(String.class);
-                                    System.out.println(cveg);
+                                    String vendormail=ds.child("email").getValue(String.class);
+                                    if(cveg!=null && customerproductarray!=null && vendormail!=null)
+                                    {
+                                        String arr[]=cveg.split(",");
+                                        for(int i=0;i<customerproductarray.length;i++)
+                                        {
+                                            for(int j=0;j<arr.length;j++)
+                                            {
+                                                if(customerproductarray[i].equals(arr[j]))
+                                                {
+                                                    vendorproductmails.add(vendormail);
+                                                }
+                                            }
+                                        }
+                                    }
 
                                 }
                             }
@@ -95,9 +116,10 @@ public class MyService extends Service{
 
                             }
                         });
-
+                        if(vendorproductmails.size()>0) {
+                            System.out.println("Vendor mails that your product has are: " + vendorproductmails.toString());
+                        }
                     }
-
                 }
                 else
                 {

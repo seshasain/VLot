@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import android.os.Bundle;
 import android.widget.Toast;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import android.graphics.Color;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
@@ -246,10 +248,6 @@ public class Vegetables extends AppCompatActivity {
                 vegies.remove("mint");
             }
         });
-
-
-
-
         Currentuserdetails("role");
         Currentuserdetails("mobilenum");
 
@@ -270,7 +268,35 @@ public class Vegetables extends AppCompatActivity {
                 else {
                     vendors.child(mno).updateChildren(userMap);
                 }
+                new SweetAlertDialog(Vegetables.this)
+                        .setTitleText("Sucessfully Added")
+                        .show();
                 startService(new Intent(Vegetables.this,MyService.class));
+            }
+        });
+
+
+
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SweetAlertDialog(Vegetables.this, SweetAlertDialog.WARNING_TYPE)
+                        .setTitleText("Are you sure?")
+                        .setContentText("You won't be able to recover this data!")
+                        .setConfirmText("Delete!")
+                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                sDialog.dismissWithAnimation();
+                            }
+                        }).setCancelButton("Cancel", new SweetAlertDialog.OnSweetClickListener() {
+                    @Override
+                    public void onClick(SweetAlertDialog sDialog) {
+                        sDialog.dismissWithAnimation();
+                    }
+                })
+                        .show();
             }
         });
     }
