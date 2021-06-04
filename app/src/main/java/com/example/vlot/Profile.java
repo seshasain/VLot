@@ -8,6 +8,8 @@ import android.nfc.Tag;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Profile extends AppCompatActivity {
 
     private TextView pname,pemail,pnumber,prole;
+    private Button pfbtn;
     public String mail;
     private FirebaseDatabase database;
     private DatabaseReference cuserref,vuserref;
@@ -49,6 +52,7 @@ public class Profile extends AppCompatActivity {
         pname = findViewById(R.id.pname);
         pemail = findViewById(R.id.pemail);
         pnumber = findViewById(R.id.pnumber);
+        pfbtn=findViewById(R.id.button);
 
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
@@ -102,29 +106,18 @@ public class Profile extends AppCompatActivity {
             });
         }
 
+        pfbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent edtpf=new Intent(Profile.this, Editprofile.class);
+                startActivity(edtpf);
+            }
+        });
+
     }
 
 
-    void getValue()
-    {
-        if(rt==1)
-        {
-            Toast.makeText(Profile.this, veg, Toast.LENGTH_LONG).show();
-            System.out.println(veg);
-        }
-        if(rt==2)
-        {
-            Toast.makeText(Profile.this, em, Toast.LENGTH_LONG).show();
-        }
-        if(rt==3)
-        {
-            Toast.makeText(Profile.this, rol, Toast.LENGTH_LONG).show();
-        }
-        if(rt==4)
-        {
-            Toast.makeText(Profile.this, mno, Toast.LENGTH_LONG).show();
-        }
-    }
+
     public synchronized String Currentuserdetails(String req)
     {
         DatabaseReference cuserref, vuserref;
@@ -144,30 +137,22 @@ public class Profile extends AppCompatActivity {
                     if (mail1.equals(ds.child("email").getValue())) {
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
-                            rt = 1;
-                            getValue();
                             rtype = 1;
                             break;
                         }
 
                         if (req.equals("email")) {
                             em = ds.child("email").getValue(String.class);
-                            rt = 2;
-                            getValue();
                             rtype = 1;
                             break;
                         }
                         if (req.equals("role")) {
                             rol = ds.child("role").getValue(String.class);
-                            rt = 3;
-                            getValue();
                             rtype = 1;
                             break;
                         }
                         if (req.equals("mobilenum")) {
                             mno = ds.child("mobileno").getValue(String.class);
-                            rt = 4;
-                            getValue();
                             rtype = 1;
                             break;
                         }
@@ -189,30 +174,22 @@ public class Profile extends AppCompatActivity {
                         if (mail.equals(ds.child("email").getValue())) {
                             if (req.equals("vegetables")) {
                                 veg = ds.child("vegetables").getValue(String.class);
-                                rt = 1;
-                                getValue();
                                 rtype = 1;
                                 break;
                             }
 
                             if (req.equals("email")) {
                                 em = ds.child("email").getValue(String.class);
-                                rt = 2;
-                                getValue();
                                 rtype = 1;
                                 break;
                             }
                             if (req.equals("role")) {
                                 rol = ds.child("role").getValue(String.class);
-                                rt = 3;
-                                getValue();
                                 rtype = 1;
                                 break;
                             }
                             if (req.equals("mobilenum")) {
                                 mno = ds.child("mobileno").getValue(String.class);
-                                rt = 4;
-                                getValue();
                                 rtype = 1;
                                 break;
                             }

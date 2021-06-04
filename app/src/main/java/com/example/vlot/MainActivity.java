@@ -105,6 +105,7 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("password",passwd.getText().toString());
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
+                                    userMap.put("distance","1");
                                     customers.child(number.getText().toString()).setValue(userMap);
                                 }
                                 else
