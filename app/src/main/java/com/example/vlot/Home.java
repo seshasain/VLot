@@ -106,6 +106,10 @@ public class Home extends AppCompatActivity {
                         Intent homeint = new Intent(Home.this, Home.class);
                         startActivity(homeint);
                         break;
+                    case R.id.nav_cart:
+                        Intent homecart = new Intent(Home.this, Cart.class);
+                        startActivity(homecart);
+                        break;
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent1 = new Intent(Home.this,Login.class);
@@ -113,14 +117,9 @@ public class Home extends AppCompatActivity {
                         finish();
                         break;
                     case  R.id.nav_about:
-                        Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
-                        sharingIntent.setType("text/plain");
-                        String shareBody =  "http://play.google.com/store/apps/detail?id=" + getPackageName();
-                        String shareSub = "Try now";
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
-                        sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
-                        startActivity(Intent.createChooser(sharingIntent, "Share using"));
+
                         break;
+
                 }
                 return false;
             }

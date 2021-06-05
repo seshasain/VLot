@@ -93,8 +93,8 @@ public class Editprofile extends AppCompatActivity {
                             pemail.setText(ds.child("email").getValue(String.class));
                             pnumber.setText(ds.child("mobileno").getValue(String.class));
                             ppwd.setText(ds.child("password").getValue(String.class));
-                            cdist.setVisibility(View.GONE);
-                            dist1.setVisibility(View.GONE);
+                            cdist.setVisibility(View.INVISIBLE);
+                            dist1.setVisibility(View.INVISIBLE);
                             System.out.println("disp else");
                             flag = 0;
 
