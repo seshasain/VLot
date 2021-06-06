@@ -101,7 +101,9 @@ public class MyService extends Service{
                                     customerproductarray = veg.split(",");
                                     String cveg=ds.child("vegetables").getValue(String.class);
                                     String vendormail=ds.child("email").getValue(String.class);
-                                    if(cveg!=null && customerproductarray!=null && vendormail!=null)
+                                    String name=ds.child("name").getValue(String.class);
+                                    String number=ds.child("number").getValue(String.class);
+                                    if(cveg!=null && customerproductarray!=null && vendormail!=null && name!=null)
                                     {
                                         String arr[]=cveg.split(",");
                                         for(int i=0;i<customerproductarray.length;i++)
@@ -130,6 +132,8 @@ public class MyService extends Service{
                                                         innerList.add(vendormail);
                                                         innerList.add(em);
                                                         innerList.add(vtemp);
+                                                        innerList.add(name);
+                                                        innerList.add(number);
                                                         //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
                                                         //startActivity(new Intent(MyService.this,MainActivity.class));
                                                     }
@@ -192,7 +196,6 @@ public class MyService extends Service{
                         customerpresetdistance=0;
                         cdist=ds.child("distance").getValue(String.class);
                         customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
-                        stopped=ds.child("stopped").getValue(String.class);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -232,6 +235,7 @@ public class MyService extends Service{
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if (mail1.equals(ds.child("email").getValue())) {
+                            stopped=ds.child("stopped").getValue(String.class);
                             if (req.equals("vegetables")) {
                                 veg = ds.child("vegetables").getValue(String.class);
                                 rt = 1;

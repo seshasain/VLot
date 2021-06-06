@@ -116,6 +116,7 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("password",passwd.getText().toString());
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
+                                    userMap.put("stopped","");
                                     vendors.child(number.getText().toString()).setValue(userMap);
                                 }
                                 Intent I = new Intent(MainActivity.this, MainActivity.class);

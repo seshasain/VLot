@@ -260,7 +260,7 @@ public class Vegetables extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("vegetables",temp);
                 //userMap.put("location",)
-                if(rol.equals("Customer")) {
+                if(rol!=null && rol.equals("Customer")) {
                     customers.child(mno).updateChildren(userMap);
                 }
                 else {
