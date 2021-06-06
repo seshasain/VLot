@@ -47,6 +47,7 @@ public class MyService extends Service{
     String latitude,longitude;
     String customerproductarray[];
     int customerpresetdistance=0;
+    String stopped="";
     Set<List<String>> allvendorlocations = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
@@ -106,37 +107,38 @@ public class MyService extends Service{
                                         for(int i=0;i<customerproductarray.length;i++)
                                         {
                                             List<String> innerList = new ArrayList<>();
+                                            String vtemp="";
                                             for(int j=0;j<arr.length;j++)
                                             {
                                                 if(customerproductarray[i].equals(arr[j]))
                                                 {
-                                                    String vlatitude=ds.child("latitude").getValue(String.class);
-                                                    String vlongitude =ds.child("longitude").getValue(String.class);
-                                                    if(vlatitude!=null && vlongitude!=null)
-                                                    {
-                                                        double distance=0;
-                                                        distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlatitude));
-                                                        if(distance!=0 && customerpresetdistance!=0)
-                                                        {
-                                                            //System.out.println("distance="+distance);
-                                                            if(distance<=customerpresetdistance) {
-                                                                innerList.add(vlatitude);
-                                                                innerList.add(vlongitude);
-                                                                innerList.add(vendormail);
-                                                                innerList.add(em);
-                                                                innerList.add(cveg);
-                                                                //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
-                                                                //startActivity(new Intent(MyService.this,MainActivity.class));
-                                                            }
-                                                        }
+                                                    vtemp+=customerproductarray[i]+",";
+                                                }
+                                            }
+                                            String vlatitude=ds.child("latitude").getValue(String.class);
+                                            String vlongitude =ds.child("longitude").getValue(String.class);
+                                            if(vlatitude!=null && vlongitude!=null && vtemp!="")
+                                            {
+                                                double distance=0;
+                                                distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlatitude));
+                                                if(distance!=0 && customerpresetdistance!=0)
+                                                {
+                                                    //System.out.println("distance="+distance);
+                                                    if(distance<=customerpresetdistance) {
+                                                        innerList.add(vlatitude);
+                                                        innerList.add(vlongitude);
+                                                        innerList.add(vendormail);
+                                                        innerList.add(em);
+                                                        innerList.add(vtemp);
+                                                        //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
+                                                        //startActivity(new Intent(MyService.this,MainActivity.class));
                                                     }
-                                                    break;
                                                 }
                                             }
                                             if(innerList.size()>0)
                                             {
                                                 allvendorlocations.add(innerList);
-                                                //System.out.println("All vendor locations are:"+allvendorlocations.toString());
+                                                System.out.println("All vendor locations are:"+allvendorlocations.toString());
                                             }
                                         }
                                     }
@@ -151,6 +153,13 @@ public class MyService extends Service{
                         if(allvendorlocations.size()>0)
                         {
                             createNotification();
+                        }
+                    }
+                    else if(rol!=null && rol.equals("Vendors"))
+                    {
+                        if(stopped!="")
+                        {
+                            createNotificationvendor();
                         }
                     }
                 }
@@ -183,6 +192,7 @@ public class MyService extends Service{
                         customerpresetdistance=0;
                         cdist=ds.child("distance").getValue(String.class);
                         customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
+                        stopped=ds.child("stopped").getValue(String.class);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -311,6 +321,35 @@ public class MyService extends Service{
     }
 
     public void createNotification()
+    {
+        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 100;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String id = "Order Alert";
+            Bundle args = new Bundle();
+            args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
+            mChannel.enableLights(true);
+            Notification notification = new Notification.Builder(getApplicationContext(), id)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setOngoing(false)
+                    .setContentIntent(contentIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setContentTitle("Orders available")
+                    .setContentText("Some of your items are arriving you")
+                    .setOnlyAlertOnce(true)
+                    .build();
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (mNotificationManager != null) {
+                mNotificationManager.createNotificationChannel(mChannel);
+                mNotificationManager.notify(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
+            }
+        }
+    }
+    public void createNotificationvendor()
     {
         final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 100;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
