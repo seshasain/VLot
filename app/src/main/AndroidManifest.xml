@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.vlot">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -21,11 +22,8 @@
         <service
             android:name=".GPSTracker"
             android:enabled="true"
-            android:exported="true" />
-        <service
-            android:name=".GpsTracker"
-            android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="Instantiatable" />
         <service
             android:name=".MyService"
             android:enabled="true"

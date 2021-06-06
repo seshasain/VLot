@@ -248,10 +248,10 @@ public class Vegetables extends AppCompatActivity {
         });
         Currentuserdetails("role");
         Currentuserdetails("mobilenum");
-
         ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                stopService(new Intent(Vegetables.this,MyService.class));
                 String temp="";
                 for (String i:vegies)
                 {
@@ -279,6 +279,7 @@ public class Vegetables extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //stopService(new Intent(Vegetables.this,MyService.class));
                 new SweetAlertDialog(Vegetables.this, SweetAlertDialog.WARNING_TYPE)
                         .setTitleText("Are you sure?")
                         .setContentText("You won't be able to recover this data!")
