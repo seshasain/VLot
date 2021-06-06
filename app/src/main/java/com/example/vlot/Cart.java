@@ -38,16 +38,6 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-
-        /*itom.setVisibility(View.GONE);
-        tom.setVisibility(View.GONE);
-        ipot.setVisibility(View.GONE);
-        pot.setVisibility(View.GONE);
-        ibot.setVisibility(View.GONE);
-        bot.setVisibility(View.GONE);
-        icucu.setVisibility(View.GONE);
-        cucu.setVisibility(View.GONE);*/
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mail=user.getEmail();
 
@@ -109,17 +99,13 @@ public class Cart extends AppCompatActivity {
 
                     }
                 }
-
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Cart.this, "something went wrong..", Toast.LENGTH_LONG).show();
                 }
             });
         }
-
     }
-
     public void displaycart(String veg)
     {
         int to=0,po=0,bg=0,cu=0,f=0;

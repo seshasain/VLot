@@ -42,14 +42,11 @@ public class Editprofile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
-
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mail=user.getEmail();
-
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
         cuserref = rootref.child(cusers);
         vuserref=rootref.child(vusers);
-
         pname = findViewById(R.id.editpname);
         pemail = findViewById(R.id.edemail);
         pnumber = findViewById(R.id.edmnum);
@@ -57,11 +54,9 @@ public class Editprofile extends AppCompatActivity {
         cdist=findViewById(R.id.cdistreq);
         dist1=findViewById(R.id.distimg);
         updateprofile=findViewById(R.id.editprofile);
-
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
         vuserref= database.getReference(vusers);
-
         cuserref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -80,7 +75,6 @@ public class Editprofile extends AppCompatActivity {
                     //Toast.makeText(Editprofile.this, prole, Toast.LENGTH_LONG).show();
                     cdist.setText(ds.child("distance").getValue(String.class));
                     flag = 1;
-
                 }
             }
 
@@ -112,16 +106,12 @@ public class Editprofile extends AppCompatActivity {
 
                     }
                 }
-
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(Editprofile.this, "something went wrong..", Toast.LENGTH_LONG).show();
                 }
             });
         }
-
-
-
         updateprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,16 +126,10 @@ public class Editprofile extends AppCompatActivity {
                     userMapd.put("distance",setdist);
                     //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
                 }
-
                 Map<String, Object> userMapn = new HashMap<>();
                 Map<String, Object> userMapp = new HashMap<>();
-
                 userMapn.put("name",name);
                 userMapp.put("password",pwd);
-
-
-
-
                 //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
                 if(prole.equals("Customer"))
                 {

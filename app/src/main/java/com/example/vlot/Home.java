@@ -49,6 +49,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        //Intent intent = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?q=" + 1 + "," + 1));
+        //startActivity(intent);
         veg1=(ImageButton)findViewById(R.id.veg);
         fru1=(ImageButton)findViewById(R.id.fru);
         dai1=(ImageButton)findViewById(R.id.dai);

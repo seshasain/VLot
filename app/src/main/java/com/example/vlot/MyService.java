@@ -46,7 +46,7 @@ public class MyService extends Service{
     public String  mail1,cdist;
     String latitude,longitude;
     String customerproductarray[];
-    int customerpresetdistance;
+    int customerpresetdistance=0;
     Set<List<String>> allvendorlocations = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
@@ -61,13 +61,14 @@ public class MyService extends Service{
                 {
                     latitude = String.valueOf(gps.latitude);
                     longitude = String.valueOf(gps.longitude);
-                    System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
+                    //System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
                     Map<String, Object> userMap = new HashMap<>();
                     userMap.put("latitude",latitude);
                     userMap.put("longitude",longitude);
                     synchronized (this){Currentuserdetails("role");}
                     synchronized (this){Currentuserdetails("mobilenum");}
-                    if(rol!=null && mno!=null && Double.parseDouble(latitude)!=0 && Double.parseDouble(longitude)!=0)  {
+                    synchronized (this){Currentuserdetails("email");}
+                    if(rol!=null && mno!=null && Double.parseDouble(latitude)!=0 && Double.parseDouble(longitude)!=0 && em!=null)  {
                         if (rol.equals("Customer"))
                         {
                             customers.child(mno).updateChildren(userMap);
@@ -75,8 +76,6 @@ public class MyService extends Service{
                             vendors.child(mno).updateChildren(userMap);
                         }
                     }
-                    customerpresetdistance=0;
-                    //customerpresetdistance=Integer.parseInt(cdist);
                     Currentuserdetails("role");
                     Currentuserdetails("vegetables");
                     if(rol!=null && rol.equals("Customer") && customerpresetdistance!=0)
@@ -119,11 +118,14 @@ public class MyService extends Service{
                                                         distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlatitude));
                                                         if(distance!=0 && customerpresetdistance!=0)
                                                         {
-                                                            System.out.println("distance="+distance);
+                                                            //System.out.println("distance="+distance);
                                                             if(distance<=customerpresetdistance) {
                                                                 innerList.add(vlatitude);
                                                                 innerList.add(vlongitude);
-                                                                System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
+                                                                innerList.add(vendormail);
+                                                                innerList.add(em);
+                                                                innerList.add(cveg);
+                                                                //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
                                                                 //startActivity(new Intent(MyService.this,MainActivity.class));
                                                             }
                                                         }
@@ -134,11 +136,10 @@ public class MyService extends Service{
                                             if(innerList.size()>0)
                                             {
                                                 allvendorlocations.add(innerList);
-                                                System.out.println("All vendor locations are:"+allvendorlocations.size());
+                                                //System.out.println("All vendor locations are:"+allvendorlocations.toString());
                                             }
                                         }
                                     }
-
                                 }
                             }
 
@@ -146,7 +147,7 @@ public class MyService extends Service{
                             public void onCancelled(@NonNull DatabaseError error) {
                             }
                         });
-                        System.out.println("Length of list:"+allvendorlocations.size());
+                        //System.out.println("Length of list:"+allvendorlocations.size());
                         if(allvendorlocations.size()>0)
                         {
                             createNotification();
@@ -155,9 +156,6 @@ public class MyService extends Service{
                 }
                 else
                 {
-                    // can't get location
-                    // GPS or Network is not enabled
-                    // Ask user to enable GPS/network in settings
                     gps.showSettingsAlert();
                 }
                 handler.postDelayed(test, 5000);

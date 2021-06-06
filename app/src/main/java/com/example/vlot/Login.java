@@ -24,7 +24,6 @@ public class Login extends AppCompatActivity {
     TextView signup;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,7 +74,7 @@ public class Login extends AppCompatActivity {
                             if (!task.isSuccessful()) {
                                 Toast.makeText(Login.this, "Not sucessfull", Toast.LENGTH_SHORT).show();
                             } else {
-                                startActivity(new Intent(Login.this, Home.class));
+                                startActivity(new Intent(Login.this,Home.class));
                                 finish();
                             }
                         }
