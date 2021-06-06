@@ -74,7 +74,7 @@ public class Editprofile extends AppCompatActivity {
                         dist1.setVisibility(View.VISIBLE);
                     }
                     //Toast.makeText(Editprofile.this, prole, Toast.LENGTH_LONG).show();
-                    cdist.setText(ds.child("distance").getValue(String.class));
+                    //cdist.setText(ds.child("distance").getValue(String.class));
                     flag = 1;
                 }
             }
@@ -123,6 +123,7 @@ public class Editprofile extends AppCompatActivity {
                 Map<String, Object> userMapd = new HashMap<>();
                 setdist = cdist.getText().toString();
                 userMapd.put("distance",setdist);
+                setdist = cdist.getText().toString();
                     //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
 
                 Map<String, Object> userMapn = new HashMap<>();

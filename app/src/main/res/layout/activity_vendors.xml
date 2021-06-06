@@ -29,6 +29,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="28dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vendorstvtitle" />
 
@@ -40,6 +42,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v1" />
 
@@ -51,6 +55,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="36dp"
         android:text="Locate"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/v1"
         app:layout_constraintTop_toBottomOf="@+id/vendorstvtitle" />
 
@@ -62,6 +68,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="Stop"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintStart_toEndOf="@+id/vc1"
         app:layout_constraintTop_toBottomOf="@+id/v1locate" />
 
@@ -73,6 +81,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vc1" />
 
@@ -84,6 +94,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v2" />
 
@@ -95,6 +107,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="40dp"
         android:text="Locate"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/v2"
         app:layout_constraintTop_toBottomOf="@+id/v1stop" />
 
@@ -106,6 +120,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="Stop"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintStart_toEndOf="@+id/vc2"
         app:layout_constraintTop_toBottomOf="@+id/v2locate" />
 
@@ -117,6 +133,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vc2" />
 
@@ -128,6 +146,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v3" />
 
@@ -139,6 +159,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="56dp"
         android:text="Locate"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/v3"
         app:layout_constraintTop_toBottomOf="@+id/v2stop" />
 
@@ -150,6 +172,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="Stop"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintStart_toEndOf="@+id/vc3"
         app:layout_constraintTop_toBottomOf="@+id/v3locate" />
 
@@ -161,6 +185,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vc3" />
 
@@ -172,6 +198,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v4" />
 
@@ -183,6 +211,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="48dp"
         android:text="Locate"
+        android:textColor="@color/white"
+        android:backgroundTint="@color/blue"
         app:layout_constraintStart_toEndOf="@+id/v4"
         app:layout_constraintTop_toBottomOf="@+id/v3stop" />
 
@@ -194,6 +224,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="Stop"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintStart_toEndOf="@+id/vc4"
         app:layout_constraintTop_toBottomOf="@+id/v4locate" />
 
@@ -205,6 +237,8 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
+        android:textColor="@color/black"
+        android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vc4" />
 
@@ -216,6 +250,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="12dp"
         android:text="TextView"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/v5" />
 
@@ -227,6 +262,8 @@
         android:layout_marginLeft="76dp"
         android:layout_marginTop="48dp"
         android:text="Locate"
+        android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
         app:layout_constraintStart_toEndOf="@+id/v5"
         app:layout_constraintTop_toBottomOf="@+id/v4stop" />
 
@@ -238,6 +275,8 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="20dp"
         android:text="stop"
+        android:textColor="@color/white"
+        android:backgroundTint="@android:color/holo_red_dark"
         app:layout_constraintStart_toEndOf="@+id/vc5"
         app:layout_constraintTop_toBottomOf="@+id/v5locate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

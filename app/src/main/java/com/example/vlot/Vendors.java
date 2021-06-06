@@ -29,6 +29,7 @@ public class Vendors extends AppCompatActivity {
     public static String c3email,v3cart,v4lat,v4long,v4email,c4email,v4cart,v5lat,v5long,v5email,c5email,v5cart;
     public static int v1f=0,v2f=0,v3f=0,v4f=0,v5f=0;
     public static int count = 1;
+    public String mno1,mno2,mno3,mno4,mno5,n1,n2,n3,n4,n5;
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -66,14 +67,16 @@ public class Vendors extends AppCompatActivity {
         Set<List<String>> receivedvalues = (Set<List<String>>) args.getSerializable("ARRAYLIST");
         System.out.println("FFFFF"+receivedvalues.toString());
         for (List<String> x : receivedvalues) {
-             if(count==1)
-             {
-                 v1lat=x.get(0);
-                 v1long=x.get(1);
-                 v1email=x.get(2);
-                 c1email=x.get(3);
-                 v1cart=x.get(4);
-             }
+            if(count==1)
+            {
+                v1lat=x.get(0);
+                v1long=x.get(1);
+                v1email=x.get(2);
+                c1email=x.get(3);
+                v1cart=x.get(4);
+                n1=x.get(5);
+                mno1=x.get(6);
+            }
             if(count==2)
             {
                 v2lat=x.get(0);
@@ -81,6 +84,8 @@ public class Vendors extends AppCompatActivity {
                 v2email=x.get(2);
                 c2email=x.get(3);
                 v2cart=x.get(4);
+                n2=x.get(5);
+                mno2=x.get(6);
             }
             if(count==3)
             {
@@ -89,6 +94,8 @@ public class Vendors extends AppCompatActivity {
                 v3email=x.get(2);
                 c3email=x.get(3);
                 v3cart=x.get(4);
+                n3=x.get(5);
+                mno3=x.get(6);
             }
             if(count==4)
             {
@@ -97,6 +104,8 @@ public class Vendors extends AppCompatActivity {
                 v4email=x.get(2);
                 c4email=x.get(3);
                 v4cart=x.get(4);
+                n4=x.get(5);
+                mno4=x.get(6);
             }
             if(count==5)
             {
@@ -105,6 +114,8 @@ public class Vendors extends AppCompatActivity {
                 v5email=x.get(2);
                 c5email=x.get(3);
                 v5cart=x.get(4);
+                n5=x.get(5);
+                mno5=x.get(6);
             }
             count++;
         }
@@ -113,7 +124,7 @@ public class Vendors extends AppCompatActivity {
         {
             ve1.setVisibility(View.VISIBLE);
             vec1.setVisibility(View.VISIBLE);
-            ve1.setText(v1email);
+            ve1.setText(n1);
             vec1.setText(v1cart);
             v1l.setVisibility(View.VISIBLE);
             v1s.setVisibility(View.VISIBLE);
@@ -123,7 +134,7 @@ public class Vendors extends AppCompatActivity {
         {
             ve2.setVisibility(View.VISIBLE);
             vec2.setVisibility(View.VISIBLE);
-            ve2.setText(v2email);
+            ve2.setText(n2);
             vec2.setText(v2cart);
             v2l.setVisibility(View.VISIBLE);
             v2s.setVisibility(View.VISIBLE);
@@ -133,7 +144,7 @@ public class Vendors extends AppCompatActivity {
         {
             ve3.setVisibility(View.VISIBLE);
             vec3.setVisibility(View.VISIBLE);
-            ve3.setText(v3email);
+            ve3.setText(n3);
             vec3.setText(v3cart);
             v3l.setVisibility(View.VISIBLE);
             v3s.setVisibility(View.VISIBLE);
@@ -143,7 +154,7 @@ public class Vendors extends AppCompatActivity {
         {
             ve4.setVisibility(View.VISIBLE);
             vec4.setVisibility(View.VISIBLE);
-            ve4.setText(v4email);
+            ve4.setText(n4);
             vec4.setText(v4cart);
             v4l.setVisibility(View.VISIBLE);
             v4s.setVisibility(View.VISIBLE);
@@ -154,18 +165,18 @@ public class Vendors extends AppCompatActivity {
             ve5.setVisibility(View.VISIBLE);
             vec5.setVisibility(View.VISIBLE);
             ve5.setText(v5email);
-            vec5.setText(v5cart);
+            vec5.setText(n5);
             v5l.setVisibility(View.VISIBLE);
             v5s.setVisibility(View.VISIBLE);
             v5f=1;
         }
-         if(v1f==0)
-         {
-             ve1.setVisibility(View.GONE);
-             vec1.setVisibility(View.GONE);
-             v1l.setVisibility(View.GONE);
-             v1s.setVisibility(View.GONE);
-         }
+        if(v1f==0)
+        {
+            ve1.setVisibility(View.GONE);
+            vec1.setVisibility(View.GONE);
+            v1l.setVisibility(View.GONE);
+            v1s.setVisibility(View.GONE);
+        }
         if(v2f==0)
         {
             ve2.setVisibility(View.GONE);
@@ -255,7 +266,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
-                vendors.child(mno1).updateChildren(userMap);
+                vendors.child(mno2).updateChildren(userMap);
 
                 new SweetAlertDialog(Vendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
@@ -270,7 +281,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
-                vendors.child(mno1).updateChildren(userMap);
+                vendors.child(mno3).updateChildren(userMap);
 
 
                 new SweetAlertDialog(Vendors.this)
@@ -284,6 +295,9 @@ public class Vendors extends AppCompatActivity {
         v4s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Map<String, Object> userMap = new HashMap<>();
+                userMap.put("stopped",c1email);
+                vendors.child(mno4).updateChildren(userMap);
 
 
                 new SweetAlertDialog(Vendors.this)
@@ -299,7 +313,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
-                vendors.child(mno1).updateChildren(userMap);
+                vendors.child(mno5).updateChildren(userMap);
 
 
                 new SweetAlertDialog(Vendors.this)
