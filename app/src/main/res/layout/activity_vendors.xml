@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:text="Stop"
         app:layout_constraintStart_toEndOf="@+id/vc1"
         app:layout_constraintTop_toBottomOf="@+id/v1locate" />
@@ -93,7 +93,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="40dp"
         android:text="Locate"
         app:layout_constraintStart_toEndOf="@+id/v2"
         app:layout_constraintTop_toBottomOf="@+id/v1stop" />
@@ -137,7 +137,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="56dp"
         android:text="Locate"
         app:layout_constraintStart_toEndOf="@+id/v3"
         app:layout_constraintTop_toBottomOf="@+id/v2stop" />
@@ -152,4 +152,92 @@
         android:text="Stop"
         app:layout_constraintStart_toEndOf="@+id/vc3"
         app:layout_constraintTop_toBottomOf="@+id/v3locate" />
+
+    <TextView
+        android:id="@+id/v4"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vc3" />
+
+    <TextView
+        android:id="@+id/vc4"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v4" />
+
+    <Button
+        android:id="@+id/v4locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="48dp"
+        android:text="Locate"
+        app:layout_constraintStart_toEndOf="@+id/v4"
+        app:layout_constraintTop_toBottomOf="@+id/v3stop" />
+
+    <Button
+        android:id="@+id/v4stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Stop"
+        app:layout_constraintStart_toEndOf="@+id/vc4"
+        app:layout_constraintTop_toBottomOf="@+id/v4locate" />
+
+    <TextView
+        android:id="@+id/v5"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vc4" />
+
+    <TextView
+        android:id="@+id/vc5"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v5" />
+
+    <Button
+        android:id="@+id/v5locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="48dp"
+        android:text="Locate"
+        app:layout_constraintStart_toEndOf="@+id/v5"
+        app:layout_constraintTop_toBottomOf="@+id/v4stop" />
+
+    <Button
+        android:id="@+id/v5stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="stop"
+        app:layout_constraintStart_toEndOf="@+id/vc5"
+        app:layout_constraintTop_toBottomOf="@+id/v5locate" />
 </androidx.constraintlayout.widget.ConstraintLayout>

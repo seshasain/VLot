@@ -66,6 +66,7 @@ public class Editprofile extends AppCompatActivity {
                         pemail.setText(ds.child("email").getValue(String.class));
                         pnumber.setText(ds.child("mobileno").getValue(String.class));
                         ppwd.setText(ds.child("password").getValue(String.class));
+                        cdist.setText(ds.child("distance").getValue(String.class));
                         prole = ds.child("role").getValue(String.class);
                         mno=ds.child("mobileno").getValue(String.class);
                         System.out.println("role customer");
@@ -116,16 +117,14 @@ public class Editprofile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String name,mail,pnum,pwd,setdist="";
+                String name,mail,pnum,pwd,setdist;
                 name=pname.getText().toString();
                 pwd=ppwd.getText().toString();
-                //setdist=Integer.parseInt(cdist.getText().toString());
                 Map<String, Object> userMapd = new HashMap<>();
-                if(prole.equals("Customer")) {
-                    setdist = cdist.getText().toString();
-                    userMapd.put("distance",setdist);
+                setdist = cdist.getText().toString();
+                userMapd.put("distance",setdist);
                     //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
-                }
+
                 Map<String, Object> userMapn = new HashMap<>();
                 Map<String, Object> userMapp = new HashMap<>();
                 userMapn.put("name",name);
@@ -134,16 +133,17 @@ public class Editprofile extends AppCompatActivity {
                 if(prole.equals("Customer"))
                 {
                     int dist=Integer.parseInt(setdist);
-                      if(dist>0.5 && dist<=2.5)
+                      if(dist>0.5 && dist<=5)
                       {
                           customers.child(mno).updateChildren(userMapn);
                           customers.child(mno).updateChildren(userMapp);
                           customers.child(mno).updateChildren(userMapd);
+                          cdist.setText(setdist);
                           Toast.makeText(Editprofile.this, "Profile details updated successfully", Toast.LENGTH_LONG).show();
                       }
                       else
                       {
-                          Toast.makeText(Editprofile.this, "Please enter range from 0.5 to 2.5km", Toast.LENGTH_LONG).show();
+                          Toast.makeText(Editprofile.this, "Please enter range from 0.5 to 5km", Toast.LENGTH_LONG).show();
                           Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
                       }
                 }
