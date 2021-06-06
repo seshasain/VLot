@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Vendors">
+
+
+    <TextView
+        android:id="@+id/vendorstvtitle"
+        android:layout_width="409dp"
+        android:layout_height="155dp"
+        android:background="@drawable/headingbackground"
+        android:gravity="center_vertical"
+        android:text="Your Vendors"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/v1"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vendorstvtitle" />
+
+    <TextView
+        android:id="@+id/vc1"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v1" />
+
+    <Button
+        android:id="@+id/v1locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="36dp"
+        android:text="Locate"
+        app:layout_constraintStart_toEndOf="@+id/v1"
+        app:layout_constraintTop_toBottomOf="@+id/vendorstvtitle" />
+
+    <Button
+        android:id="@+id/v1stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:text="Stop"
+        app:layout_constraintStart_toEndOf="@+id/vc1"
+        app:layout_constraintTop_toBottomOf="@+id/v1locate" />
+
+    <TextView
+        android:id="@+id/v2"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vc1" />
+
+    <TextView
+        android:id="@+id/vc2"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v2" />
+
+    <Button
+        android:id="@+id/v2locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="32dp"
+        android:text="Locate"
+        app:layout_constraintStart_toEndOf="@+id/v2"
+        app:layout_constraintTop_toBottomOf="@+id/v1stop" />
+
+    <Button
+        android:id="@+id/v2stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Stop"
+        app:layout_constraintStart_toEndOf="@+id/vc2"
+        app:layout_constraintTop_toBottomOf="@+id/v2locate" />
+
+    <TextView
+        android:id="@+id/v3"
+        android:layout_width="179dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vc2" />
+
+    <TextView
+        android:id="@+id/vc3"
+        android:layout_width="239dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
+        android:text="TextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v3" />
+
+    <Button
+        android:id="@+id/v3locate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="48dp"
+        android:text="Locate"
+        app:layout_constraintStart_toEndOf="@+id/v3"
+        app:layout_constraintTop_toBottomOf="@+id/v2stop" />
+
+    <Button
+        android:id="@+id/v3stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="20dp"
+        android:text="Stop"
+        app:layout_constraintStart_toEndOf="@+id/vc3"
+        app:layout_constraintTop_toBottomOf="@+id/v3locate" />
+</androidx.constraintlayout.widget.ConstraintLayout>

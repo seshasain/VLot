@@ -43,9 +43,10 @@ public class MyService extends Service{
     public GPSTracker gps;
     public static  String veg,em,rol,mno;
     public int rtype,rt;
-    public String mail1;
+    public String  mail1,cdist;
     String latitude,longitude;
     String customerproductarray[];
+    int customerpresetdistance;
     Set<List<String>> allvendorlocations = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
@@ -74,10 +75,11 @@ public class MyService extends Service{
                             vendors.child(mno).updateChildren(userMap);
                         }
                     }
-                    int customerpresetdistance=10000;
+                    customerpresetdistance=0;
+                    //customerpresetdistance=Integer.parseInt(cdist);
                     Currentuserdetails("role");
                     Currentuserdetails("vegetables");
-                    if(rol!=null && rol.equals("Customer"))
+                    if(rol!=null && rol.equals("Customer") && customerpresetdistance!=0)
                     {
 
                         FirebaseDatabase database;
@@ -180,6 +182,9 @@ public class MyService extends Service{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (mail1.equals(ds.child("email").getValue())) {
+                        customerpresetdistance=0;
+                        cdist=ds.child("distance").getValue(String.class);
+                        customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -315,7 +320,7 @@ public class MyService extends Service{
             Bundle args = new Bundle();
             args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
             PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
-                    new Intent(getApplicationContext(), Fruits.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);

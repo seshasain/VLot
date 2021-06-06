@@ -19,14 +19,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Editprofile extends AppCompatActivity {
 
-    private EditText pname,pemail,pnumber,ppwd,cdist;
+    private EditText pname,ppwd,cdist;
     private ImageView dist1;
-    public static String mail,prole;
+    private TextView pemail,pnumber;
+    public static String mail,prole,mno;
     private FirebaseDatabase database;
     private DatabaseReference cuserref,vuserref;
     private static final String cusers="customers";
+    private FirebaseDatabase db=FirebaseDatabase.getInstance();
+    private DatabaseReference customers=db.getReference().child("customers");
+    private DatabaseReference vendors=db.getReference().child("vendors");
     private static final String vusers="vendors";
     int flag=0;
     Button updateprofile;
@@ -44,8 +51,8 @@ public class Editprofile extends AppCompatActivity {
         vuserref=rootref.child(vusers);
 
         pname = findViewById(R.id.editpname);
-        pemail = findViewById(R.id.editpemail);
-        pnumber = findViewById(R.id.editpnum);
+        pemail = findViewById(R.id.edemail);
+        pnumber = findViewById(R.id.edmnum);
         ppwd = findViewById(R.id.editpwd);
         cdist=findViewById(R.id.cdistreq);
         dist1=findViewById(R.id.distimg);
@@ -65,6 +72,7 @@ public class Editprofile extends AppCompatActivity {
                         pnumber.setText(ds.child("mobileno").getValue(String.class));
                         ppwd.setText(ds.child("password").getValue(String.class));
                         prole = ds.child("role").getValue(String.class);
+                        mno=ds.child("mobileno").getValue(String.class);
                         System.out.println("role customer");
                         cdist.setVisibility(View.VISIBLE);
                         dist1.setVisibility(View.VISIBLE);
@@ -93,6 +101,8 @@ public class Editprofile extends AppCompatActivity {
                             pemail.setText(ds.child("email").getValue(String.class));
                             pnumber.setText(ds.child("mobileno").getValue(String.class));
                             ppwd.setText(ds.child("password").getValue(String.class));
+                            prole=ds.child("role").getValue(String.class);
+                            mno=ds.child("mobileno").getValue(String.class);
                             cdist.setVisibility(View.INVISIBLE);
                             dist1.setVisibility(View.INVISIBLE);
                             System.out.println("disp else");
@@ -116,29 +126,52 @@ public class Editprofile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                String name,mail,pnum,pwd,setdist;
+                String name,mail,pnum,pwd,setdist="";
                 name=pname.getText().toString();
-                mail=pemail.getText().toString();
-                pnum=pnumber.getText().toString();
                 pwd=ppwd.getText().toString();
-                setdist=cdist.getText().toString();
+                //setdist=Integer.parseInt(cdist.getText().toString());
+                Map<String, Object> userMapd = new HashMap<>();
+                if(prole.equals("Customer")) {
+                    setdist = cdist.getText().toString();
+                    userMapd.put("distance",setdist);
+                    //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
+                }
+
+                Map<String, Object> userMapn = new HashMap<>();
+                Map<String, Object> userMapp = new HashMap<>();
+
+                userMapn.put("name",name);
+                userMapp.put("password",pwd);
+
+
+
 
                 //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
-                if(prole!=null && prole.equals("Customer"))
+                if(prole.equals("Customer"))
                 {
-                    System.out.println("role customer");
-                      if(false)
+                    int dist=Integer.parseInt(setdist);
+                      if(dist>0.5 && dist<=2.5)
                       {
-
+                          customers.child(mno).updateChildren(userMapn);
+                          customers.child(mno).updateChildren(userMapp);
+                          customers.child(mno).updateChildren(userMapd);
+                          Toast.makeText(Editprofile.this, "Profile details updated successfully", Toast.LENGTH_LONG).show();
                       }
                       else
                       {
                           Toast.makeText(Editprofile.this, "Please enter range from 0.5 to 2.5km", Toast.LENGTH_LONG).show();
+                          Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
                       }
+                }
+                else if(prole.equals("Vendor"))
+                {
+                    vendors.child(mno).updateChildren(userMapn);
+                    vendors.child(mno).updateChildren(userMapp);
+                    Toast.makeText(Editprofile.this, "Profile details updated successfully", Toast.LENGTH_LONG).show();
                 }
                 else
                 {
-                        System.out.println("role null else");
+                    Toast.makeText(Editprofile.this, prole, Toast.LENGTH_LONG).show();
                 }
             }
         });
