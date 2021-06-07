@@ -123,7 +123,7 @@ public class Editprofile extends AppCompatActivity {
                 Map<String, Object> userMapd = new HashMap<>();
                 setdist = cdist.getText().toString();
                 userMapd.put("distance",setdist);
-                setdist = cdist.getText().toString();
+                //setdist = cdist.getText().toString();
                     //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
 
                 Map<String, Object> userMapn = new HashMap<>();
@@ -134,12 +134,12 @@ public class Editprofile extends AppCompatActivity {
                 if(prole.equals("Customer"))
                 {
                     int dist=Integer.parseInt(setdist);
-                      if(dist>0.5 && dist<=5)
+                      if(dist>500 && dist<=5000)
                       {
                           customers.child(mno).updateChildren(userMapn);
                           customers.child(mno).updateChildren(userMapp);
                           customers.child(mno).updateChildren(userMapd);
-                          cdist.setText(setdist);
+                          //cdist.setText(setdist);
                           Toast.makeText(Editprofile.this, "Profile details updated successfully", Toast.LENGTH_LONG).show();
                       }
                       else
