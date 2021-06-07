@@ -29,7 +29,7 @@ public class Vendors extends AppCompatActivity {
     public static String c3email,v3cart,v4lat,v4long,v4email,c4email,v4cart,v5lat,v5long,v5email,c5email,v5cart;
     public static int v1f=0,v2f=0,v3f=0,v4f=0,v5f=0;
     public static int count = 1;
-    public String mno1,mno2,mno3,mno4,mno5,n1,n2,n3,n4,n5;
+    public static String mno1,mno2,mno3,mno4,mno5,n1,n2,n3,n4,n5;
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -251,6 +251,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
+                if(mno1!=null)
                 vendors.child(mno1).updateChildren(userMap);
 
                 new SweetAlertDialog(Vendors.this)
@@ -266,6 +267,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
+                if(mno2!=null)
                 vendors.child(mno2).updateChildren(userMap);
 
                 new SweetAlertDialog(Vendors.this)
@@ -281,6 +283,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
+                if(mno3!=null)
                 vendors.child(mno3).updateChildren(userMap);
 
 
@@ -297,6 +300,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
+                if(mno4!=null)
                 vendors.child(mno4).updateChildren(userMap);
 
 
@@ -313,6 +317,7 @@ public class Vendors extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
+                if(mno5!=null)
                 vendors.child(mno5).updateChildren(userMap);
 
 
@@ -322,7 +327,11 @@ public class Vendors extends AppCompatActivity {
                 startService(new Intent(Vendors.this,MyService.class));
             }
         });
-
+        System.out.println("mno1"+mno1+"email:"+c1email);
+        System.out.println("mno2"+mno1);
+        System.out.println("mno3"+mno1);
+        System.out.println("mno4"+mno1);
+        System.out.println("mno5"+mno1);
     }
 
 }

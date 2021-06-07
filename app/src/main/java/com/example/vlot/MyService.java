@@ -102,8 +102,8 @@ public class MyService extends Service{
                                     String cveg=ds.child("vegetables").getValue(String.class);
                                     String vendormail=ds.child("email").getValue(String.class);
                                     String name=ds.child("name").getValue(String.class);
-                                    String number=ds.child("number").getValue(String.class);
-                                    if(cveg!=null && customerproductarray!=null && vendormail!=null && name!=null)
+                                    String number=ds.child("mobileno").getValue(String.class);
+                                    if(cveg!=null && customerproductarray!=null && vendormail!=null && name!=null && number!=null)
                                     {
                                         String arr[]=cveg.split(",");
                                         for(int i=0;i<customerproductarray.length;i++)
@@ -159,9 +159,10 @@ public class MyService extends Service{
                             createNotification();
                         }
                     }
-                    else if(rol!=null && rol.equals("Vendors"))
+                    else if(rol!=null && rol.equals("Vendor"))
                     {
-                        if(stopped!="")
+                        System.out.println("Else block and stopped: "+stopped);
+                        if(stopped!="" && stopped!=null)
                         {
                             createNotificationvendor();
                         }
@@ -196,6 +197,7 @@ public class MyService extends Service{
                         customerpresetdistance=0;
                         cdist=ds.child("distance").getValue(String.class);
                         customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
+                        System.out.println("Calculated distance:"+customerpresetdistance);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -355,7 +357,7 @@ public class MyService extends Service{
     }
     public void createNotificationvendor()
     {
-        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 100;
+        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 1009;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String id = "Order Alert";
             Bundle args = new Bundle();
@@ -371,8 +373,8 @@ public class MyService extends Service{
                     .setOngoing(false)
                     .setContentIntent(contentIntent)
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
-                    .setContentTitle("Orders available")
-                    .setContentText("Some of your items are arriving you")
+                    .setContentTitle("Customers Available")
+                    .setContentText("Someone asked you to stop")
                     .setOnlyAlertOnce(true)
                     .build();
             NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
