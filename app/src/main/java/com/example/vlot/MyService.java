@@ -3,16 +3,20 @@ package com.example.vlot;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Build;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,11 +26,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import static android.content.ContentValues.TAG;
 
 public class MyService extends Service{
     Handler handler;
@@ -34,11 +43,12 @@ public class MyService extends Service{
     public GPSTracker gps;
     public static  String veg,em,rol,mno;
     public int rtype,rt;
-    public String mail1;
+    public String  mail1,cdist;
     String latitude,longitude;
     String customerproductarray[];
-    Set<String>  vendorproductmails= new HashSet<String>();
-
+    int customerpresetdistance=0;
+    String stopped="";
+    Set<List<String>> allvendorlocations = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -52,13 +62,14 @@ public class MyService extends Service{
                 {
                     latitude = String.valueOf(gps.latitude);
                     longitude = String.valueOf(gps.longitude);
-                    System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
+                    //System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
                     Map<String, Object> userMap = new HashMap<>();
                     userMap.put("latitude",latitude);
                     userMap.put("longitude",longitude);
                     synchronized (this){Currentuserdetails("role");}
                     synchronized (this){Currentuserdetails("mobilenum");}
-                    if(rol!=null && mno!=null)  {
+                    synchronized (this){Currentuserdetails("email");}
+                    if(rol!=null && mno!=null && Double.parseDouble(latitude)!=0 && Double.parseDouble(longitude)!=0 && em!=null)  {
                         if (rol.equals("Customer"))
                         {
                             customers.child(mno).updateChildren(userMap);
@@ -68,7 +79,7 @@ public class MyService extends Service{
                     }
                     Currentuserdetails("role");
                     Currentuserdetails("vegetables");
-                    if(rol!=null && rol.equals("Customer"))
+                    if(rol!=null && rol.equals("Customer") && customerpresetdistance!=0)
                     {
 
                         FirebaseDatabase database;
@@ -82,55 +93,87 @@ public class MyService extends Service{
                         database = FirebaseDatabase.getInstance();
                         cuserref = database.getReference(cusers);
                         vuserref= database.getReference(vusers);
-
                         vuserref.addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds: dataSnapshot.getChildren())
                                 {
-//                                    if(customerproductarray.length==0 && veg!=null) {
-                                        customerproductarray = veg.split(",");
-//                                    }
+                                    customerproductarray = veg.split(",");
                                     String cveg=ds.child("vegetables").getValue(String.class);
                                     String vendormail=ds.child("email").getValue(String.class);
-                                    if(cveg!=null && customerproductarray!=null && vendormail!=null)
+                                    String name=ds.child("name").getValue(String.class);
+                                    String number=ds.child("mobileno").getValue(String.class);
+                                    if(cveg!=null && customerproductarray!=null && vendormail!=null && name!=null && number!=null)
                                     {
                                         String arr[]=cveg.split(",");
                                         for(int i=0;i<customerproductarray.length;i++)
                                         {
+                                            List<String> innerList = new ArrayList<>();
+                                            String vtemp="";
                                             for(int j=0;j<arr.length;j++)
                                             {
                                                 if(customerproductarray[i].equals(arr[j]))
                                                 {
-                                                    vendorproductmails.add(vendormail);
+                                                    vtemp+=customerproductarray[i]+",";
                                                 }
+                                            }
+                                            String vlatitude=ds.child("latitude").getValue(String.class);
+                                            String vlongitude =ds.child("longitude").getValue(String.class);
+                                            if(vlatitude!=null && vlongitude!=null && vtemp!="")
+                                            {
+                                                double distance=0;
+                                                distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlatitude));
+                                                if(distance!=0 && customerpresetdistance!=0)
+                                                {
+                                                    //System.out.println("distance="+distance);
+                                                    if(distance<=customerpresetdistance) {
+                                                        innerList.add(vlatitude);
+                                                        innerList.add(vlongitude);
+                                                        innerList.add(vendormail);
+                                                        innerList.add(em);
+                                                        innerList.add(vtemp);
+                                                        innerList.add(name);
+                                                        innerList.add(number);
+                                                        //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
+                                                        //startActivity(new Intent(MyService.this,MainActivity.class));
+                                                    }
+                                                }
+                                            }
+                                            if(innerList.size()>0)
+                                            {
+                                                allvendorlocations.add(innerList);
+                                                System.out.println("All vendor locations are:"+allvendorlocations.toString());
                                             }
                                         }
                                     }
-
                                 }
                             }
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
-
                             }
                         });
-                        if(vendorproductmails.size()>0) {
-                            System.out.println("Vendor mails that your product has are: " + vendorproductmails.toString());
+                        //System.out.println("Length of list:"+allvendorlocations.size());
+                        if(allvendorlocations.size()>0)
+                        {
+                            createNotification();
+                        }
+                    }
+                    else if(rol!=null && rol.equals("Vendor"))
+                    {
+                        System.out.println("Else block and stopped: "+stopped);
+                        if(stopped!="" && stopped!=null)
+                        {
+                            createNotificationvendor();
                         }
                     }
                 }
                 else
                 {
-                    // can't get location
-                    // GPS or Network is not enabled
-                    // Ask user to enable GPS/network in settings
                     gps.showSettingsAlert();
                 }
                 handler.postDelayed(test, 5000);
             }
-
         };
         handler.postDelayed(test, 0);
     }
@@ -151,6 +194,10 @@ public class MyService extends Service{
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (mail1.equals(ds.child("email").getValue())) {
+                        customerpresetdistance=0;
+                        cdist=ds.child("distance").getValue(String.class);
+                        customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
+                        System.out.println("Calculated distance:"+customerpresetdistance);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -190,6 +237,7 @@ public class MyService extends Service{
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         if (mail1.equals(ds.child("email").getValue())) {
+                            stopped=ds.child("stopped").getValue(String.class);
                             if (req.equals("vegetables")) {
                                 veg = ds.child("vegetables").getValue(String.class);
                                 rt = 1;
@@ -255,5 +303,85 @@ public class MyService extends Service{
             //startForeground(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
         }
         return START_STICKY;
+    }
+
+    private double distance(double lat1, double lon1, double lat2, double lon2) {
+        double theta = lon1 - lon2;
+        double dist = Math.sin(deg2rad(lat1))
+                * Math.sin(deg2rad(lat2))
+                + Math.cos(deg2rad(lat1))
+                * Math.cos(deg2rad(lat2))
+                * Math.cos(deg2rad(theta));
+        dist = Math.acos(dist);
+        dist = rad2deg(dist);
+        dist = dist * 60 * 1.1515;
+        return (dist);
+    }
+
+    private double deg2rad(double deg) {
+        return (deg * Math.PI / 180.0);
+    }
+
+    private double rad2deg(double rad) {
+        return (rad * 180.0 / Math.PI);
+    }
+
+    public void createNotification()
+    {
+        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 100;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String id = "Order Alert";
+            Bundle args = new Bundle();
+            args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
+            mChannel.enableLights(true);
+            Notification notification = new Notification.Builder(getApplicationContext(), id)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setOngoing(false)
+                    .setContentIntent(contentIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setContentTitle("Orders available")
+                    .setContentText("Some of your items are arriving you")
+                    .setOnlyAlertOnce(true)
+                    .build();
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (mNotificationManager != null) {
+                mNotificationManager.createNotificationChannel(mChannel);
+                mNotificationManager.notify(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
+            }
+        }
+    }
+    public void createNotificationvendor()
+    {
+        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 1009;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            String id = "Order Alert";
+            Bundle args = new Bundle();
+            args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
+            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
+                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
+            int importance = NotificationManager.IMPORTANCE_HIGH;
+            NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
+            mChannel.enableLights(true);
+            Notification notification = new Notification.Builder(getApplicationContext(), id)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setOngoing(false)
+                    .setContentIntent(contentIntent)
+                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setContentTitle("Customers Available")
+                    .setContentText("Someone asked you to stop")
+                    .setOnlyAlertOnce(true)
+                    .build();
+            NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            if (mNotificationManager != null) {
+                mNotificationManager.createNotificationChannel(mChannel);
+                mNotificationManager.notify(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
+            }
+        }
     }
 }
