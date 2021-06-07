@@ -37,6 +37,14 @@ import com.google.firebase.database.ValueEventListener;
 //package com.jarves.navigationdrawer;
 
 public class Home extends AppCompatActivity {
+    private TextView pname;
+    public String mail;
+    private FirebaseDatabase database;
+    private DatabaseReference cuserref,vuserref;
+    private static final String cusers="customers";
+    private static final String vusers="vendors";
+    int flag=0;
+
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -49,9 +57,66 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail=user.getEmail();
+
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref=rootref.child(vusers);
+
+        pname = findViewById(R.id.txt);
+        database = FirebaseDatabase.getInstance();
+        cuserref = database.getReference(cusers);
+        vuserref= database.getReference(vusers);
+
+        cuserref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds: dataSnapshot.getChildren())
+                {
+                    if (mail.equals(ds.child("email").getValue()))
+                    {
+                        pname.setText("WELCOME\n"+ds.child("name").getValue(String.class).toUpperCase());
+                        flag=1;
+                    }
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(Home.this, "something went wrong..", Toast.LENGTH_LONG).show();
+            }
+
+        });
+        if(flag==0)
+        {
+            vuserref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (mail.equals(ds.child("email").getValue()))
+                        {
+                            pname.setText("WELCOME\n"+ds.child("name").getValue(String.class).toUpperCase());
+                            flag = 0;
+
+                        }
+
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(Home.this, "something went wrong..", Toast.LENGTH_LONG).show();
+                }
+
+            });
+        }
+
         veg1=(ImageButton)findViewById(R.id.veg);
-        fru1=(ImageButton)findViewById(R.id.fru);
-        dai1=(ImageButton)findViewById(R.id.dai);
+        //fru1=(ImageButton)findViewById(R.id.fru);
+        //dai1=(ImageButton)findViewById(R.id.dai);
         veg1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,7 +124,7 @@ public class Home extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        fru1.setOnClickListener(new View.OnClickListener() {
+        /*fru1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent3 = new Intent(Home.this,Fruits.class);
@@ -72,7 +137,7 @@ public class Home extends AppCompatActivity {
                 Intent intent4 = new Intent(Home.this,DairyProducts.class);
                 startActivity(intent4);
             }
-        });
+        });*/
         setUpToolbar();
         LocationManager lm = (LocationManager) getSystemService(LOCATION_SERVICE);
         if (!lm.isProviderEnabled(LocationManager.GPS_PROVIDER)) {

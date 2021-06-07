@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Cart">
+    android:fillViewport="true">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Cart">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="414dp"
@@ -20,34 +24,47 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <ImageView
         android:id="@+id/tomato"
-        android:layout_width="82dp"
-        android:layout_height="67dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         app:srcCompat="@drawable/tomato" />
 
-    <TextView
-        android:id="@+id/tomatoctv"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="48dp"
-        android:text="Tomato"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toEndOf="@+id/tomato"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        <TextView
+            android:id="@+id/tomatoctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Tomato"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/tomato"
+            app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
-    <ImageView
+        <Button
+            android:id="@+id/tomator"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/tomato"
+            app:layout_constraintTop_toBottomOf="@id/tomatoctv" />
+
+        <ImageView
         android:id="@+id/potato"
-        android:layout_width="82dp"
-        android:layout_height="67dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -55,25 +72,36 @@
         app:layout_constraintTop_toBottomOf="@+id/tomato"
         app:srcCompat="@drawable/potatoes" />
 
-    <TextView
-        android:id="@+id/potatoctv"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="104dp"
-        android:layout_marginRight="104dp"
-        android:text="Potato"
-        android:textSize="18sp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
-        app:layout_constraintStart_toEndOf="@+id/potato"
-        app:layout_constraintTop_toBottomOf="@+id/tomatoctv" />
+        <TextView
+            android:id="@+id/potatoctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Potato"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/potato"
+            app:layout_constraintTop_toBottomOf="@+id/tomator" />
 
-    <ImageView
+        <Button
+            android:id="@+id/potator"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/potato"
+            app:layout_constraintTop_toBottomOf="@id/potatoctv" />
+
+
+        <ImageView
         android:id="@+id/bottleguard"
-        android:layout_width="82dp"
-        android:layout_height="67dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -81,25 +109,36 @@
         app:layout_constraintTop_toBottomOf="@+id/potato"
         app:srcCompat="@drawable/bottlegourd" />
 
-    <TextView
-        android:id="@+id/bguardctv"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="96dp"
-        android:layout_marginRight="96dp"
-        android:text="Bottlegourd"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.482"
-        app:layout_constraintStart_toEndOf="@+id/bottleguard"
-        app:layout_constraintTop_toBottomOf="@+id/potatoctv" />
+        <TextView
+            android:id="@+id/bguardctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Bottlegourd"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/bottleguard"
+            app:layout_constraintTop_toBottomOf="@+id/potator" />
 
-    <ImageView
+        <Button
+            android:id="@+id/bottleguardr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/bottleguard"
+            app:layout_constraintTop_toBottomOf="@id/bguardctv" />
+
+
+        <ImageView
         android:id="@+id/cucumber"
-        android:layout_width="82dp"
-        android:layout_height="67dp"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.109"
@@ -107,19 +146,245 @@
         app:layout_constraintTop_toBottomOf="@+id/bottleguard"
         app:srcCompat="@drawable/cucumber" />
 
-    <TextView
-        android:id="@+id/cucuctv"
-        android:layout_width="168dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="36dp"
-        android:text="Cucumber"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/cucumber"
-        app:layout_constraintTop_toBottomOf="@+id/bguardctv" />
+        <TextView
+            android:id="@+id/cucuctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Cucumber"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/cucumber"
+            app:layout_constraintTop_toBottomOf="@+id/bottleguardr" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/cucumberr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/cucumber"
+            app:layout_constraintTop_toBottomOf="@id/cucuctv" />
+
+        <ImageView
+        android:id="@+id/capsicum"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cucumber"
+        app:srcCompat="@drawable/capsicum" />
+
+        <TextView
+            android:id="@+id/capsicumctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Capsicum"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/capsicum"
+            app:layout_constraintTop_toBottomOf="@+id/cucumberr" />
+
+        <Button
+            android:id="@+id/capsicumr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/capsicum"
+            app:layout_constraintTop_toBottomOf="@id/capsicumctv" />
+
+        <ImageView
+        android:id="@+id/bitterguard"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/capsicum"
+        app:srcCompat="@drawable/bittergourd" />
+
+        <TextView
+            android:id="@+id/bitterguardctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="Bittergourd"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/bitterguard"
+            app:layout_constraintTop_toBottomOf="@+id/capsicumr" />
+        <Button
+            android:id="@+id/bitterguardr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/bitterguard"
+            app:layout_constraintTop_toBottomOf="@id/bitterguardctv" />
+
+
+        <ImageView
+        android:id="@+id/drumstick"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bitterguard"
+        app:srcCompat="@drawable/drumstick" />
+
+        <TextView
+            android:id="@+id/drumstickctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="Drumstick"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/drumstick"
+            app:layout_constraintTop_toBottomOf="@+id/bitterguardr" />
+        <Button
+            android:id="@+id/drumstickr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/drumstick"
+            app:layout_constraintTop_toBottomOf="@id/drumstickctv" />
+
+        <ImageView
+        android:id="@+id/ladiesfinger"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/drumstick"
+        app:srcCompat="@drawable/ladiesfinger" />
+
+        <TextView
+            android:id="@+id/ladiesfingerctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="20dp"
+            android:text="Ladiesfinger"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/ladiesfinger"
+            app:layout_constraintTop_toBottomOf="@+id/drumstickr" />
+        <Button
+            android:id="@+id/ladiesfingerr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/ladiesfinger"
+            app:layout_constraintTop_toBottomOf="@id/ladiesfingerctv" />
+
+        <ImageView
+        android:id="@+id/gongura"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ladiesfinger"
+        app:srcCompat="@drawable/gongura" />
+
+        <TextView
+            android:id="@+id/gonguractv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Gongura"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/gongura"
+            app:layout_constraintTop_toBottomOf="@+id/ladiesfingerr" />
+
+        <Button
+            android:id="@+id/gongurar"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/gongura"
+            app:layout_constraintTop_toBottomOf="@id/gonguractv" />
+
+        <ImageView
+        android:id="@+id/mint"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.109"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/gongura"
+        app:srcCompat="@drawable/freshmintpudina" />
+
+        <TextView
+            android:id="@+id/mintctv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Mint"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/mint"
+            app:layout_constraintTop_toBottomOf="@+id/gongurar" />
+
+        <Button
+            android:id="@+id/mintr"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="remove"
+            app:layout_constraintStart_toEndOf="@+id/mint"
+            app:layout_constraintTop_toBottomOf="@id/mintctv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
