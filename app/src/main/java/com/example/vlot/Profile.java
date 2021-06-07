@@ -56,7 +56,7 @@ public class Profile extends AppCompatActivity {
 
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
-        vuserref= database.getReference(vusers);
+        vuserref= database.getReference(vusers) ;
 
         cuserref.addValueEventListener(new ValueEventListener() {
             @Override
