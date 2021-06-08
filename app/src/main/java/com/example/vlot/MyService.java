@@ -334,7 +334,7 @@ public class MyService extends Service{
             Bundle args = new Bundle();
             args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
             PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
-                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+                    new Intent(getApplicationContext(), AvailableVendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
@@ -363,7 +363,7 @@ public class MyService extends Service{
             Bundle args = new Bundle();
             args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
             PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
-                    new Intent(getApplicationContext(), Vendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+                    new Intent(getApplicationContext(), AvailableVendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);

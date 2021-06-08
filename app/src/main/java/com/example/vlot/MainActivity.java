@@ -118,7 +118,7 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("role", finalTypex1);
                                     vendors.child(number.getText().toString()).setValue(userMap);
                                 }
-                                Intent I = new Intent(MainActivity.this, MainActivity.class);
+                                Intent I = new Intent(MainActivity.this, Home.class);
                                 startActivity(I);
                                 finish();
                             }

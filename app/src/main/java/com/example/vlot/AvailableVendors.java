@@ -21,7 +21,8 @@ import java.util.Set;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class Vendors extends AppCompatActivity {
+public class AvailableVendors extends AppCompatActivity {
+
 
     TextView ve1,ve2,ve3,ve4,ve5,vec1,vec2,vec3,vec4,vec5;
     Button v1l,v2l,v3l,v4l,v5l,v1s,v2s,v3s,v4s,v5s;
@@ -36,7 +37,7 @@ public class Vendors extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vendors);
+        setContentView(R.layout.activity_available_vendors);
 
         ve1 = findViewById(R.id.v1);
         ve2 = findViewById(R.id.v2);
@@ -252,12 +253,12 @@ public class Vendors extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
                 if(mno1!=null)
-                vendors.child(mno1).updateChildren(userMap);
+                    vendors.child(mno1).updateChildren(userMap);
 
-                new SweetAlertDialog(Vendors.this)
+                new SweetAlertDialog(AvailableVendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
                         .show();
-                startService(new Intent(Vendors.this,MyService.class));
+                startService(new Intent(AvailableVendors.this,MyService.class));
 
             }
         });
@@ -268,12 +269,12 @@ public class Vendors extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
                 if(mno2!=null)
-                vendors.child(mno2).updateChildren(userMap);
+                    vendors.child(mno2).updateChildren(userMap);
 
-                new SweetAlertDialog(Vendors.this)
+                new SweetAlertDialog(AvailableVendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
                         .show();
-                startService(new Intent(Vendors.this,MyService.class));
+                startService(new Intent(AvailableVendors.this,MyService.class));
 
             }
         });
@@ -284,13 +285,13 @@ public class Vendors extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
                 if(mno3!=null)
-                vendors.child(mno3).updateChildren(userMap);
+                    vendors.child(mno3).updateChildren(userMap);
 
 
-                new SweetAlertDialog(Vendors.this)
+                new SweetAlertDialog(AvailableVendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
                         .show();
-                startService(new Intent(Vendors.this,MyService.class));
+                startService(new Intent(AvailableVendors.this,MyService.class));
 
             }
         });
@@ -301,13 +302,13 @@ public class Vendors extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
                 if(mno4!=null)
-                vendors.child(mno4).updateChildren(userMap);
+                    vendors.child(mno4).updateChildren(userMap);
 
 
-                new SweetAlertDialog(Vendors.this)
+                new SweetAlertDialog(AvailableVendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
                         .show();
-                startService(new Intent(Vendors.this,MyService.class));
+                startService(new Intent(AvailableVendors.this,MyService.class));
 
             }
         });
@@ -318,13 +319,13 @@ public class Vendors extends AppCompatActivity {
                 Map<String, Object> userMap = new HashMap<>();
                 userMap.put("stopped",c1email);
                 if(mno5!=null)
-                vendors.child(mno5).updateChildren(userMap);
+                    vendors.child(mno5).updateChildren(userMap);
 
 
-                new SweetAlertDialog(Vendors.this)
+                new SweetAlertDialog(AvailableVendors.this)
                         .setTitleText("Stop Request Sent Sucessfully")
                         .show();
-                startService(new Intent(Vendors.this,MyService.class));
+                startService(new Intent(AvailableVendors.this,MyService.class));
             }
         });
         System.out.println("mno1"+mno1+"email:"+c1email);
@@ -333,5 +334,4 @@ public class Vendors extends AppCompatActivity {
         System.out.println("mno4"+mno1);
         System.out.println("mno5"+mno1);
     }
-
 }
