@@ -39,6 +39,7 @@ import com.google.firebase.database.ValueEventListener;
 public class Home extends AppCompatActivity {
     private TextView pname;
     public String mail;
+    ImageButton hcart;
     private FirebaseDatabase database;
     private DatabaseReference cuserref,vuserref;
     private static final String cusers="customers";
@@ -60,6 +61,7 @@ public class Home extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mail=user.getEmail();
+        hcart=findViewById(R.id.homecart);
 
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
         cuserref = rootref.child(cusers);
@@ -123,6 +125,15 @@ public class Home extends AppCompatActivity {
                 Intent intent2 = new Intent(Home.this,Vegetables.class);
                 startActivity(intent2);
             }
+
+        });
+        hcart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(Home.this,Cart.class);
+                startActivity(intent2);
+            }
+
         });
         /*fru1.setOnClickListener(new View.OnClickListener() {
             @Override
