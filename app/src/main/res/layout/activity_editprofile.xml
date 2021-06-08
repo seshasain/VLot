@@ -9,9 +9,8 @@
 
     <TextView
         android:id="@+id/editname"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="417dp"
+        android:layout_height="152dp"
         android:background="@drawable/headingbackground"
         android:gravity="center_vertical"
         android:text="Edit Your Profile Here"
@@ -26,41 +25,32 @@
         android:id="@+id/editpname"
         android:layout_width="233dp"
         android:layout_height="45dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Enter new name"
+        android:textSize="20dp"
+        android:textColor="@color/black"
         android:inputType="textPersonName"
         android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/editname" />
-
-    <EditText
-        android:id="@+id/editpnum"
-        android:layout_width="233dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="Enter new mobile number"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editpemail" />
 
     <EditText
         android:id="@+id/editpwd"
         android:layout_width="233dp"
         android:layout_height="45dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Enter new password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editpnum" />
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/edmnum" />
 
     <Button
         android:id="@+id/editprofile"
@@ -80,20 +70,20 @@
         android:id="@+id/imageView3"
         android:layout_width="75dp"
         android:layout_height="46dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="64dp"
-        app:layout_constraintEnd_toStartOf="@+id/editpname"
-        app:layout_constraintHorizontal_bias="0.386"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editname"
-        app:srcCompat="@drawable/edit" />
+        app:srcCompat="@drawable/ic_baseline_person_24" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="84dp"
         android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/editpemail"
-        app:layout_constraintHorizontal_bias="0.448"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         app:srcCompat="@drawable/email" />
@@ -102,9 +92,9 @@
         android:id="@+id/imageView5"
         android:layout_width="86dp"
         android:layout_height="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
         android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toStartOf="@+id/editpnum"
-        app:layout_constraintHorizontal_bias="0.427"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4"
         app:srcCompat="@drawable/mobileno" />
@@ -113,36 +103,24 @@
         android:id="@+id/cdistreq"
         android:layout_width="233dp"
         android:layout_height="45dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Enter distance requirement"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintStart_toEndOf="@+id/distimg"
         app:layout_constraintTop_toBottomOf="@+id/editpwd" />
-
-    <EditText
-        android:id="@+id/editpemail"
-        android:layout_width="233dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="35dp"
-        android:ems="10"
-        android:hint="Enter new email"
-        android:inputType="textEmailAddress"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.735"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editpname" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="81dp"
         android:layout_height="47dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toStartOf="@+id/editpwd"
-        app:layout_constraintHorizontal_bias="0.435"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
         app:srcCompat="@drawable/ic_baseline_password_24" />
@@ -151,11 +129,37 @@
         android:id="@+id/distimg"
         android:layout_width="82dp"
         android:layout_height="42dp"
-        android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toStartOf="@+id/cdistreq"
-        app:layout_constraintHorizontal_bias="0.46"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
         app:srcCompat="@drawable/dist" />
+
+    <TextView
+        android:id="@+id/edemail"
+        android:layout_width="233dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="32dp"
+        android:text="Email"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/editpname" />
+
+    <TextView
+        android:id="@+id/edmnum"
+        android:layout_width="233dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:text="Mobile number"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/edemail" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,6 +17,8 @@
         android:theme="@style/Theme.VLot">
         <activity android:name=".AvailableVendors"></activity>
         <activity android:name=".Cart" />
+        <activity android:name=".Privacypolicy"/>
+        <activity android:name=".Aboutus"/>
         <activity android:name=".Editprofile" />
 
         <service

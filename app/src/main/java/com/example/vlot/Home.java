@@ -175,14 +175,19 @@ public class Home extends AppCompatActivity {
                         Intent homecart = new Intent(Home.this, Cart.class);
                         startActivity(homecart);
                         break;
+                    case  R.id.nav_about:
+                        Intent abt = new Intent(Home.this,Aboutus.class);
+                        startActivity(abt);
+                        break;
+                    case  R.id.nav_privacypolicy:
+                        Intent pp = new Intent(Home.this,Privacypolicy.class);
+                        startActivity(pp);
+                        break;
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent1 = new Intent(Home.this,Login.class);
                         startActivity(intent1);
                         finish();
-                        break;
-                    case  R.id.nav_about:
-
                         break;
 
                 }

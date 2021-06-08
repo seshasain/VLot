@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Privacypolicy">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="412dp"
+        android:layout_height="146dp"
+        android:background="@drawable/headingbackground"
+        android:gravity="center_vertical"
+        android:text="Privacy Policy"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/pp"
+        android:layout_width="400dp"
+        android:layout_height="573dp"
+        android:layout_marginTop="8dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.372"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="Privacy policy ----------------------\n
+
+“Protected Information” shall mean such categories of information that could reasonably be used
+to identify you personally, including your name, e-mail address, and mobile number.
+\nWe shall ask you to provide only such Protected Information
+
+which is for lawful purpose connected with our Services and necessary to be collected by us for
+
+such purpose.
+
+\n\nThe current data fields that might be requested for are:
+
+\n\n▪ Email
+
+\n▪ Password
+
+\n▪ Name
+
+\n▪ currentLocation
+
+\n▪ Mobile phone Number
+
+\n\nFrom time to time, we may update this Privacy Policy to reflect changes to our information
+
+practices. Any changes will be effective immediately upon the posting of the revised Privacy Policy.
+
+
+
+
+"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

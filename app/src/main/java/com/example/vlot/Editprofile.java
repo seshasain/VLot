@@ -48,8 +48,8 @@ public class Editprofile extends AppCompatActivity {
         cuserref = rootref.child(cusers);
         vuserref=rootref.child(vusers);
         pname = findViewById(R.id.editpname);
-        pemail = findViewById(R.id.editpnum);
-        pnumber = findViewById(R.id.editpemail);
+        pemail = findViewById(R.id.edemail);
+        pnumber = findViewById(R.id.edmnum);
         ppwd = findViewById(R.id.editpwd);
         cdist=findViewById(R.id.cdistreq);
         dist1=findViewById(R.id.distimg);

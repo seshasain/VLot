@@ -17,6 +17,7 @@
             android:background="#F7FFFFFF"
             android:orientation="vertical"  >
 
+
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -24,7 +25,6 @@
                 android:background="@color/blue"
                 app:subtitleTextColor="@color/white"
                 app:titleTextColor="#111111" />
-
 
             <RelativeLayout
                 android:layout_width="match_parent"
