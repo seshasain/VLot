@@ -46,9 +46,11 @@ public class MyService extends Service{
     public String  mail1,cdist;
     String latitude,longitude;
     String customerproductarray[];
-    int customerpresetdistance=0;
+    double customerpresetdistance=0;
     String stopped="";
+    String stoppedprevious="";
     Set<List<String>> allvendorlocations = new HashSet();
+    Set<List<String>> allvendorlocationsprevious = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -103,47 +105,48 @@ public class MyService extends Service{
                                     String vendormail=ds.child("email").getValue(String.class);
                                     String name=ds.child("name").getValue(String.class);
                                     String number=ds.child("mobileno").getValue(String.class);
+                                    String vlatitude=ds.child("latitude").getValue(String.class);
+                                    String vlongitude =ds.child("longitude").getValue(String.class);
                                     if(cveg!=null && customerproductarray!=null && vendormail!=null && name!=null && number!=null)
                                     {
                                         String arr[]=cveg.split(",");
+                                        String vtemp="";
+                                        List<String> innerList = new ArrayList<>();
                                         for(int i=0;i<customerproductarray.length;i++)
                                         {
-                                            List<String> innerList = new ArrayList<>();
-                                            String vtemp="";
                                             for(int j=0;j<arr.length;j++)
                                             {
                                                 if(customerproductarray[i].equals(arr[j]))
                                                 {
                                                     vtemp+=customerproductarray[i]+",";
+                                                    break;
                                                 }
                                             }
-                                            String vlatitude=ds.child("latitude").getValue(String.class);
-                                            String vlongitude =ds.child("longitude").getValue(String.class);
-                                            if(vlatitude!=null && vlongitude!=null && vtemp!="")
+                                        }
+                                        if(vlatitude!=null && vlongitude!=null && vtemp!="")
+                                        {
+                                            double distance=-1;
+                                            distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlongitude));
+                                            if(distance!=-1 && customerpresetdistance!=0)
                                             {
-                                                double distance=0;
-                                                distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlatitude));
-                                                if(distance!=0 && customerpresetdistance!=0)
-                                                {
-                                                    //System.out.println("distance="+distance);
-                                                    if(distance<=customerpresetdistance) {
-                                                        innerList.add(vlatitude);
-                                                        innerList.add(vlongitude);
-                                                        innerList.add(vendormail);
-                                                        innerList.add(em);
-                                                        innerList.add(vtemp);
-                                                        innerList.add(name);
-                                                        innerList.add(number);
-                                                        //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
-                                                        //startActivity(new Intent(MyService.this,MainActivity.class));
-                                                    }
+                                                //System.out.println("distance="+distance);
+                                                if(distance<=customerpresetdistance) {
+                                                    innerList.add(vlatitude);
+                                                    innerList.add(vlongitude);
+                                                    innerList.add(vendormail);
+                                                    innerList.add(em);
+                                                    innerList.add(vtemp);
+                                                    innerList.add(name);
+                                                    innerList.add(number);
+                                                    //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
+                                                    //startActivity(new Intent(MyService.this,MainActivity.class));
                                                 }
                                             }
-                                            if(innerList.size()>0)
-                                            {
-                                                allvendorlocations.add(innerList);
-                                                System.out.println("All vendor locations are:"+allvendorlocations.toString());
-                                            }
+                                        }
+                                        if(innerList.size()>0)
+                                        {
+                                            allvendorlocations.add(innerList);
+                                            System.out.println("All vendor locations are:"+allvendorlocations.toString());
                                         }
                                     }
                                 }
@@ -156,15 +159,20 @@ public class MyService extends Service{
                         //System.out.println("Length of list:"+allvendorlocations.size());
                         if(allvendorlocations.size()>0)
                         {
+                            System.out.println("Allvendorlocations : "+allvendorlocations.toString()+" Allvendorlocationprevious: "+allvendorlocationsprevious.toString());
+                            if(!allvendorlocations.equals(allvendorlocationsprevious)){
                             createNotification();
+                            allvendorlocationsprevious=allvendorlocations;
+                            }
                         }
                     }
                     else if(rol!=null && rol.equals("Vendor"))
                     {
-                        System.out.println("Else block and stopped: "+stopped);
+                        //System.out.println("Else block and stopped: "+stopped);
                         if(stopped!="" && stopped!=null)
                         {
                             createNotificationvendor();
+                            stoppedprevious=stopped;
                         }
                     }
                 }
@@ -196,8 +204,8 @@ public class MyService extends Service{
                     if (mail1.equals(ds.child("email").getValue())) {
                         customerpresetdistance=0;
                         cdist=ds.child("distance").getValue(String.class);
-                        customerpresetdistance=Integer.parseInt(ds.child("distance").getValue(String.class));
-                        System.out.println("Calculated distance:"+customerpresetdistance);
+                        customerpresetdistance=Double.parseDouble(ds.child("distance").getValue(String.class));
+                        //System.out.println("Calculated distance:"+customerpresetdistance);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
