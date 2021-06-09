@@ -15,10 +15,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.VLot">
-        <activity android:name=".AvailableVendors"></activity>
+        <activity android:name=".AvailableCustomers"></activity>
+        <activity android:name=".Hometest" />
+        <activity android:name=".AvailableVendors" />
         <activity android:name=".Cart" />
-        <activity android:name=".Privacypolicy"/>
-        <activity android:name=".Aboutus"/>
+        <activity android:name=".Privacypolicy" />
+        <activity android:name=".Aboutus" />
         <activity android:name=".Editprofile" />
 
         <service

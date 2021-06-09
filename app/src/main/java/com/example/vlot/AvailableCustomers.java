@@ -3,17 +3,15 @@ package com.example.vlot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-import android.net.Uri;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,11 +19,10 @@ import java.util.Set;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
-public class AvailableVendors extends AppCompatActivity {
-
+public class AvailableCustomers extends AppCompatActivity {
 
     TextView ve1,ve2,ve3,ve4,ve5,vec1,vec2,vec3,vec4,vec5;
-    Button v1l,v2l,v3l,v4l,v5l,v1s,v2s,v3s,v4s,v5s;
+    Button v1l,v2l,v3l,v4l,v5l;
     public static String v1lat,v1long,v1email,c1email,v1cart,v2lat,v2long,v2email,c2email,v2cart,v3lat,v3long,v3email;
     public static String c3email,v3cart,v4lat,v4long,v4email,c4email,v4cart,v5lat,v5long,v5email,c5email,v5cart;
     public static int v1f=0,v2f=0,v3f=0,v4f=0,v5f=0;
@@ -56,12 +53,6 @@ public class AvailableVendors extends AppCompatActivity {
         v3l = findViewById(R.id.v3locate);
         v4l = findViewById(R.id.v4locate);
         v5l = findViewById(R.id.v5locate);
-
-        v1s = findViewById(R.id.v1stop);
-        v2s = findViewById(R.id.v2stop);
-        v3s = findViewById(R.id.v3stop);
-        v4s = findViewById(R.id.v4stop);
-        v5s = findViewById(R.id.v5stop);
 
         Intent intent = getIntent();
         Bundle args = intent.getBundleExtra("list");
@@ -128,7 +119,6 @@ public class AvailableVendors extends AppCompatActivity {
             ve1.setText(n1);
             vec1.setText(v1cart);
             v1l.setVisibility(View.VISIBLE);
-            v1s.setVisibility(View.VISIBLE);
             v1f=1;
         }
         if (count>2)
@@ -138,7 +128,6 @@ public class AvailableVendors extends AppCompatActivity {
             ve2.setText(n2);
             vec2.setText(v2cart);
             v2l.setVisibility(View.VISIBLE);
-            v2s.setVisibility(View.VISIBLE);
             v2f=1;
         }
         if (count>3)
@@ -148,7 +137,6 @@ public class AvailableVendors extends AppCompatActivity {
             ve3.setText(n3);
             vec3.setText(v3cart);
             v3l.setVisibility(View.VISIBLE);
-            v3s.setVisibility(View.VISIBLE);
             v3f=1;
         }
         if (count>4)
@@ -158,7 +146,6 @@ public class AvailableVendors extends AppCompatActivity {
             ve4.setText(n4);
             vec4.setText(v4cart);
             v4l.setVisibility(View.VISIBLE);
-            v4s.setVisibility(View.VISIBLE);
             v4f=1;
         }
         if (count>5)
@@ -168,7 +155,6 @@ public class AvailableVendors extends AppCompatActivity {
             ve5.setText(n5);
             vec5.setText(v5cart);
             v5l.setVisibility(View.VISIBLE);
-            v5s.setVisibility(View.VISIBLE);
             v5f=1;
         }
         if(v1f==0)
@@ -176,41 +162,36 @@ public class AvailableVendors extends AppCompatActivity {
             ve1.setVisibility(View.GONE);
             vec1.setVisibility(View.GONE);
             v1l.setVisibility(View.GONE);
-            v1s.setVisibility(View.GONE);
         }
         if(v2f==0)
         {
             ve2.setVisibility(View.GONE);
             vec2.setVisibility(View.GONE);
             v2l.setVisibility(View.GONE);
-            v2s.setVisibility(View.GONE);
         }
         if(v3f==0)
         {
             ve3.setVisibility(View.GONE);
             vec3.setVisibility(View.GONE);
             v3l.setVisibility(View.GONE);
-            v3s.setVisibility(View.GONE);
         }
         if(v4f==0)
         {
             ve4.setVisibility(View.GONE);
             vec4.setVisibility(View.GONE);
             v4l.setVisibility(View.GONE);
-            v4s.setVisibility(View.GONE);
         }
         if(v5f==0)
         {
             ve5.setVisibility(View.GONE);
             vec5.setVisibility(View.GONE);
             v5l.setVisibility(View.GONE);
-            v5s.setVisibility(View.GONE);
         }
 
         v1l.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent1 = new Intent(android.content.Intent.ACTION_VIEW,Uri.parse("http://maps.google.com/maps?q=" + v1lat + "," + v1long));
+                Intent intent1 = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse("http://maps.google.com/maps?q=" + v1lat + "," + v1long));
                 startActivity(intent1);
             }
         });
@@ -247,87 +228,7 @@ public class AvailableVendors extends AppCompatActivity {
             }
         });
 
-        v1s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> userMap = new HashMap<>();
-                userMap.put("stopped",c1email);
-                if(mno1!=null)
-                    vendors.child(mno1).updateChildren(userMap);
 
-                new SweetAlertDialog(AvailableVendors.this)
-                        .setTitleText("Stop Request Sent Sucessfully")
-                        .show();
-                startService(new Intent(AvailableVendors.this,MyService.class));
-
-            }
-        });
-
-        v2s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> userMap = new HashMap<>();
-                userMap.put("stopped",c1email);
-                if(mno2!=null)
-                    vendors.child(mno2).updateChildren(userMap);
-
-                new SweetAlertDialog(AvailableVendors.this)
-                        .setTitleText("Stop Request Sent Sucessfully")
-                        .show();
-                startService(new Intent(AvailableVendors.this,MyService.class));
-
-            }
-        });
-
-        v3s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> userMap = new HashMap<>();
-                userMap.put("stopped",c1email);
-                if(mno3!=null)
-                    vendors.child(mno3).updateChildren(userMap);
-
-
-                new SweetAlertDialog(AvailableVendors.this)
-                        .setTitleText("Stop Request Sent Sucessfully")
-                        .show();
-                startService(new Intent(AvailableVendors.this,MyService.class));
-
-            }
-        });
-
-        v4s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> userMap = new HashMap<>();
-                userMap.put("stopped",c1email);
-                if(mno4!=null)
-                    vendors.child(mno4).updateChildren(userMap);
-
-
-                new SweetAlertDialog(AvailableVendors.this)
-                        .setTitleText("Stop Request Sent Sucessfully")
-                        .show();
-                startService(new Intent(AvailableVendors.this,MyService.class));
-
-            }
-        });
-
-        v5s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Map<String, Object> userMap = new HashMap<>();
-                userMap.put("stopped",c1email);
-                if(mno5!=null)
-                    vendors.child(mno5).updateChildren(userMap);
-
-
-                new SweetAlertDialog(AvailableVendors.this)
-                        .setTitleText("Stop Request Sent Sucessfully")
-                        .show();
-                startService(new Intent(AvailableVendors.this,MyService.class));
-            }
-        });
         System.out.println("mno1"+mno1+"email:"+c1email);
         System.out.println("mno2"+mno1);
         System.out.println("mno3"+mno1);
