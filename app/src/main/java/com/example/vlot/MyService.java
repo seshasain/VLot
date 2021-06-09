@@ -146,7 +146,7 @@ public class MyService extends Service{
                                         if(innerList.size()>0)
                                         {
                                             allvendorlocations.add(innerList);
-                                            System.out.println("All vendor locations are:"+allvendorlocations.toString());
+                                            //System.out.println("All vendor locations are:"+allvendorlocations.toString());
                                         }
                                     }
                                 }
@@ -159,7 +159,7 @@ public class MyService extends Service{
                         //System.out.println("Length of list:"+allvendorlocations.size());
                         if(allvendorlocations.size()>0)
                         {
-                            System.out.println("Allvendorlocations : "+allvendorlocations.toString()+" Allvendorlocationprevious: "+allvendorlocationsprevious.toString());
+                            //System.out.println("Allvendorlocations : "+allvendorlocations.toString()+" Allvendorlocationprevious: "+allvendorlocationsprevious.toString());
                             if(!allvendorlocations.equals(allvendorlocationsprevious)){
                             createNotification();
                             allvendorlocationsprevious=allvendorlocations;

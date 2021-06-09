@@ -25,7 +25,6 @@
                 android:background="@color/blue"
                 app:subtitleTextColor="@color/white"
                 app:titleTextColor="#111111" />
-
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -58,7 +57,7 @@
                     android:layout_marginEnd="34dp"
                     android:layout_marginRight="34dp"
                     android:gravity="center_horizontal"
-                    android:text="WELCOME\nYAMINI"
+                    android:text="WELCOME\n"
                     android:textAlignment="center"
                     android:textColor="@color/white"
                     android:textSize="25sp"
@@ -75,7 +74,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginStart="23dp"
                     android:layout_marginLeft="23dp"
-                    android:layout_marginTop="112dp"
+                    android:layout_marginTop="45dp"
                     android:layout_marginEnd="17dp"
                     android:layout_marginRight="17dp"
                     android:gravity="center_horizontal"
@@ -95,10 +94,13 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginLeft="6dp"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="-6dp"
+                    android:layout_marginRight="-6dp"
                     android:background="@color/white"
                     android:src="@drawable/veg6" />
-
 
 
             </RelativeLayout>

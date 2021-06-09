@@ -26,10 +26,13 @@
         android:layout_height="63dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="68dp"
+        android:autoSizeTextType="uniform"
         android:text="Welcome to VLOT"
         android:textColor="@color/black"
         android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.105"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 

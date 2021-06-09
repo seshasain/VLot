@@ -36,7 +36,7 @@
             android:layout_marginTop="28dp"
             android:text="TextView"
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="@dimen/_18sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/vendorstvtitle" />
 

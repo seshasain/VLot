@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.location.LocationListener;
+import android.util.ArraySet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,15 +26,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Vegetables extends AppCompatActivity {
 
     Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
     Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
     Button ok,cancel;
-
     public static  String veg,em,rol,mno;
     public int rtype,rt;
     public String mail1;
@@ -41,10 +44,21 @@ public class Vegetables extends AppCompatActivity {
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
-    ArrayList<String> vegies=new ArrayList<>();
+    Set<String> vegies=new HashSet<>();
+    Set<String> previouslyadded;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Currentuserdetails("vegetables");
+        if(veg!=null) {
+            previouslyadded = new HashSet<>(Arrays.asList(veg.split(",")));
+        }
+        if(previouslyadded!=null)
+        {
+            for(String i: previouslyadded) {
+                vegies.add(i);
+            }
+        }
         setContentView(R.layout.activity_vegetables);
         ta=(Button)findViewById(R.id.tomatoadd);
         pa=(Button)findViewById(R.id.potatoadd);
@@ -73,8 +87,10 @@ public class Vegetables extends AppCompatActivity {
         pr.setEnabled(false);bor.setEnabled(false);cur.setEnabled(false);
         car.setEnabled(false);bir.setEnabled(false);dr.setEnabled(false);
         lr.setEnabled(false);gr.setEnabled(false);mr.setEnabled(false);
-
-
+        if(veg==null) {
+            startActivity(new Intent(this, Vegetables.class));
+            finish();
+        }
         ta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -272,9 +288,67 @@ public class Vegetables extends AppCompatActivity {
                 startService(new Intent(Vegetables.this,MyService.class));
             }
         });
-
-
-
+        for (String i:vegies)
+        {
+            if(i.equals("tomato"))
+            {
+                ta.setEnabled(false);
+                tr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("potato"))
+            {
+                pa.setEnabled(false);
+                pr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("bottleguard"))
+            {
+                boa.setEnabled(false);
+                bor.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("bitterguard"))
+            {
+                bia.setEnabled(false);
+                bir.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("drumstick"))
+            {
+                da.setEnabled(false);
+                dr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("ladiesfinger"))
+            {
+                la.setEnabled(false);
+                lr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("gongura"))
+            {
+                ga.setEnabled(false);
+                gr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("mint"))
+            {
+                ma.setEnabled(false);
+                mr.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("cucumber")) {
+                cua.setEnabled(false);
+                cur.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+            if(i.equals("capsicum")) {
+                caa.setEnabled(false);
+                car.setEnabled(true);
+                System.out.println("In for loop modified= "+i);
+            }
+        }
 
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -314,9 +388,7 @@ public class Vegetables extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    System.out.println("hai"+mail1);
                     if (mail1.equals(ds.child("email").getValue(String.class))) {
-                        System.out.println(mail1);
                         if (req.equals("vegetables")) {
                             veg = ds.child("vegetables").getValue(String.class);
                             rt = 1;
@@ -331,14 +403,12 @@ public class Vegetables extends AppCompatActivity {
                         }
                         if (req.equals("role")) {
                             rol = ds.child("role").getValue(String.class);
-                            System.out.println(rol);
                             rt = 3;
                             rtype = 1;
                             break;
                         }
                         if (req.equals("mobilenum")) {
                             mno = ds.child("mobileno").getValue(String.class);
-                            System.out.println(mno);
                             rt = 4;
                             rtype = 1;
                             break;
