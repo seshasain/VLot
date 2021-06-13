@@ -50,10 +50,15 @@ public class MyService extends Service{
     String stopped="";
     String stoppedprevious="";
     Set<List<String>> allvendorlocations = new HashSet();
+    Set<List<String>> allcustomermailsforvendors = new HashSet();
     Set<List<String>> allvendorlocationsprevious = new HashSet();
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
+    public static String latitudec="";
+    public static String longitudec="";
+    public static String vegetablesc="";
+    String namec="";
     public MyService() {
         handler = new Handler();
         test = new Runnable(){
@@ -62,6 +67,7 @@ public class MyService extends Service{
                 gps = new GPSTracker(MyService.this);
                 if (gps.getIsGPSTrackingEnabled())
                 {
+                    System.out.println("Stopped"+stopped);
                     latitude = String.valueOf(gps.latitude);
                     longitude = String.valueOf(gps.longitude);
                     //System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
@@ -129,7 +135,6 @@ public class MyService extends Service{
                                             distance=  distance(Double.parseDouble(latitude),Double.parseDouble(longitude),Double.parseDouble(vlatitude),Double.parseDouble(vlongitude));
                                             if(distance!=-1 && customerpresetdistance!=0)
                                             {
-                                                //System.out.println("distance="+distance);
                                                 if(distance<=customerpresetdistance) {
                                                     innerList.add(vlatitude);
                                                     innerList.add(vlongitude);
@@ -138,9 +143,7 @@ public class MyService extends Service{
                                                     innerList.add(vtemp);
                                                     innerList.add(name);
                                                     innerList.add(number);
-                                                    //System.out.println("Location To Be Shown: " +vlatitude+","+vlongitude);
-                                                    //startActivity(new Intent(MyService.this,MainActivity.class));
-                                                }
+                                                    }
                                             }
                                         }
                                         if(innerList.size()>0)
@@ -151,7 +154,6 @@ public class MyService extends Service{
                                     }
                                 }
                             }
-
                             @Override
                             public void onCancelled(@NonNull DatabaseError error) {
                             }
@@ -168,11 +170,44 @@ public class MyService extends Service{
                     }
                     else if(rol!=null && rol.equals("Vendor"))
                     {
-                        //System.out.println("Else block and stopped: "+stopped);
-                        if(stopped!="" && stopped!=null)
-                        {
-                            createNotificationvendor();
-                            stoppedprevious=stopped;
+                        if(stopped!="" && stopped!=null && !stopped.equals(stoppedprevious)) {
+                            for (String i : stopped.split(",")) {
+
+                                System.out.println("Cheching for "+i);
+                                customers.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                            List<String> innerList=new ArrayList<>();
+                                            if (i.equals(ds.child("email").getValue())) {
+                                                latitudec= ds.child("latitude").getValue(String.class);
+                                                longitudec= ds.child("longitude").getValue(String.class);
+                                                namec= ds.child("name").getValue(String.class);
+                                                vegetablesc=ds.child("vegetables").getValue(String.class);
+
+                                            }
+                                            if(latitudec!="" && longitudec!="" && namec!="" && vegetablesc!="")
+                                            {
+                                                innerList.add(latitudec);
+                                                innerList.add(longitudec);
+                                                innerList.add(namec);
+                                                innerList.add(vegetablesc);
+                                                if(innerList.size()>0){
+                                                    allcustomermailsforvendors.add(innerList);
+                                                }
+                                            }
+                                        }
+                                    }
+                                    @Override
+                                    public synchronized void onCancelled(@NonNull DatabaseError error) {
+                                    }
+                                });
+                                //System.out.println("Innerlist to be added "+innerList.toString());
+                            }
+                            if(allcustomermailsforvendors.size()>0) {
+                                createNotificationvendor();
+                                stoppedprevious = stopped;
+                            }
                         }
                     }
                 }
@@ -238,7 +273,6 @@ public class MyService extends Service{
             public synchronized void onCancelled(@NonNull DatabaseError error) {
             }
         });
-
         if (rtype == 0) {
             vuserref.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -365,13 +399,14 @@ public class MyService extends Service{
     }
     public void createNotificationvendor()
     {
+        System.out.println("In Vendor's notification with available customer details "+allcustomermailsforvendors.toString());
         final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 1009;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String id = "Order Alert";
             Bundle args = new Bundle();
-            args.putSerializable("ARRAYLIST",(Serializable)allvendorlocations);
+            args.putSerializable("ARRAYLIST",(Serializable) allcustomermailsforvendors);
             PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
-                    new Intent(getApplicationContext(), AvailableVendors.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+                    new Intent(getApplicationContext(), AvailableCustomers.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
@@ -390,6 +425,7 @@ public class MyService extends Service{
                 mNotificationManager.createNotificationChannel(mChannel);
                 mNotificationManager.notify(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
             }
+            //allcustomermailsforvendors.clear();
         }
     }
 }

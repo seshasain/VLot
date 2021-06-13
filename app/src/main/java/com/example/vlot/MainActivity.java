@@ -106,6 +106,8 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
                                     userMap.put("distance","1");
+                                    userMap.put("vegetables","");
+
                                     customers.child(number.getText().toString()).setValue(userMap);
                                 }
                                 else
@@ -116,6 +118,7 @@ MainActivity extends AppCompatActivity {
                                     userMap.put("password",passwd.getText().toString());
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
+                                    userMap.put("vegetables","");
                                     vendors.child(number.getText().toString()).setValue(userMap);
                                 }
                                 Intent I = new Intent(MainActivity.this, Home.class);

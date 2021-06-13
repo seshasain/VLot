@@ -201,7 +201,7 @@ public class Home extends AppCompatActivity {
                         finish();
                         break;
                     case  R.id.nav_location:
-                        Intent loc = new Intent(Home.this,AvailableCustomers.class);
+                        Intent loc = new Intent(Home.this,AvailableVendors.class);
                         startActivity(loc);
                         break;
 
