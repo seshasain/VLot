@@ -17,9 +17,11 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,7 @@ public class Home extends AppCompatActivity {
     NavigationView navigationView;
     FirebaseAuth Auth;
     String name;
+    ImageView chimg;
     private static final int PERMISSIONS_REQUEST = 100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,8 @@ public class Home extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mail=user.getEmail();
         hcart=findViewById(R.id.homecart);
+        chimg=findViewById(R.id.img);
+        veg1=findViewById(R.id.veg);
 
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
         cuserref = rootref.child(cusers);
@@ -71,6 +76,34 @@ public class Home extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
         vuserref= database.getReference(vusers);
+        int[] imgarr={R.drawable.sc0, R.drawable.s5,R.drawable.sc2,R.drawable.pushing};
+
+        veg1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent vegint= new Intent(Home.this,Vegetables.class);
+                startActivity(vegint);
+            }
+
+        });
+
+
+        Handler handler=new Handler();
+        Runnable r=new Runnable() {
+            int i=0;
+            @Override
+            public void run() {
+                chimg.setImageResource(imgarr[i]);
+                i++;
+                if(i>=imgarr.length)
+                {
+                    i=0;
+                }
+                handler.postDelayed(this,2000);
+            }
+        };
+        handler.postDelayed(r,2000);
+
 
         cuserref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -116,18 +149,10 @@ public class Home extends AppCompatActivity {
             });
         }
 
-        veg1=(ImageButton)findViewById(R.id.veg);
+
         //fru1=(ImageButton)findViewById(R.id.fru);
         //dai1=(ImageButton)findViewById(R.id.dai);
-        veg1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent2 = new Intent(Home.this,Vegetables.class);
-                startActivity(intent2);
-            }
-
-        });
-        hcart.setOnClickListener(new View.OnClickListener() {
+                hcart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(Home.this,Cart.class);
@@ -200,10 +225,16 @@ public class Home extends AppCompatActivity {
                         startActivity(intent1);
                         finish();
                         break;
-                    case  R.id.nav_location:
-                        Intent loc = new Intent(Home.this,AvailableVendors.class);
-                        startActivity(loc);
-                        break;
+                    /*case  R.id.nav_location:
+                        if (flag==1) {
+                            Intent loc = new Intent(Home.this,AvailableVendors.class);
+                            startActivity(loc);
+                        }
+                        else{
+                            Intent loc = new Intent(Home.this, AvailableCustomers.class);
+                            startActivity(loc);
+                        }
+                        break;*/
 
                 }
                 return false;

@@ -46,6 +46,7 @@
             android:layout_marginTop="88dp"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="Remove"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/tomatoadd"
@@ -117,6 +118,7 @@
             android:layout_marginTop="44dp"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="remove"
+
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/potatoadd"
@@ -522,6 +524,7 @@
             android:layout_marginTop="48dp"
             android:backgroundTint="@android:color/holo_green_dark"
             android:text="OK"
+            android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mintadd" />
 
@@ -534,6 +537,7 @@
             android:layout_marginTop="48dp"
             android:backgroundTint="@android:color/holo_red_dark"
             android:text="cancel"
+            android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/ok_button"
             app:layout_constraintTop_toBottomOf="@+id/mintadd" />
 

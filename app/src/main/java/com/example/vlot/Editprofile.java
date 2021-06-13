@@ -134,7 +134,7 @@ public class Editprofile extends AppCompatActivity {
                 if(prole.equals("Customer"))
                 {
                     int dist=Integer.parseInt(setdist);
-                      if(dist>500 && dist<=5000)
+                      if(dist>0 && dist<=100)
                       {
                           customers.child(mno).updateChildren(userMapn);
                           customers.child(mno).updateChildren(userMapp);
