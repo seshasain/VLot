@@ -5,6 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.app.admin.SystemUpdatePolicy;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
@@ -67,7 +68,6 @@ public class MyService extends Service{
                 gps = new GPSTracker(MyService.this);
                 if (gps.getIsGPSTrackingEnabled())
                 {
-                    System.out.println("Stopped"+stopped);
                     latitude = String.valueOf(gps.latitude);
                     longitude = String.valueOf(gps.longitude);
                     //System.out.println("Latitude:"+latitude+"Longitude:"+longitude);
@@ -161,7 +161,7 @@ public class MyService extends Service{
                         //System.out.println("Length of list:"+allvendorlocations.size());
                         if(allvendorlocations.size()>0)
                         {
-                            //System.out.println("Allvendorlocations : "+allvendorlocations.toString()+" Allvendorlocationprevious: "+allvendorlocationsprevious.toString());
+                            System.out.println("Allvendorlocations : "+allvendorlocations.toString()+" Allvendorlocationprevious: "+allvendorlocationsprevious.toString());
                             if(!allvendorlocations.equals(allvendorlocationsprevious)){
                             createNotification();
                             allvendorlocationsprevious=allvendorlocations;
@@ -170,29 +170,30 @@ public class MyService extends Service{
                     }
                     else if(rol!=null && rol.equals("Vendor"))
                     {
-                        if(stopped!="" && stopped!=null && !stopped.equals(stoppedprevious)) {
+                        if((stopped!="" && stopped!=null && !stopped.equals(stoppedprevious))) {
                             for (String i : stopped.split(",")) {
-
-                                System.out.println("Cheching for "+i);
+                                //System.out.println("Checking for "+i);
                                 customers.addValueEventListener(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                         //latitudec="",longitudec="",namec="",vegetablesc="";
                                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                            List<String> innerList=new ArrayList<>();
+                                            List<String> innerList = new ArrayList<>();
                                             if (i.equals(ds.child("email").getValue())) {
-                                                latitudec= ds.child("latitude").getValue(String.class);
-                                                longitudec= ds.child("longitude").getValue(String.class);
-                                                namec= ds.child("name").getValue(String.class);
-                                                vegetablesc=ds.child("vegetables").getValue(String.class);
-
-                                            }
-                                            if(latitudec!="" && longitudec!="" && namec!="" && vegetablesc!="")
-                                            {
-                                                innerList.add(latitudec);
-                                                innerList.add(longitudec);
-                                                innerList.add(namec);
-                                                innerList.add(vegetablesc);
-                                                if(innerList.size()>0){
+                                                System.out.println("Found data for email: "+i);
+                                                String latitudec = ds.child("latitude").getValue(String.class);
+                                                String longitudec = ds.child("longitude").getValue(String.class);
+                                                String namec = ds.child("name").getValue(String.class);
+                                                String vegetablesc = ds.child("vegetables").getValue(String.class);
+                                                if (latitudec != null && longitudec != null && namec != null && vegetablesc != null) {
+                                                    innerList.add(latitudec);
+                                                    innerList.add(longitudec);
+                                                    innerList.add(namec);
+                                                    innerList.add(vegetablesc);
+                                                }
+                                                //System.out.println("Values are: "+"latitudec:"+latitudec+" longitudec:"+longitudec+" namec:"+namec+" vegetablesc:"+vegetablesc);
+                                                //System.out.println("innerlist for :"+i+" is "+innerList.toString());
+                                                if (innerList.size() > 0) {
                                                     allcustomermailsforvendors.add(innerList);
                                                 }
                                             }
@@ -384,6 +385,7 @@ public class MyService extends Service{
             Notification notification = new Notification.Builder(getApplicationContext(), id)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setOngoing(false)
+                    .setAutoCancel(true)
                     .setContentIntent(contentIntent)
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setContentTitle("Orders available")
@@ -414,6 +416,7 @@ public class MyService extends Service{
             Notification notification = new Notification.Builder(getApplicationContext(), id)
                     .setSmallIcon(R.mipmap.ic_launcher)
                     .setOngoing(false)
+                    .setAutoCancel(true)
                     .setContentIntent(contentIntent)
                     .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setContentTitle("Customers Available")

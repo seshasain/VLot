@@ -3,8 +3,10 @@ package com.example.vlot;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -18,6 +20,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
@@ -71,7 +75,10 @@ public class Home extends AppCompatActivity {
         DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
         cuserref = rootref.child(cusers);
         vuserref=rootref.child(vusers);
-
+        if(!canGetLocation(getApplicationContext()))
+        {
+            startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS));
+        }
         pname = findViewById(R.id.txt);
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
@@ -242,6 +249,26 @@ public class Home extends AppCompatActivity {
         });
 
 
+    }
+    public static boolean canGetLocation(Context context) {
+        return isLocationEnabled(context); // application context
+    }
+
+    public static boolean isLocationEnabled(Context context) {
+        int locationMode = 0;
+        String locationProviders;
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            try {
+                locationMode = Settings.Secure.getInt(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+            } catch (Settings.SettingNotFoundException e) {
+                e.printStackTrace();
+            }
+            return locationMode != Settings.Secure.LOCATION_MODE_OFF;
+        } else {
+            locationProviders = Settings.Secure.getString(context.getContentResolver(), Settings.Secure.LOCATION_MODE);
+            return !TextUtils.isEmpty(locationProviders);
+        }
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[]

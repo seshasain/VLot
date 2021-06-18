@@ -40,7 +40,6 @@ public class Vegetables extends AppCompatActivity {
     public static  String veg,em,rol,mno;
     public int rtype,rt;
     public String mail1;
-
     private FirebaseDatabase db=FirebaseDatabase.getInstance();
     private DatabaseReference customers=db.getReference().child("customers");
     private DatabaseReference vendors=db.getReference().child("vendors");
@@ -271,6 +270,7 @@ public class Vegetables extends AppCompatActivity {
                 String temp="";
                 for (String i:vegies)
                 {
+                    if(!i.equals(""))
                     temp+=i+",";
                 }
                 Map<String, Object> userMap = new HashMap<>();
