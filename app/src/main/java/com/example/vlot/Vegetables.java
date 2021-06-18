@@ -1,5 +1,4 @@
 package com.example.vlot;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,9 +30,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
-
 public class Vegetables extends AppCompatActivity {
-
     Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
     Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
     Button ok,cancel;
