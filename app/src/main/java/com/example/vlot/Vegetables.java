@@ -31,8 +31,8 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 public class Vegetables extends AppCompatActivity {
-    Button ta,pa,boa,cua,caa,bia,da,la,ga,ma;
-    Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr;
+    Button ta,pa,boa,cua,caa,bia,da,la,ga,ma,cla,meta;
+    Button tr,pr,bor,cur,car,bir,dr,lr,gr,mr,clr,metr;
     Button ok,cancel;
     public static  String veg,em,rol,mno;
     public int rtype,rt;
@@ -66,6 +66,8 @@ public class Vegetables extends AppCompatActivity {
         la=(Button)findViewById(R.id.ladiesfingeradd);
         ga=(Button)findViewById(R.id.gounguraadd);
         ma=(Button)findViewById(R.id.mintadd);
+        cla=(Button)findViewById(R.id.cleavesadd);
+        meta=(Button)findViewById(R.id.methiadd);
 
         tr=(Button)findViewById(R.id.tomatoremove);
         pr=(Button)findViewById(R.id.potatoremove);
@@ -76,6 +78,8 @@ public class Vegetables extends AppCompatActivity {
         dr=(Button)findViewById(R.id.drumstickremove);
         lr=(Button)findViewById(R.id.ladiesfingerremove);
         gr=(Button)findViewById(R.id.gounguraremove);
+        clr=(Button)findViewById(R.id.cleavesremove);
+        metr=(Button)findViewById(R.id.methiremove);
         mr=(Button)findViewById(R.id.mintremove);
         ok=(Button)findViewById(R.id.ok_button);
         cancel=(Button)findViewById(R.id.cancel);
@@ -87,6 +91,24 @@ public class Vegetables extends AppCompatActivity {
             startActivity(new Intent(this, Vegetables.class));
             finish();
         }
+        cla.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cla.setEnabled(false);
+                clr.setEnabled(true);
+                if (!vegies.contains("coriander leaves"))
+                    vegies.add("coriander leaves");
+            }
+        });
+        meta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meta.setEnabled(false);
+                metr.setEnabled(true);
+                if (!vegies.contains("methi"))
+                    vegies.add("methi");
+            }
+        });
         ta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -184,6 +206,22 @@ public class Vegetables extends AppCompatActivity {
                 ta.setEnabled(true);
                 tr.setEnabled(false);
                 vegies.remove("tomato");
+            }
+        });
+        clr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cla.setEnabled(true);
+                clr.setEnabled(false);
+                vegies.remove("coriander leaves");
+            }
+        });
+        metr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                meta.setEnabled(true);
+                metr.setEnabled(false);
+                vegies.remove("methi");
             }
         });
         pr.setOnClickListener(new View.OnClickListener() {
