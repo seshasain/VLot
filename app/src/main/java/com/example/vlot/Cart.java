@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Map;
 import java.util.HashMap;
-import android.media.Image;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,9 +24,9 @@ import java.util.ArrayList;
 
 public class Cart extends AppCompatActivity {
 
-    TextView tom,pot,bot,cucu,cap,bit,drum,lad,gon,mint;
-    ImageView itom,ipot,ibot,icucu,icap,ibit,idrum,ilad,igon,imint;
-    Button rtom,rpot,rbot,rcucu,rcap,rbit,rdrum,rlad,rgon,rmint;
+    TextView tom,pot,bot,cucu,cap,bit,drum,lad,gon,mint,tvcl,tvmt;
+    ImageView itom,ipot,ibot,icucu,icap,ibit,idrum,ilad,igon,imint,icl,imt;
+    Button rtom,rpot,rbot,rcucu,rcap,rbit,rdrum,rlad,rgon,rmint,bcl,bmt;
 
     public String mail;
     int flag=0;
@@ -76,6 +76,8 @@ public class Cart extends AppCompatActivity {
         ilad=findViewById(R.id.ladiesfinger);
         igon=findViewById(R.id.gongura);
         imint=findViewById(R.id.mint);
+        icl=findViewById(R.id.corimg);
+        imt=findViewById(R.id.mimg);
 
 
         tom=findViewById(R.id.tomatoctv);
@@ -88,6 +90,8 @@ public class Cart extends AppCompatActivity {
         lad=findViewById(R.id.ladiesfingerctv);
         gon=findViewById(R.id.gonguractv);
         mint=findViewById(R.id.mintctv);
+        tvcl=findViewById(R.id.cortv);
+        tvmt=findViewById(R.id.mtv);
 
         rtom=findViewById(R.id.tomator);
         rpot=findViewById(R.id.potator);
@@ -99,9 +103,8 @@ public class Cart extends AppCompatActivity {
         rlad=findViewById(R.id.ladiesfingerr);
         rgon=findViewById(R.id.gongurar);
         rmint=findViewById(R.id.mintr);
-
-
-
+        bmt=findViewById(R.id.mebtn);
+        bcl=findViewById(R.id.corbtn);
 
         cuserref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -327,11 +330,47 @@ public class Cart extends AppCompatActivity {
             }
         });
 
+        bcl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                veg1=veg1.replace("coriander leaves,","");
+                veg1=veg1.replace("coriander leaves","");
+                Map<String,Object> userMpad=new HashMap<>();
+                userMpad.put("vegetables",veg1);
+                if(flag==0)
+                {
+                    vuserref.child(ph).updateChildren(userMpad);
+                }
+                if(flag==1)
+                {
+                    cuserref.child(ph).updateChildren(userMpad);
+                }
+            }
+        });
+
+        bmt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                veg1=veg1.replace("methi,","");
+                veg1=veg1.replace("methi","");
+                Map<String,Object> userMpad=new HashMap<>();
+                userMpad.put("vegetables",veg1);
+                if(flag==0)
+                {
+                    vuserref.child(ph).updateChildren(userMpad);
+                }
+                if(flag==1)
+                {
+                    cuserref.child(ph).updateChildren(userMpad);
+                }
+            }
+        });
+
     }
 
     public void displaycart(String veg)
     {
-        int to=0,po=0,bg=0,cu=0,ca=0,bi=0,dr=0,la=0,g=0,mi=0,f=0;
+        int to=0,po=0,bg=0,cu=0,ca=0,bi=0,dr=0,la=0,g=0,mi=0,f=0,ci=0,me=0;
             custveg = veg.split(",");
             for(int i=0;i<custveg.length;i++)
             {
@@ -415,6 +454,22 @@ public class Cart extends AppCompatActivity {
                     mint.setVisibility(View.VISIBLE);
                     rmint.setVisibility(View.VISIBLE);
                 }
+                else if(custveg[i].equals("coriander leaves"))
+                {
+                    ci=1;
+                    f=1;
+                    icl.setVisibility(View.VISIBLE);
+                    tvcl.setVisibility(View.VISIBLE);
+                    bcl.setVisibility(View.VISIBLE);
+                }
+                else if(custveg[i].equals("methi"))
+                {
+                    me=1;
+                    f=1;
+                    imt.setVisibility(View.VISIBLE);
+                    tvmt.setVisibility(View.VISIBLE);
+                    bmt.setVisibility(View.VISIBLE);
+                }
             }
             if(to==0)
             {
@@ -475,6 +530,18 @@ public class Cart extends AppCompatActivity {
             imint.setVisibility(View.GONE);
             mint.setVisibility(View.GONE);
             rmint.setVisibility(View.GONE);
+        }
+        if(ci==0)
+        {
+            icl.setVisibility(View.GONE);
+            tvcl.setVisibility(View.GONE);
+            bcl.setVisibility(View.GONE);
+        }
+        if(me==0)
+        {
+            imt.setVisibility(View.GONE);
+            tvmt.setVisibility(View.GONE);
+            bmt.setVisibility(View.GONE);
         }
         }
     }

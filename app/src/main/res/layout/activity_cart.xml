@@ -25,16 +25,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageView
-        android:id="@+id/tomato"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        app:srcCompat="@drawable/tomato" />
+        <ImageView
+            android:id="@+id/tomato"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:srcCompat="@drawable/tomato" />
 
         <TextView
             android:id="@+id/tomatoctv"
@@ -62,15 +62,15 @@
             app:layout_constraintTop_toBottomOf="@id/tomatoctv" />
 
         <ImageView
-        android:id="@+id/potato"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tomato"
-        app:srcCompat="@drawable/potatoes" />
+            android:id="@+id/potato"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tomato"
+            app:srcCompat="@drawable/potatoes" />
 
         <TextView
             android:id="@+id/potatoctv"
@@ -99,15 +99,15 @@
 
 
         <ImageView
-        android:id="@+id/bottleguard"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/potato"
-        app:srcCompat="@drawable/bottlegourd" />
+            android:id="@+id/bottleguard"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/potato"
+            app:srcCompat="@drawable/bottlegourd" />
 
         <TextView
             android:id="@+id/bguardctv"
@@ -136,15 +136,15 @@
 
 
         <ImageView
-        android:id="@+id/cucumber"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bottleguard"
-        app:srcCompat="@drawable/cucumber" />
+            android:id="@+id/cucumber"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bottleguard"
+            app:srcCompat="@drawable/cucumber" />
 
         <TextView
             android:id="@+id/cucuctv"
@@ -172,15 +172,15 @@
             app:layout_constraintTop_toBottomOf="@id/cucuctv" />
 
         <ImageView
-        android:id="@+id/capsicum"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cucumber"
-        app:srcCompat="@drawable/capsicum" />
+            android:id="@+id/capsicum"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cucumber"
+            app:srcCompat="@drawable/capsicum" />
 
         <TextView
             android:id="@+id/capsicumctv"
@@ -208,15 +208,15 @@
             app:layout_constraintTop_toBottomOf="@id/capsicumctv" />
 
         <ImageView
-        android:id="@+id/bitterguard"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/capsicum"
-        app:srcCompat="@drawable/bittergourd" />
+            android:id="@+id/bitterguard"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/capsicum"
+            app:srcCompat="@drawable/bittergourd" />
 
         <TextView
             android:id="@+id/bitterguardctv"
@@ -244,15 +244,15 @@
 
 
         <ImageView
-        android:id="@+id/drumstick"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bitterguard"
-        app:srcCompat="@drawable/drumstick" />
+            android:id="@+id/drumstick"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bitterguard"
+            app:srcCompat="@drawable/drumstick" />
 
         <TextView
             android:id="@+id/drumstickctv"
@@ -279,15 +279,15 @@
             app:layout_constraintTop_toBottomOf="@id/drumstickctv" />
 
         <ImageView
-        android:id="@+id/ladiesfinger"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/drumstick"
-        app:srcCompat="@drawable/ladiesfinger" />
+            android:id="@+id/ladiesfinger"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/drumstick"
+            app:srcCompat="@drawable/ladiesfinger" />
 
         <TextView
             android:id="@+id/ladiesfingerctv"
@@ -314,15 +314,15 @@
             app:layout_constraintTop_toBottomOf="@id/ladiesfingerctv" />
 
         <ImageView
-        android:id="@+id/gongura"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ladiesfinger"
-        app:srcCompat="@drawable/gongura" />
+            android:id="@+id/gongura"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ladiesfinger"
+            app:srcCompat="@drawable/gongura" />
 
         <TextView
             android:id="@+id/gonguractv"
@@ -350,15 +350,17 @@
             app:layout_constraintTop_toBottomOf="@id/gonguractv" />
 
         <ImageView
-        android:id="@+id/mint"
-        android:layout_width="100dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gongura"
-        app:srcCompat="@drawable/freshmintpudina" />
+            android:id="@+id/mint"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.006"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gongura"
+            app:srcCompat="@drawable/freshmintpudina" />
 
         <TextView
             android:id="@+id/mintctv"
@@ -384,6 +386,82 @@
             android:text="remove"
             app:layout_constraintStart_toEndOf="@+id/mint"
             app:layout_constraintTop_toBottomOf="@id/mintctv" />
+
+        <ImageView
+            android:id="@+id/corimg"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.006"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mint"
+            app:srcCompat="@drawable/corianderleaves" />
+
+        <TextView
+            android:id="@+id/cortv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Coriander leaves"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/corimg"
+            app:layout_constraintTop_toBottomOf="@+id/mintr" />
+
+        <Button
+            android:id="@+id/corbtn"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintStart_toEndOf="@+id/corimg"
+            app:layout_constraintTop_toBottomOf="@+id/cortv" />
+
+        <ImageView
+            android:id="@+id/mimg"
+            android:layout_width="100dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.006"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/corimg"
+            app:srcCompat="@drawable/methi" />
+
+        <TextView
+            android:id="@+id/mtv"
+            android:layout_width="169dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:text="Methi"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/mimg"
+            app:layout_constraintTop_toBottomOf="@+id/corbtn" />
+
+        <Button
+            android:id="@+id/mebtn"
+            android:layout_width="94dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:text="Remove"
+            app:layout_constraintStart_toEndOf="@+id/mimg"
+            app:layout_constraintTop_toBottomOf="@+id/mtv" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
