@@ -83,8 +83,8 @@
 
         <TextView
             android:id="@+id/TVSignIn"
-            android:layout_width="237dp"
-            android:layout_height="33dp"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
             android:layout_marginTop="32dp"
             android:text="Already have an account?"
             android:textColor="@color/black"
@@ -139,13 +139,11 @@
         <TextView
             android:id="@+id/singup"
             android:layout_width="76dp"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_marginTop="32dp"
             android:text="Login"
             android:textColor="@color/blue"
             android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/TVSignIn"
             app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
