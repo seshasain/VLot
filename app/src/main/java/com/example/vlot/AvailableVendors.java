@@ -1,17 +1,23 @@
 package com.example.vlot;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.net.Uri;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -30,6 +36,7 @@ public class AvailableVendors extends AppCompatActivity {
     public static String c3email,v3cart,v4lat,v4long,v4email,c4email,v4cart,v5lat,v5long,v5email,c5email,v5cart;
     public static String v6lat,v6long,v6email,c6email,v6cart,v7lat,v7long,v7email,c7email,v7cart,v8lat,v8long,v8email;
     public static String c8email,v8cart,v9lat,v9long,v9email,c9email,v9cart,v10lat,v10long,v10email,c10email,v10cart;
+    public static String previousstopped;
     public static int v1f=0,v2f=0,v3f=0,v4f=0,v5f=0,v6f=0,v7f=0,v8f=0,v9f=0,v10f=0;
     public static int count = 1;
     int flag1=0,flag2=0,flag3=0,flag4=0,flag5=0,flag6=0,flag7=0,flag8=0,flag9=0,flag10=0;
@@ -41,6 +48,8 @@ public class AvailableVendors extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_available_vendors);
+
+
 
         ve1 = findViewById(R.id.v1);
         ve2 = findViewById(R.id.v2);
@@ -448,249 +457,736 @@ public class AvailableVendors extends AppCompatActivity {
             }
         });
 
-
         v1s.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (v1s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno1 != null)
-                        vendors.child(mno1).updateChildren(userMap);
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
                     new SweetAlertDialog(AvailableVendors.this)
                             .setTitleText("Stop Request Sent Sucessfully")
                             .show();
                     startService(new Intent(AvailableVendors.this, MyService.class));
                     v1s.setText("Don't Stop");
                 }
-                if(v1s.getText().equals("Don't Stop"))
+                else if (v1s.getText().equals("Don't Stop"))
                 {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
                     //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
+                    v1s.setText("Stop");
+                }
+
+            }
+        });
+        v1s.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (v1s.getText().equals("Stop")) {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    previousstopped=previousstopped.replace(","+c1email, "");
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    if(previousstopped.equals(""))
+                                        userMap.put("stopped",c1email);
+                                    else
+                                        userMap.put("stopped", previousstopped+","+c1email);
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    new SweetAlertDialog(AvailableVendors.this)
+                            .setTitleText("Stop Request Sent Sucessfully")
+                            .show();
+                    startService(new Intent(AvailableVendors.this, MyService.class));
+                    v1s.setText("Don't Stop");
+                }
+                else if (v1s.getText().equals("Don't Stop"))
+                {
+                    vendors.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                if (mno1.equals(ds.child("mobileno").getValue()) && previousstopped==null) {
+                                    previousstopped = ds.child("stopped").getValue(String.class);
+                                    System.out.println("value of previousstopped: "+previousstopped);
+                                }
+                                //System.out.println("value of previousstopped: "+previousstopped);
+                                System.out.println("c1email: "+c1email);
+                                if (mno1 != null && previousstopped!=null) {
+                                    Map<String, Object> userMap = new HashMap<>();
+                                    previousstopped=previousstopped.replace(c1email, "");
+                                    previousstopped=previousstopped.replace(c1email + ",", "");
+                                    userMap.put("stopped", previousstopped.replace("," + c1email, ""));
+                                    vendors.child(mno1).updateChildren(userMap);
+                                }
+                                vendors.removeEventListener(this);
+                            }
+                        }
+                        @Override
+                        public synchronized void onCancelled(@NonNull DatabaseError error) {
+                        }
+                    });
+                    //add code here
+
                     v1s.setText("Stop");
                 }
 
             }
         });
 
-        v2s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v2s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno2 != null)
-                        vendors.child(mno2).updateChildren(userMap);
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v2s.setText("Don't Stop");
-                }
-                if (v2s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v2s.setText("Stop");
-                }
-
-            }
-        });
-
-        v3s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v3s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno3 != null)
-                        vendors.child(mno3).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v3s.setText("Don't Stop");
-                }
-                if (v3s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v3s.setText("Stop");
-                }
-
-            }
-        });
-
-        v4s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v4s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno4 != null)
-                        vendors.child(mno4).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v4s.setText("Don't Stop");
-                }
-                if(v4s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v4s.setText("Stop");
-                }
-
-            }
-        });
-
-        v5s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v5s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno5 != null)
-                        vendors.child(mno5).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v5s.setText("Don't Stop");
-                }
-                if(v5s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v5s.setText("Stop");
-                }
-            }
-        });
-
-        v6s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v6s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno6 != null)
-                        vendors.child(mno6).updateChildren(userMap);
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v6s.setText("Don't Stop");
-                }
-                if(v6s.getText().equals("Don't Stop"))
-                {
-                    //add code here
-                    v6s.setText("Stop");
-                }
-
-            }
-        });
-
-        v7s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v7s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno7 != null)
-                        vendors.child(mno7).updateChildren(userMap);
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v7s.setText("Don't Stop");
-                }
-                if (v7s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v7s.setText("Stop");
-                }
-
-            }
-        });
-
-        v8s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v8s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno8 != null)
-                        vendors.child(mno8).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v8s.setText("Don't Stop");
-                }
-                if (v8s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v8s.setText("Stop");
-                }
-
-            }
-        });
-
-        v9s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v9s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno9 != null)
-                        vendors.child(mno9).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v9s.setText("Don't Stop");
-                }
-                if(v9s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v9s.setText("Stop");
-                }
-
-            }
-        });
-
-        v10s.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(v10s.getText().equals("Stop")) {
-                    Map<String, Object> userMap = new HashMap<>();
-                    userMap.put("stopped", c1email);
-                    if (mno10 != null)
-                        vendors.child(mno10).updateChildren(userMap);
-
-
-                    new SweetAlertDialog(AvailableVendors.this)
-                            .setTitleText("Stop Request Sent Sucessfully")
-                            .show();
-                    startService(new Intent(AvailableVendors.this, MyService.class));
-                    v10s.setText("Don't Stop");
-                }
-                if(v10s.getText().equals("Don't Stop"))
-                {
-                    //add code
-                    v10s.setText("Stop");
-                }
-            }
-        });
-    }
+        }
 }
