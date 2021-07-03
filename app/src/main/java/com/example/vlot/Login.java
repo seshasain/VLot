@@ -21,7 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class Login extends AppCompatActivity {
     public EditText loginEmailId, logInpasswd;
     Button btnLogIn;
-    TextView signup;
+    TextView signup,lin;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth.AuthStateListener authStateListener;
 
@@ -34,6 +34,7 @@ public class Login extends AppCompatActivity {
         loginEmailId = findViewById(R.id.loginEmail);
         logInpasswd = findViewById(R.id.loginpaswd);
         btnLogIn = findViewById(R.id.login);
+        lin=findViewById(R.id.textView);
         signup = findViewById(R.id.btnsignup);
         authStateListener = new FirebaseAuth.AuthStateListener() {
             @Override
@@ -85,8 +86,17 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+        lin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent I = new Intent(Login.this, ForgotPassword.class);
+                startActivity(I);
+                finish();
+            }
+        });
 
     }
+
     @Override
     protected void onStart() {
         super.onStart();

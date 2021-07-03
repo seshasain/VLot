@@ -84,6 +84,8 @@ public class Vegetables extends AppCompatActivity {
         ok=(Button)findViewById(R.id.ok_button);
         cancel=(Button)findViewById(R.id.cancel);
         tr.setEnabled(false);
+        clr.setEnabled(false);
+        metr.setEnabled(false);
         pr.setEnabled(false);bor.setEnabled(false);cur.setEnabled(false);
         car.setEnabled(false);bir.setEnabled(false);dr.setEnabled(false);
         lr.setEnabled(false);gr.setEnabled(false);mr.setEnabled(false);

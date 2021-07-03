@@ -15,7 +15,6 @@
             android:layout_width="411dp"
             android:layout_height="84dp"
             android:background="@drawable/headingbackground"
-            android:gravity="center_vertical"
             android:text="Sign Up"
             android:textAlignment="center"
             android:textColor="@color/white"
