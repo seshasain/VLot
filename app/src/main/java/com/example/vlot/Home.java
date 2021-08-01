@@ -229,6 +229,7 @@ public class Home extends AppCompatActivity {
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent1 = new Intent(Home.this,Login.class);
+                        stopService(new Intent(Home.this,MyService.class));
                         startActivity(intent1);
                         finish();
                         break;

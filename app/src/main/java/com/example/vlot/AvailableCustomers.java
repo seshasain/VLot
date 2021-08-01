@@ -80,79 +80,109 @@ public class AvailableCustomers extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("list");
         Set<List<String>> receivedvalues = (Set<List<String>>) args.getSerializable("ARRAYLIST");
         for (List<String> x : receivedvalues) {
+            System.out.println("traversing: "+x.toString());
             if(count==1)
             {
-                v1lat=x.get(0);
-                v1long=x.get(1);
-                n1=x.get(2);
-                v1cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v1lat = x.get(0);
+                    v1long = x.get(1);
+                    n1 = x.get(2);
+                    v1cart = x.get(3);
+                    count++;
+                }
             }
             if(count==2)
             {
-                v2lat=x.get(0);
-                v2long=x.get(1);
-                n2=x.get(2);
-                v2cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v2lat = x.get(0);
+                    v2long = x.get(1);
+                    n2 = x.get(2);
+                    v2cart = x.get(3);
+                    count++;
+                }
             }
             if(count==3)
             {
-                v3lat=x.get(0);
-                v3long=x.get(1);
-                n3=x.get(2);
-                v3cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v3lat = x.get(0);
+                    v3long = x.get(1);
+                    n3 = x.get(2);
+                    v3cart = x.get(3);
+                    count++;
+                }
             }
             if(count==4)
             {
-                v4lat=x.get(0);
-                v4long=x.get(1);
-                n4=x.get(2);
-                v4cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v4lat = x.get(0);
+                    v4long = x.get(1);
+                    n4 = x.get(2);
+                    v4cart = x.get(3);
+                    count++;
+                }
             }
             if(count==5)
             {
-                v5lat=x.get(0);
-                v5long=x.get(1);
-                n5=x.get(2);
-                v5cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v5lat = x.get(0);
+                    v5long = x.get(1);
+                    n5 = x.get(2);
+                    v5cart = x.get(3);
+                    count++;
+                }
             }
             if(count==6)
             {
-                v6lat=x.get(0);
-                v6long=x.get(1);
-                n6=x.get(2);
-                v6cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v6lat = x.get(0);
+                    v6long = x.get(1);
+                    n6 = x.get(2);
+                    v6cart = x.get(3);
+                    count++;
+                }
             }
             if(count==7)
             {
-                v7lat=x.get(0);
-                v7long=x.get(1);
-                n7=x.get(2);
-                v7cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v7lat = x.get(0);
+                    v7long = x.get(1);
+                    n7 = x.get(2);
+                    v7cart = x.get(3);
+                    count++;
+                }
             }
             if(count==8)
             {
-                v8lat=x.get(0);
-                v8long=x.get(1);
-                n8=x.get(2);
-                v8cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v8lat = x.get(0);
+                    v8long = x.get(1);
+                    n8 = x.get(2);
+                    v8cart = x.get(3);
+                    count++;
+                }
             }
             if(count==9)
             {
-                v9lat=x.get(0);
-                v9long=x.get(1);
-                n9=x.get(2);
-                v9cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v9lat = x.get(0);
+                    v9long = x.get(1);
+                    n9 = x.get(2);
+                    v9cart = x.get(3);
+                    count++;
+                }
             }
             if(count==10)
             {
-                v10lat=x.get(0);
-                v10long=x.get(1);
-                n10=x.get(2);
-                v10cart=x.get(3);
+                if(!((n1!=null && n1.equals(x.get(2)))||(n2!=null && n2.equals(x.get(2)))||(n3!=null && n3.equals(x.get(2)))||(n4!=null && n4.equals(x.get(2)))||(n5!=null && n5.equals(x.get(2)))||(n6!=null && n6.equals(x.get(2)))||(n7!=null &&n7.equals(x.get(2)))||(n8!=null && n8.equals(x.get(2))) ||(n9!=null && n9.equals(x.get(2)) )|| (n10!=null && n10.equals(x.get(2))))) {
+                    v10lat = x.get(0);
+                    v10long = x.get(1);
+                    n10 = x.get(2);
+                    v10cart = x.get(3);
+                    count++;
+                }
             }
-            count++;
         }
-        if (count>1)
+        if (count>1 && n1!=null)
         {
             ve1.setVisibility(View.VISIBLE);
             vec1.setVisibility(View.VISIBLE);
@@ -161,7 +191,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v1l.setVisibility(View.VISIBLE);
             v1f=1;
         }
-        if (count>2)
+        if (count>2 && n2!=null)
         {
             ve2.setVisibility(View.VISIBLE);
             vec2.setVisibility(View.VISIBLE);
@@ -170,7 +200,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v2l.setVisibility(View.VISIBLE);
             v2f=1;
         }
-        if (count>3)
+        if (count>3 && n3!=null)
         {
             ve3.setVisibility(View.VISIBLE);
             vec3.setVisibility(View.VISIBLE);
@@ -179,7 +209,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v3l.setVisibility(View.VISIBLE);
             v3f=1;
         }
-        if (count>4)
+        if (count>4 && n4!=null)
         {
             ve4.setVisibility(View.VISIBLE);
             vec4.setVisibility(View.VISIBLE);
@@ -188,7 +218,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v4l.setVisibility(View.VISIBLE);
             v4f=1;
         }
-        if (count>5)
+        if (count>5 && n5!=null)
         {
             ve5.setVisibility(View.VISIBLE);
             vec5.setVisibility(View.VISIBLE);
@@ -198,7 +228,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v5f=1;
         }
 
-        if (count>6)
+        if (count>6 && n6!=null)
         {
             ve6.setVisibility(View.VISIBLE);
             vec6.setVisibility(View.VISIBLE);
@@ -207,7 +237,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v6l.setVisibility(View.VISIBLE);
             v6f=1;
         }
-        if (count>7)
+        if (count>7 && n7!=null)
         {
             ve7.setVisibility(View.VISIBLE);
             vec7.setVisibility(View.VISIBLE);
@@ -216,7 +246,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v7l.setVisibility(View.VISIBLE);
             v7f=1;
         }
-        if (count>8)
+        if (count>8 && n8!=null)
         {
             ve8.setVisibility(View.VISIBLE);
             vec8.setVisibility(View.VISIBLE);
@@ -225,7 +255,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v8l.setVisibility(View.VISIBLE);
             v8f=1;
         }
-        if (count>9)
+        if (count>9 && n9!=null)
         {
             ve9.setVisibility(View.VISIBLE);
             vec9.setVisibility(View.VISIBLE);
@@ -234,7 +264,7 @@ public class AvailableCustomers extends AppCompatActivity {
             v9l.setVisibility(View.VISIBLE);
             v9f=1;
         }
-        if (count>10)
+        if (count>10 && n10!=null)
         {
             ve10.setVisibility(View.VISIBLE);
             vec10.setVisibility(View.VISIBLE);

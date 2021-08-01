@@ -105,26 +105,31 @@ public class AvailableVendors extends AppCompatActivity {
         for (List<String> x : receivedvalues) {
             if(count==1)
             {
-                v1lat=x.get(0);
-                v1long=x.get(1);
-                v1email=x.get(2);
-                c1email=x.get(3);
-                v1cart=x.get(4);
-                n1=x.get(5);
-                mno1=x.get(6);
+                if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
+                    v1lat = x.get(0);
+                    v1long = x.get(1);
+                    v1email = x.get(2);
+                    c1email = x.get(3);
+                    v1cart = x.get(4);
+                    n1 = x.get(5);
+                    mno1 = x.get(6);
+                    count++;
+                }
             }
-            if(count==2)
-            {
-                v2lat=x.get(0);
-                v2long=x.get(1);
-                v2email=x.get(2);
-                c2email=x.get(3);
-                v2cart=x.get(4);
-                n2=x.get(5);
-                mno2=x.get(6);
+            if(count==2) {
+                if (!((n1 != null && n1.equals(x.get(5))) || (n2 != null && n2.equals(x.get(5))) || (n3 != null && n3.equals(x.get(5))) || (n4 != null && n4.equals(x.get(5))) || (n5 != null && n5.equals(x.get(5))) || (n6 != null && n6.equals(x.get(5))) || (n7 != null && n7.equals(x.get(5))) || (n8 != null && n8.equals(x.get(5))) || (n9 != null && n9.equals(x.get(5))) || (n10 != null && n10.equals(x.get(5))))) {
+                    v2lat = x.get(0);
+                    v2long = x.get(1);
+                    v2email = x.get(2);
+                    c2email = x.get(3);
+                    v2cart = x.get(4);
+                    n2 = x.get(5);
+                    mno2 = x.get(6);
+                    count++;
+                }
             }
             if(count==3)
-            {
+            {if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
                 v3lat=x.get(0);
                 v3long=x.get(1);
                 v3email=x.get(2);
@@ -132,81 +137,101 @@ public class AvailableVendors extends AppCompatActivity {
                 v3cart=x.get(4);
                 n3=x.get(5);
                 mno3=x.get(6);
+                count++;
+            }
             }
             if(count==4)
             {
-                v4lat=x.get(0);
-                v4long=x.get(1);
-                v4email=x.get(2);
-                c4email=x.get(3);
-                v4cart=x.get(4);
-                n4=x.get(5);
-                mno4=x.get(6);
+                if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
+                    v4lat = x.get(0);
+                    v4long = x.get(1);
+                    v4email = x.get(2);
+                    c4email = x.get(3);
+                    v4cart = x.get(4);
+                    n4 = x.get(5);
+                    mno4 = x.get(6);
+                    count++;
+                }
             }
             if(count==5)
             {
-                v5lat=x.get(0);
-                v5long=x.get(1);
-                v5email=x.get(2);
-                c5email=x.get(3);
-                v5cart=x.get(4);
-                n5=x.get(5);
-                mno5=x.get(6);
+                if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
+                    v5lat = x.get(0);
+                    v5long = x.get(1);
+                    v5email = x.get(2);
+                    c5email = x.get(3);
+                    v5cart = x.get(4);
+                    n5 = x.get(5);
+                    mno5 = x.get(6);
+                    count++;
+                }
             }
             if(count==6)
             {
-                v6lat=x.get(0);
-                v6long=x.get(1);
-                v6email=x.get(2);
-                c6email=x.get(3);
-                v6cart=x.get(4);
-                n6=x.get(5);
-                mno6=x.get(6);
+                if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
+                    v6lat = x.get(0);
+                    v6long = x.get(1);
+                    v6email = x.get(2);
+                    c6email = x.get(3);
+                    v6cart = x.get(4);
+                    n6 = x.get(5);
+                    mno6 = x.get(6);
+                    count++;
+                }
             }
             if(count==7)
             {
-                v7lat=x.get(0);
-                v7long=x.get(1);
-                v7email=x.get(2);
-                c7email=x.get(3);
-                v7cart=x.get(4);
-                n7=x.get(5);
-                mno7=x.get(6);
+                if(!((n1!=null && n1.equals(x.get(5)))||(n2!=null && n2.equals(x.get(5)))||(n3!=null && n3.equals(x.get(5)))||(n4!=null && n4.equals(x.get(5)))||(n5!=null && n5.equals(x.get(5)))||(n6!=null && n6.equals(x.get(5)))||(n7!=null &&n7.equals(x.get(5)))||(n8!=null && n8.equals(x.get(5))) ||(n9!=null && n9.equals(x.get(5)) )|| (n10!=null && n10.equals(x.get(5))))) {
+                    v7lat = x.get(0);
+                    v7long = x.get(1);
+                    v7email = x.get(2);
+                    c7email = x.get(3);
+                    v7cart = x.get(4);
+                    n7 = x.get(5);
+                    mno7 = x.get(6);
+                    count++;
+                }
             }
-            if(count==8)
-            {
-                v8lat=x.get(0);
-                v8long=x.get(1);
-                v8email=x.get(2);
-                c8email=x.get(3);
-                v8cart=x.get(4);
-                n8=x.get(5);
-                mno8=x.get(6);
+            if(count==8) {
+                if (!((n1 != null && n1.equals(x.get(5))) || (n2 != null && n2.equals(x.get(5))) || (n3 != null && n3.equals(x.get(5))) || (n4 != null && n4.equals(x.get(5))) || (n5 != null && n5.equals(x.get(5))) || (n6 != null && n6.equals(x.get(5))) || (n7 != null && n7.equals(x.get(5))) || (n8 != null && n8.equals(x.get(5))) || (n9 != null && n9.equals(x.get(5))) || (n10 != null && n10.equals(x.get(5))))) {
+                    v8lat = x.get(0);
+                    v8long = x.get(1);
+                    v8email = x.get(2);
+                    c8email = x.get(3);
+                    v8cart = x.get(4);
+                    n8 = x.get(5);
+                    mno8 = x.get(6);
+                    count++;
+                }
             }
-            if(count==9)
-            {
-                v9lat=x.get(0);
-                v9long=x.get(1);
-                v9email=x.get(2);
-                c9email=x.get(3);
-                v9cart=x.get(4);
-                n9=x.get(5);
-                mno9=x.get(6);
+            if(count==9) {
+                if (!((n1 != null && n1.equals(x.get(5))) || (n2 != null && n2.equals(x.get(5))) || (n3 != null && n3.equals(x.get(5))) || (n4 != null && n4.equals(x.get(5))) || (n5 != null && n5.equals(x.get(5))) || (n6 != null && n6.equals(x.get(5))) || (n7 != null && n7.equals(x.get(5))) || (n8 != null && n8.equals(x.get(5))) || (n9 != null && n9.equals(x.get(5))) || (n10 != null && n10.equals(x.get(5))))) {
+                    v9lat = x.get(0);
+                    v9long = x.get(1);
+                    v9email = x.get(2);
+                    c9email = x.get(3);
+                    v9cart = x.get(4);
+                    n9 = x.get(5);
+                    mno9 = x.get(6);
+                    count++;
+                }
             }
-            if(count==10)
-            {
-                v10lat=x.get(0);
-                v10long=x.get(1);
-                v10email=x.get(2);
-                c10email=x.get(3);
-                v10cart=x.get(4);
-                n10=x.get(5);
-                mno10=x.get(6);
+            if(count==10) {
+                if (!((n1 != null && n1.equals(x.get(5))) || (n2 != null && n2.equals(x.get(5))) || (n3 != null && n3.equals(x.get(5))) || (n4 != null && n4.equals(x.get(5))) || (n5 != null && n5.equals(x.get(5))) || (n6 != null && n6.equals(x.get(5))) || (n7 != null && n7.equals(x.get(5))) || (n8 != null && n8.equals(x.get(5))) || (n9 != null && n9.equals(x.get(5))) || (n10 != null && n10.equals(x.get(5))))) {
+                    v10lat = x.get(0);
+                    v10long = x.get(1);
+                    v10email = x.get(2);
+                    c10email = x.get(3);
+                    v10cart = x.get(4);
+                    n10 = x.get(5);
+                    mno10 = x.get(6);
+                    count++;
+                }
             }
-            count++;
+
         }
         System.out.println("Count:"+count+" v1lat"+v1lat);
-        if (count>1)
+        if (count>1 && n1!=null)
         {
             ve1.setVisibility(View.VISIBLE);
             vec1.setVisibility(View.VISIBLE);
@@ -216,7 +241,7 @@ public class AvailableVendors extends AppCompatActivity {
             v1s.setVisibility(View.VISIBLE);
             v1f=1;
         }
-        if (count>2)
+        if (count>2 && n2!=null)
         {
             ve2.setVisibility(View.VISIBLE);
             vec2.setVisibility(View.VISIBLE);
@@ -226,7 +251,7 @@ public class AvailableVendors extends AppCompatActivity {
             v2s.setVisibility(View.VISIBLE);
             v2f=1;
         }
-        if (count>3)
+        if (count>3 && n3!=null)
         {
             ve3.setVisibility(View.VISIBLE);
             vec3.setVisibility(View.VISIBLE);
@@ -236,7 +261,7 @@ public class AvailableVendors extends AppCompatActivity {
             v3s.setVisibility(View.VISIBLE);
             v3f=1;
         }
-        if (count>4)
+        if (count>4 && n4!=null)
         {
             ve4.setVisibility(View.VISIBLE);
             vec4.setVisibility(View.VISIBLE);
@@ -246,7 +271,7 @@ public class AvailableVendors extends AppCompatActivity {
             v4s.setVisibility(View.VISIBLE);
             v4f=1;
         }
-        if (count>5)
+        if (count>5 && n5!=null)
         {
             ve5.setVisibility(View.VISIBLE);
             vec5.setVisibility(View.VISIBLE);
@@ -256,7 +281,7 @@ public class AvailableVendors extends AppCompatActivity {
             v5s.setVisibility(View.VISIBLE);
             v5f=1;
         }
-        if (count>6)
+        if (count>6 && n6!=null)
         {
             ve6.setVisibility(View.VISIBLE);
             vec6.setVisibility(View.VISIBLE);
@@ -266,7 +291,7 @@ public class AvailableVendors extends AppCompatActivity {
             v6s.setVisibility(View.VISIBLE);
             v6f=1;
         }
-        if (count>7)
+        if (count>7 && n7!=null)
         {
             ve7.setVisibility(View.VISIBLE);
             vec7.setVisibility(View.VISIBLE);
@@ -276,7 +301,7 @@ public class AvailableVendors extends AppCompatActivity {
             v7s.setVisibility(View.VISIBLE);
             v7f=1;
         }
-        if (count>8)
+        if (count>8 && n8!=null)
         {
             ve8.setVisibility(View.VISIBLE);
             vec8.setVisibility(View.VISIBLE);
@@ -286,7 +311,7 @@ public class AvailableVendors extends AppCompatActivity {
             v8s.setVisibility(View.VISIBLE);
             v8f=1;
         }
-        if (count>9)
+        if (count>9 && n9!=null)
         {
             ve9.setVisibility(View.VISIBLE);
             vec9.setVisibility(View.VISIBLE);
@@ -296,7 +321,7 @@ public class AvailableVendors extends AppCompatActivity {
             v9s.setVisibility(View.VISIBLE);
             v9f=1;
         }
-        if (count>10)
+        if (count>10 && n10!=null)
         {
             ve10.setVisibility(View.VISIBLE);
             vec10.setVisibility(View.VISIBLE);

@@ -56,11 +56,11 @@ MainActivity extends AppCompatActivity {
         type=findViewById(R.id.radioGroup);
         cpasswd=findViewById(R.id.loginpsw1);
         name=findViewById(R.id.name);
-        number=findViewById(R.id.number);
+        number=findViewById(R.id.email);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailID = emailId.getText().toString();
+                String emailID = emailId.getText().toString()+"@gmail.com";
                 String paswd = passwd.getText().toString();
                 String cpaswd=cpasswd.getText().toString();
                 int selectedId = type.getCheckedRadioButtonId();
@@ -101,7 +101,7 @@ MainActivity extends AppCompatActivity {
                                 if(finalTypex.equals("Customer")) {
                                     HashMap<String, String> userMap = new HashMap<>();
                                     userMap.put("name",name.getText().toString());
-                                    userMap.put("email",emailId.getText().toString());
+                                    userMap.put("email",emailId.getText().toString()+"@gmail.com");
                                     userMap.put("password",passwd.getText().toString());
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
@@ -114,11 +114,12 @@ MainActivity extends AppCompatActivity {
                                 {
                                     HashMap<String, String> userMap = new HashMap<>();
                                     userMap.put("name",name.getText().toString());
-                                    userMap.put("email",emailId.getText().toString());
+                                    userMap.put("email",emailId.getText().toString()+"@gmail.com");
                                     userMap.put("password",passwd.getText().toString());
                                     userMap.put("mobileno",number.getText().toString());
                                     userMap.put("role", finalTypex1);
                                     userMap.put("vegetables","");
+                                    userMap.put("stopped","");
                                     vendors.child(number.getText().toString()).setValue(userMap);
                                 }
                                 Intent I = new Intent(MainActivity.this, Home.class);

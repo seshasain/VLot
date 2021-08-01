@@ -9,6 +9,7 @@ import android.app.admin.SystemUpdatePolicy;
 import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +18,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.core.app.NotificationCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -37,6 +39,7 @@ import java.util.Map;
 import java.util.Set;
 
 import static android.content.ContentValues.TAG;
+import static android.media.RingtoneManager.getDefaultUri;
 
 public class MyService extends Service{
     Handler handler;
@@ -50,6 +53,7 @@ public class MyService extends Service{
     double customerpresetdistance=0;
     String stopped="";
     String stoppedprevious="";
+    int val=0;
     Set<List<String>> allvendorlocations = new HashSet();
     Set<List<String>> allcustomermailsforvendors = new HashSet();
     Set<List<String>> allvendorlocationsprevious = new HashSet();
@@ -63,6 +67,7 @@ public class MyService extends Service{
     public MyService() {
         handler = new Handler();
         test = new Runnable(){
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             synchronized public void run() {
                 gps = new GPSTracker(MyService.this);
@@ -206,7 +211,8 @@ public class MyService extends Service{
                                 //System.out.println("Innerlist to be added "+innerList.toString());
                             }
                             if(allcustomermailsforvendors.size()>0) {
-                                createNotificationvendor();
+                                //createNotificationvendor();
+                                setNotification("Orders Available");
                                 stoppedprevious = stopped;
                             }
                         }
@@ -387,7 +393,7 @@ public class MyService extends Service{
                     .setOngoing(false)
                     .setAutoCancel(true)
                     .setContentIntent(contentIntent)
-                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setSound(getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setContentTitle("Orders available")
                     .setContentText("Some of your items are arriving you")
                     .setOnlyAlertOnce(true)
@@ -399,6 +405,51 @@ public class MyService extends Service{
             }
         }
     }
+
+
+
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void setNotification(String notificationMessage) {
+        final int PRIMARY_FOREGROUND_NOTIF_SERVICE_ID = 1009;
+        Bundle args = new Bundle();
+        args.putSerializable("ARRAYLIST",(Serializable) allcustomermailsforvendors);
+
+//**add this line**
+        int requestID = (int) System.currentTimeMillis();
+
+        Uri alarmSound = getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //NotificationManager mNotificationManager  = (NotificationManager) getApplication().getSystemService(Context.NOTIFICATION_SERVICE);
+
+        Intent notificationIntent = new Intent(getApplicationContext(), AvailableCustomers.class);
+        notificationIntent.putExtra("list",args);
+
+        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent contentIntent = PendingIntent.getActivity(this, requestID,notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+        NotificationChannel mChannel = new NotificationChannel("Order Alert", "notification", importance);
+        mChannel.enableLights(true);
+
+
+        Notification notification = new Notification.Builder(getApplicationContext(), "Order Alert")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setOngoing(false)
+                .setAutoCancel(true)
+                .setContentIntent(contentIntent)
+                .setSound(getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                .setContentTitle("Customers Available")
+                .setContentText("Someone asked you to stop")
+                .setOnlyAlertOnce(true)
+                .build();
+        NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        if (mNotificationManager != null) {
+            mNotificationManager.createNotificationChannel(mChannel);
+            mNotificationManager.notify(PRIMARY_FOREGROUND_NOTIF_SERVICE_ID, notification);
+        }
+
+    }
     public void createNotificationvendor()
     {
         System.out.println("In Vendor's notification with available customer details "+allcustomermailsforvendors.toString());
@@ -407,8 +458,8 @@ public class MyService extends Service{
             String id = "Order Alert";
             Bundle args = new Bundle();
             args.putSerializable("ARRAYLIST",(Serializable) allcustomermailsforvendors);
-            PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(), 0,
-                    new Intent(getApplicationContext(), AvailableCustomers.class).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
+            PendingIntent contentIntent = PendingIntent.getActivity(this, (int) System.currentTimeMillis(),
+                    new Intent(this, AvailableCustomers.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP).putExtra("list",args), PendingIntent.FLAG_UPDATE_CURRENT);
             NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
             int importance = NotificationManager.IMPORTANCE_HIGH;
             NotificationChannel mChannel = new NotificationChannel(id, "notification", importance);
@@ -418,7 +469,7 @@ public class MyService extends Service{
                     .setOngoing(false)
                     .setAutoCancel(true)
                     .setContentIntent(contentIntent)
-                    .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+                    .setSound(getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                     .setContentTitle("Customers Available")
                     .setContentText("Someone asked you to stop")
                     .setOnlyAlertOnce(true)
