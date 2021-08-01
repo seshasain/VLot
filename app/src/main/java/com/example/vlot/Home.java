@@ -83,7 +83,7 @@ public class Home extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         cuserref = database.getReference(cusers);
         vuserref= database.getReference(vusers);
-        int[] imgarr={R.drawable.sc0, R.drawable.s5,R.drawable.sc2,R.drawable.pushing};
+        int[] imgarr={R.drawable.one, R.drawable.two,R.drawable.three,R.drawable.four};
 
         veg1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,10 +106,10 @@ public class Home extends AppCompatActivity {
                 {
                     i=0;
                 }
-                handler.postDelayed(this,2000);
+                handler.postDelayed(this,5000);
             }
         };
-        handler.postDelayed(r,2000);
+        handler.postDelayed(r,5000);
 
 
         cuserref.addValueEventListener(new ValueEventListener() {

@@ -36,6 +36,7 @@ public class Editprofile extends AppCompatActivity {
     private DatabaseReference vendors=db.getReference().child("vendors");
     private static final String vusers="vendors";
     int flag=0;
+    float dval;
     Button updateprofile;
 
     @Override
@@ -134,7 +135,7 @@ public class Editprofile extends AppCompatActivity {
                 if(prole.equals("Customer"))
                 {
                     int dist=Integer.parseInt(setdist);
-                      if(dist>0 && dist<=100)
+                      if(dist>0.5 && dist<=150)
                       {
                           customers.child(mno).updateChildren(userMapn);
                           customers.child(mno).updateChildren(userMapp);
@@ -145,7 +146,7 @@ public class Editprofile extends AppCompatActivity {
                       else
                       {
                           Toast.makeText(Editprofile.this, "Please enter range from 0.5 to 5km", Toast.LENGTH_LONG).show();
-                          Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
+                          //Toast.makeText(Editprofile.this, setdist, Toast.LENGTH_LONG).show();
                       }
                 }
                 else if(prole.equals("Vendor"))

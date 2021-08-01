@@ -108,7 +108,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:hint="Enter distance requirement"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:textColor="@color/black"
         android:textSize="20dp"
         app:layout_constraintStart_toEndOf="@+id/distimg"

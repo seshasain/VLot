@@ -30,8 +30,8 @@
         android:autofillHints=""
         android:background="@drawable/inputtextfield"
         android:gravity="center"
-        android:hint="\t\tEmail"
-        android:inputType="textEmailAddress"
+        android:hint="\t\tPhone Number"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.517"
@@ -108,5 +108,15 @@
         app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginpaswd" />
+    <ImageView
+        android:id="@+id/imagelgn"
+        android:layout_width="109dp"
+        android:layout_height="88dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginLeft="148dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:srcCompat="@drawable/appimg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

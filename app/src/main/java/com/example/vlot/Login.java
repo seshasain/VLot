@@ -61,6 +61,8 @@ public class Login extends AppCompatActivity {
             public void onClick(View view) {
                 String userEmail = loginEmailId.getText().toString();
                 String userPaswd = logInpasswd.getText().toString();
+                if(!userEmail.isEmpty())
+                userEmail+="@gmail.com";
                 if (userEmail.isEmpty()) {
                     loginEmailId.setError("Provide your Email first!");
                     loginEmailId.requestFocus();
