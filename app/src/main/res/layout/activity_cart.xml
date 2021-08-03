@@ -16,7 +16,8 @@
         android:layout_height="141dp"
         android:background="@drawable/headingbackground"
         android:gravity="center_vertical"
-        android:text="Your Cart"
+        android:text="మీ కూరగాయలు"
+        android:textStyle="bold"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="40dp"
@@ -43,7 +44,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Tomato"
+            android:text="టమోటా"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/tomato"
@@ -57,7 +59,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/tomato"
             app:layout_constraintTop_toBottomOf="@id/tomatoctv" />
 
@@ -79,7 +81,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Potato"
+            android:text="బంగాళాదుంప"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/potato"
@@ -93,7 +96,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/potato"
             app:layout_constraintTop_toBottomOf="@id/potatoctv" />
 
@@ -116,7 +119,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Bottlegourd"
+            android:text="సొరకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/bottleguard"
@@ -130,7 +134,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/bottleguard"
             app:layout_constraintTop_toBottomOf="@id/bguardctv" />
 
@@ -153,7 +157,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Cucumber"
+            android:text="దోసకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/cucumber"
@@ -167,7 +172,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/cucumber"
             app:layout_constraintTop_toBottomOf="@id/cucuctv" />
 
@@ -189,7 +194,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Capsicum"
+            android:text="క్యాప్సికమ్"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/capsicum"
@@ -203,7 +209,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/capsicum"
             app:layout_constraintTop_toBottomOf="@id/capsicumctv" />
 
@@ -225,7 +231,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:text="Bittergourd"
+            android:text="కాకరకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/bitterguard"
@@ -238,7 +245,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/bitterguard"
             app:layout_constraintTop_toBottomOf="@id/bitterguardctv" />
 
@@ -261,7 +268,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:text="Drumstick"
+            android:text="ములక్కాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/drumstick"
@@ -274,7 +282,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/drumstick"
             app:layout_constraintTop_toBottomOf="@id/drumstickctv" />
 
@@ -296,7 +304,8 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginStart="20dp"
-            android:text="Ladiesfinger"
+            android:text="బెండకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/ladiesfinger"
@@ -309,7 +318,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/ladiesfinger"
             app:layout_constraintTop_toBottomOf="@id/ladiesfingerctv" />
 
@@ -331,7 +340,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Gongura"
+            android:text="గోంగూర"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/gongura"
@@ -345,7 +355,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/gongura"
             app:layout_constraintTop_toBottomOf="@id/gonguractv" />
 
@@ -369,7 +379,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Mint"
+            android:text="పుదీనా"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/mint"
@@ -383,7 +394,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/mint"
             app:layout_constraintTop_toBottomOf="@id/mintctv" />
 
@@ -407,7 +418,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Coriander leaves"
+            android:text="కొత్తిమీర"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/corimg"
@@ -421,7 +433,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/corimg"
             app:layout_constraintTop_toBottomOf="@+id/cortv" />
 
@@ -445,7 +457,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:text="Methi"
+            android:text="మేతి"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/mimg"
@@ -459,7 +472,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/mimg"
             app:layout_constraintTop_toBottomOf="@+id/mtv" />
 

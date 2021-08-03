@@ -18,9 +18,10 @@
             android:layout_height="106dp"
             android:layout_marginTop="0dp"
             android:background="@color/blue"
-            android:text="\nAdd your items:"
+            android:text="\nమీ కూరగాయలను ఎంచుకోండి:"
             android:textAlignment="center"
             android:textColor="@color/white"
+            android:textStyle="bold"
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -35,7 +36,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="Add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/tomatoimage"
             app:layout_constraintTop_toBottomOf="@+id/tomatotv" />
 
@@ -47,7 +48,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="84dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
 
             app:layout_constraintStart_toEndOf="@+id/tomatoadd"
             app:layout_constraintTop_toBottomOf="@+id/headingtv"
@@ -61,7 +62,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="48dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/capsicumadd"
             app:layout_constraintTop_toBottomOf="@+id/cucumberremove" />
 
@@ -73,7 +74,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/bittergourdadd"
             app:layout_constraintTop_toBottomOf="@+id/capsicumremove" />
 
@@ -85,7 +86,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="48dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/bottlegourdadd"
             app:layout_constraintTop_toBottomOf="@+id/potatoremove" />
 
@@ -97,7 +98,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/cucumberadd"
             app:layout_constraintTop_toBottomOf="@+id/bottlegourdremove" />
 
@@ -110,7 +111,7 @@
             android:layout_marginTop="56dp"
             android:backgroundTint="@android:color/holo_red_dark"
 
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/potatoadd"
             app:layout_constraintTop_toBottomOf="@+id/tomatoremove" />
 
@@ -122,7 +123,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/drumstickadd"
             app:layout_constraintTop_toBottomOf="@+id/bitterguardremove" />
 
@@ -134,7 +135,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/ladiesfingeradd"
             app:layout_constraintTop_toBottomOf="@+id/drumstickremove" />
 
@@ -146,7 +147,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/mintadd"
             app:layout_constraintTop_toBottomOf="@+id/gounguraremove" />
 
@@ -158,7 +159,7 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="56dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/gounguraadd"
             app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -169,7 +170,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="44dp"
-            android:text="Tomato"
+            android:text="టమోటా"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/tomatoimage"
@@ -189,12 +191,13 @@
 
         <TextView
             android:id="@+id/potatotv"
-            android:layout_width="95dp"
+            android:layout_width="100dp"
             android:layout_height="30dp"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="16dp"
-            android:text="Potato"
+            android:text="బంగాళాదుంప"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/potatoimage"
@@ -208,7 +211,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/potatoimage"
             app:layout_constraintTop_toBottomOf="@+id/potatotv" />
 
@@ -220,7 +223,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/cucumberimage"
             app:layout_constraintTop_toBottomOf="@+id/cucumbertv" />
 
@@ -231,7 +234,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
-            android:text="Cucumber"
+            android:text="దోసకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/cucumberimage"
@@ -245,7 +249,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/capsicumimage"
             app:layout_constraintTop_toBottomOf="@+id/capsicumtv" />
 
@@ -257,7 +261,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
             app:layout_constraintTop_toBottomOf="@+id/bittergourdtv" />
 
@@ -268,7 +272,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
-            android:text="Bottlegourd"
+            android:text="సొరకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/bottlegourdimage"
@@ -282,7 +287,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/bottlegourdimage"
             app:layout_constraintTop_toBottomOf="@+id/bottlegourdtv" />
 
@@ -293,7 +298,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
-            android:text="Capsicum"
+            android:text="క్యాప్సికమ్"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/capsicumimage"
@@ -306,7 +312,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
-            android:text="Bittergourd"
+            android:text="కాకరకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/bittergourdimage"
@@ -418,7 +425,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
-            android:text="Drumstick"
+            android:text="ములక్కాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/drumstickimage"
@@ -432,7 +440,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/drumstickimage"
             app:layout_constraintTop_toBottomOf="@+id/drumsticktv" />
 
@@ -443,7 +451,8 @@
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="12dp"
-            android:text="Ladiesfinger"
+            android:text="బెండకాయ"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
@@ -457,7 +466,7 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
             app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -468,7 +477,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="Goungura"
+            android:text="గోంగూర"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/gonguraimage"
@@ -482,7 +492,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/gonguraimage"
             app:layout_constraintTop_toBottomOf="@+id/gonguratv" />
 
@@ -493,7 +503,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="12dp"
-            android:text="Mintpudina"
+            android:text="పుదీనా"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/mintimage"
@@ -507,7 +518,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/mintimage"
             app:layout_constraintTop_toBottomOf="@+id/minttv" />
 
@@ -519,7 +530,7 @@
             android:layout_marginLeft="116dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="OK"
+            android:text="జోడించు"
             android:textColor="@color/white"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/methiadd" />
@@ -532,7 +543,7 @@
             android:layout_marginLeft="44dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="cancel"
+            android:text="వెనక్కి వెళ్ళు"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/ok_button"
             app:layout_constraintTop_toBottomOf="@+id/methiremove" />
@@ -544,11 +555,11 @@
             android:layout_marginStart="92dp"
             android:layout_marginLeft="92dp"
             android:layout_marginTop="24dp"
-            android:text="Leafy Vegetables"
+            android:text="ఆకు కూరలు"
+            android:textStyle="bold"
             android:textAlignment="center"
             android:textColor="@color/main_green_color"
             android:textSize="25sp"
-            android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ladiesfingeradd" />
 
@@ -570,7 +581,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="12dp"
-            android:text="Coriander leaves"
+            android:text="కొత్తిమీర"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/climg"
@@ -584,7 +596,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="Add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/climg"
             app:layout_constraintTop_toBottomOf="@+id/cltv" />
 
@@ -596,7 +608,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/cleavesadd"
             app:layout_constraintTop_toBottomOf="@+id/mintremove" />
 
@@ -618,7 +630,8 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="12dp"
-            android:text="Methi"
+            android:text="మేతి"
+            android:textStyle="bold"
             android:textColor="@color/black"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/metimg"
@@ -632,7 +645,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="@android:color/holo_green_dark"
-            android:text="Add"
+            android:text="చెర్చు"
             app:layout_constraintStart_toEndOf="@+id/metimg"
             app:layout_constraintTop_toBottomOf="@+id/mettv" />
 
@@ -644,7 +657,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="52dp"
             android:backgroundTint="@android:color/holo_red_dark"
-            android:text="Remove"
+            android:text="తొలగించు"
             app:layout_constraintStart_toEndOf="@+id/methiadd"
             app:layout_constraintTop_toBottomOf="@+id/cleavesremove" />
 

@@ -40,9 +40,33 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 //package com.jarves.navigationdrawer;
 
 public class Home extends AppCompatActivity {
+    Handler handler;
+    Runnable test;
+    public GPSTracker gps;
+    public static  String veg,em,rol,mno;
+    public int rtype,rt;
+    public String  mail1,cdist;
+    String latitude,longitude;
+    String customerproductarray[];
+    double customerpresetdistance=0;
+    String stopped="";
+    String stoppedprevious="";
+    int val=0;
+    Set<List<String>> allvendorlocations = new HashSet();
+    Set<List<String>> allcustomermailsforvendors = new HashSet();
+    Set<List<String>> allvendorlocationsprevious = new HashSet();
+    private FirebaseDatabase db=FirebaseDatabase.getInstance();
+    private DatabaseReference customers=db.getReference().child("customers");
+    private DatabaseReference vendors=db.getReference().child("vendors");
     private TextView pname;
     public String mail;
     ImageButton hcart;
@@ -51,7 +75,10 @@ public class Home extends AppCompatActivity {
     private static final String cusers="customers";
     private static final String vusers="vendors";
     int flag=0;
-
+    //private FirebaseDatabase db=FirebaseDatabase.getInstance();
+    //private DatabaseReference customers=db.getReference().child("customers");
+    //private DatabaseReference vendors=db.getReference().child("vendors");
+    private String ph;
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -65,7 +92,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        Currentuserdetails("role");
+        Currentuserdetails("vegetables");
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         mail=user.getEmail();
         hcart=findViewById(R.id.homecart);
@@ -226,6 +254,7 @@ public class Home extends AppCompatActivity {
                         Intent pp = new Intent(Home.this,Privacypolicy.class);
                         startActivity(pp);
                         break;
+
                     case R.id.logout:
                         FirebaseAuth.getInstance().signOut();
                         Intent intent1 = new Intent(Home.this,Login.class);
@@ -312,5 +341,102 @@ public class Home extends AppCompatActivity {
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+    }
+    public synchronized String Currentuserdetails(String req)
+    {
+        DatabaseReference cuserref, vuserref;
+        String cusers = "customers";
+        String vusers = "vendors";
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        mail1 = user.getEmail();
+
+        DatabaseReference rootref = FirebaseDatabase.getInstance().getReference();
+        cuserref = rootref.child(cusers);
+        vuserref = rootref.child(vusers);
+
+        cuserref.addValueEventListener(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    if (mail1.equals(ds.child("email").getValue())) {
+                        customerpresetdistance=0;
+                        cdist=ds.child("distance").getValue(String.class);
+                        customerpresetdistance=Double.parseDouble(ds.child("distance").getValue(String.class));
+                        //System.out.println("Calculated distance:"+customerpresetdistance);
+                        if (req.equals("vegetables")) {
+                            veg = ds.child("vegetables").getValue(String.class);
+                            rt = 1;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("email")) {
+                            em = ds.child("email").getValue(String.class);
+                            rt = 2;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("role")) {
+                            rol = ds.child("role").getValue(String.class);
+                            rt = 3;
+                            rtype = 1;
+                            break;
+                        }
+                        if (req.equals("mobilenum")) {
+                            mno = ds.child("mobileno").getValue(String.class);
+                            rt = 4;
+                            rtype = 1;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public synchronized void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        if (rtype == 0) {
+            vuserref.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        if (mail1.equals(ds.child("email").getValue())) {
+                            stopped=ds.child("stopped").getValue(String.class);
+                            if (req.equals("vegetables")) {
+                                veg = ds.child("vegetables").getValue(String.class);
+                                rt = 1;
+                                rtype = 1;
+                                break;
+                            }
+
+                            if (req.equals("email")) {
+                                em = ds.child("email").getValue(String.class);
+                                rt = 2;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("role")) {
+                                rol = ds.child("role").getValue(String.class);
+                                rt = 3;
+                                rtype = 1;
+                                break;
+                            }
+                            if (req.equals("mobilenum")) {
+                                mno = ds.child("mobileno").getValue(String.class);
+                                rt = 4;
+                                rtype = 1;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                }
+            });
+        }
+
+        return "final";
     }
 }
